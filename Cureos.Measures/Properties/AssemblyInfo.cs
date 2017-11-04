@@ -29,9 +29,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("CSUnits")]
 [assembly: AssemblyDescription("Type-safe Units of Measurement class library in C#")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Cureos AB")]
+[assembly: AssemblyCompany("Cureos AB and Yuuki Wesp")]
 [assembly: AssemblyProduct("CSUnits")]
-[assembly: AssemblyCopyright("Copyright © Cureos AB 2011-2015")]
+[assembly: AssemblyCopyright("Copyright © Cureos AB 2011-2015 and Yuuki Wesp 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en-US")]
@@ -46,9 +46,9 @@ using System.Runtime.CompilerServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.1")]
-[assembly: AssemblyInformationalVersion("2.0.1")]
-[assembly: AssemblyFileVersion("2.0.1.50806")]
+[assembly: AssemblyVersion("2.3.1")]
+[assembly: AssemblyInformationalVersion("2.3.1")]
+[assembly: AssemblyFileVersion("2.3.1.50806")]
 
 
 [assembly: InternalsVisibleTo("Cureos.Measures.Tests")]
