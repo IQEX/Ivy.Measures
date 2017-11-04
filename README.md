@@ -1,7 +1,5 @@
 # CSUnits
 
-[![NuGet](https://img.shields.io/nuget/v/csunits.svg)](https://www.nuget.org/packages/csunits/)
-[![NuGet](https://img.shields.io/nuget/dt/csunits.svg)](https://www.nuget.org/packages/csunits/)
 [![Build status](https://ci.appveyor.com/api/projects/status/6rntuke5f9y307n0?svg=true)](https://ci.appveyor.com/project/anders9ustafsson/csunits)
 [![Join the chat at https://gitter.im/cureos/csunits](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cureos/csunits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -39,28 +37,28 @@ Download *CSUnits* from [NuGet](https://www.nuget.org/packages/csunits/) or, if 
 
     Force f0 = new Force(1000.0);
 	...
-    Measure<Force> f1 = new Measure<Force>(f0);							// 1000 N
+    Measure<Force> f1 = new Measure<Force>(f0);				// 1000 N
     Measure<Force> f2 = new Measure<Force>(0.001f, Force.MegaNewton);	// ~0.001 MN
-    IMeasure<Force> f3 = 1.0 | Force.KiloNewton;						// 1 kN
-    Measure<Force> f4 = (Measure<Force>)f3;								// 1 kN
+    IMeasure<Force> f3 = 1.0 | Force.KiloNewton;			// 1 kN
+    Measure<Force> f4 = (Measure<Force>)f3;				// 1 kN
 
 ### Brief API overview
 
 	Area a = new Area(5.0, Area.SquareDeciMeter);
 	...
-	double amount = a.Amount;											// 0.05;
-	IUnit<Area> unit = a.Unit;											// Area.SquareMeter
-	double stdAmount = a.StandardAmount;								// 0.05;
-	IUnit<Area> stdUnit = a.StandardUnit;								// Area.SquareMeter
+	double amount = a.Amount;							// 0.05;
+	IUnit<Area> unit = a.Unit;							// Area.SquareMeter
+	double stdAmount = a.StandardAmount;						// 0.05;
+	IUnit<Area> stdUnit = a.StandardUnit;						// Area.SquareMeter
 	double amountInCm2 = a.GetAmount(Area.SquareCentiMeter);			// 500
 	IMeasure<Area> measureInMm2 = a[Area.SquareMilliMeter];				// 50000 mm²
 	
 	Measure<Volume> v = new Measure<Volume>(2.0, Volume.Liter);
 	...
-	double amount = v.Amount;											// 2
-	IUnit<Volume> unit = v.Unit;										// Volume.Liter
-	double stdAmount = v.StandardAmount;								// 0.002
-	IUnit<Volume> stdUnit = v.StandardUnit;								// Volume.CubicMeter
+	double amount = v.Amount;							// 2
+	IUnit<Volume> unit = v.Unit;							// Volume.Liter
+	double stdAmount = v.StandardAmount;						// 0.002
+	IUnit<Volume> stdUnit = v.StandardUnit;						// Volume.CubicMeter
 	double amountInCm3 = v.GetAmount(Volume.CubicCentiMeter);			// 2000
 	IMeasure<Volume> measureInDm3 = v[Volume.CubicDeciMeter];			// 2 dm³
 
@@ -71,19 +69,18 @@ Download *CSUnits* from [NuGet](https://www.nuget.org/packages/csunits/) or, if 
 	doseRate = new Measure<AbsorbedDoseMetersetRate>(
 					98.0, AbsorbedDoseMetersetRate.CentiGrayPerMeterset);
 	...
-	double amount = doseRate.Amount;									// 98.0
-	IUnit unit = doseRate.Unit;											// cGy/MU
-	double stdAmount = doseRate.StandardAmount;							// 0.98
-	double stdUnit = doseRate.StandardUnit;								// Gy/MU
+	double amount = doseRate.Amount;					// 98.0
+	IUnit unit = doseRate.Unit;						// cGy/MU
+	double stdAmount = doseRate.StandardAmount;				// 0.98
+	double stdUnit = doseRate.StandardUnit;					// Gy/MU
 	double amountInGyPerMU = doseRate.GetAmount(
-					AbsorbedDoseMetersetRate.GrayPerMeterset);			// 0.98
-	IMeasure measureInGyPerSec = 
-					doseRate[AbsorbedDoseRate.GrayPerSecond];			// Run-time exception
+				AbsorbedDoseMetersetRate.GrayPerMeterset);	// 0.98
+	IMeasure measureInGyPerSec = doseRate[AbsorbedDoseRate.GrayPerSecond];	// Run-time exception
 					
 ### Comparison operators
 
-	Length l1 = new Length(0.02);										// 0.02 m
-	Length l2 = Length.CentiMeter;										// 0.01 m
+	Length l1 = new Length(0.02);						// 0.02 m
+	Length l2 = Length.CentiMeter;						// 0.01 m
 	Measure<Length> l3 = new Measure<Length>(15.0, Length.MilliMeter);	// 15 mm
 
 	l1 > l2		// true
@@ -99,22 +96,22 @@ Download *CSUnits* from [NuGet](https://www.nuget.org/packages/csunits/) or, if 
 	Force f2 = (Force)2000.0;
 	IMeasure<Force> f3 = 0.5 | Force.KiloNewton;
 	...
-	Force f4 = f1 + f2 - f3;											// 2500 N
-	Measure<Force> f5 = (Measure<Force>)f3 + f2 - f1;					// 1.5 kN
+	Force f4 = f1 + f2 - f3;						// 2500 N
+	Measure<Force> f5 = (Measure<Force>)f3 + f2 - f1;			// 1.5 kN
 
 ### Multiplicative scalar operations
 
 	Energy e1 = new Energy(5.0);
 	Measure<Energy> e2 = new Measure<Energy>(0.1, Energy.KiloJoule);
 	...
-	Energy e3 = e1 / 2.0;												// 2.5 J
-	Measure<Energy> e4 = 0.2 * e2;										// 0.02 kJ
+	Energy e3 = e1 / 2.0;							// 2.5 J
+	Measure<Energy> e4 = 0.2 * e2;						// 0.02 kJ
 
 ### Multiplicative operations
 
 	Length s = new Length(180.0, Length.KiloMeter);
 	Time t = new Time(2.0, Time.Hour);
-	Velocity v1 = s / t;												// 25 m/s
+	Velocity v1 = s / t;							// 25 m/s
 
 ## Application
 
