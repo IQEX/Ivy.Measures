@@ -128,35 +128,17 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the first measure in the measure triplet
         /// </summary>
-        public Q1 X
-        {
-            get
-            {
-                return this.x;
-            }
-        }
+        public Q1 X => this.x;
 
         /// <summary>
         /// Gets the second measure in the measure triplet
         /// </summary>
-        public Q2 Y
-        {
-            get
-            {
-                return this.y;
-            }
-        }
+        public Q2 Y => this.y;
 
         /// <summary>
         /// Gets the third measure in the measure triplet
         /// </summary>
-        public Q3 Z
-        {
-            get
-            {
-                return this.z;
-            }
-        }
+        public Q3 Z => this.z;
 
         #endregion
 
@@ -165,35 +147,17 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the first measure in the measure triplet
         /// </summary>
-        IMeasure<Q1> IMeasureTriplet<Q1, Q2, Q3>.X
-        {
-            get
-            {
-                return this.x;
-            }
-        }
+        IMeasure<Q1> IMeasureTriplet<Q1, Q2, Q3>.X => this.x;
 
         /// <summary>
         /// Gets the second measure in the measure triplet
         /// </summary>
-        IMeasure<Q2> IMeasureTriplet<Q1, Q2, Q3>.Y
-        {
-            get
-            {
-                return this.y;
-            }
-        }
+        IMeasure<Q2> IMeasureTriplet<Q1, Q2, Q3>.Y => this.y;
 
         /// <summary>
         /// Gets the third measure in the measure triplet
         /// </summary>
-        IMeasure<Q3> IMeasureTriplet<Q1, Q2, Q3>.Z
-        {
-            get
-            {
-                return this.z;
-            }
-        }
+        IMeasure<Q3> IMeasureTriplet<Q1, Q2, Q3>.Z => this.z;
 
         #endregion
 

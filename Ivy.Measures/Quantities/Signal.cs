@@ -1,4 +1,4 @@
-namespace Cureos.Measures.Quantities
+﻿namespace Ivy.Measures.Quantities
 {
     using System;
     using System.Globalization;
@@ -11,165 +11,55 @@ namespace Cureos.Measures.Quantities
 #elif DOUBLE
     using AmountType = System.Double;
 #endif
-
     /// <summary>
-    /// Implementation of the absorbed dose quantity
+    /// Implementation of the Signal-to-noise ratio (abbreviated SNR or S/N) 
     /// </summary>
     [DataContract]
-    public partial struct AbsorbedDose : IQuantity<AbsorbedDose>, IMeasure<AbsorbedDose>, IEquatable<AbsorbedDose>, IComparable<AbsorbedDose>
+    public struct Signal : IQuantity<Signal>, IMeasure<Signal>, IEquatable<Signal>, IComparable<Signal>
     {
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming
-        private static readonly IMeasureFactory<AbsorbedDose> factory = new MeasureFactory();
+        private static readonly IMeasureFactory<Signal> factory = new MeasureFactory();
 
         // ReSharper disable once InconsistentNaming
-        private static readonly QuantityDimension dimension = new QuantityDimension(2, 0, -2, 0, 0, 0, 0);
+        private static readonly QuantityDimension dimension = new QuantityDimension(-1, 0, 0, 0, 0, 0, 0);
 
-        public static readonly Unit<AbsorbedDose> Gray = new ConstantConverterUnit<AbsorbedDose>("Gy");
-
-        public static readonly Unit<AbsorbedDose> NanoGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Nano);
-        public static readonly Unit<AbsorbedDose> MicroGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Micro);
-        public static readonly Unit<AbsorbedDose> MilliGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Milli);
-        public static readonly Unit<AbsorbedDose> CentiGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Centi);
-        public static readonly Unit<AbsorbedDose> DeciGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Deci);
-        public static readonly Unit<AbsorbedDose> DekaGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Deka);
-        public static readonly Unit<AbsorbedDose> HectoGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Hecto);
-        public static readonly Unit<AbsorbedDose> KiloGray = new ConstantConverterUnit<AbsorbedDose>(UnitPrefix.Kilo);
-
-        public static readonly Unit<AbsorbedDose> Rad = new ConstantConverterUnit<AbsorbedDose>("rad", Factors.Centi);
+        public static readonly Unit<Signal> Bell = new ConstantConverterUnit<Signal>("b");
+        public static readonly Unit<Signal> Neper = new ConstantConverterUnit<Signal>("Np");
+        public static readonly Unit<Signal> DBell = new ConstantConverterUnit<Signal>("dB");
 
         [DataMember]
         private readonly AmountType amount;
 
         #endregion
 
-        #region CONSTRUCTORS
-
-        /// <summary>
-        /// Static constructor for defining static class properties
-        /// </summary>
-        static AbsorbedDose()
-        {
-            Zero = new AbsorbedDose(Constants.Zero);
-            Epsilon = new AbsorbedDose(Constants.MachineEpsilon);
-        }
-        
-        /// <summary>
-        /// Initializes a absorbed dose object from an object implementing the IMeasure&lt;AbsorbedDose&gt; interface
-        /// </summary>
-        /// <param name="other">Object implemeting the IMeasure&lt;AbsorbedDose&gt; interface</param>
-        public AbsorbedDose(IMeasure<AbsorbedDose> other)
-            : this(other.StandardAmount)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a measure to the specified amount and standard unit of the measured quantity
-        /// </summary>
-        /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
-        public AbsorbedDose(double amount)
-        {
-            this.amount = (AmountType)amount;
-        }
-
-        /// <summary>
-        /// Initializes a measure to the specified amount and standard unit of the measured quantity
-        /// </summary>
-        /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
-        public AbsorbedDose(float amount)
-        {
-            this.amount = (AmountType)amount;
-        }
-
-        /// <summary>
-        /// Initializes a measure to the specified amount and standard unit of the measured quantity
-        /// </summary>
-        /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
-        public AbsorbedDose(decimal amount)
-        {
-            this.amount = (AmountType)amount;
-        }
-
-        /// <summary>
-        /// Initializes a measure to the specified amount and unit
-        /// </summary>
-        /// <param name="amount">Measured amount</param>
-        /// <param name="unit">Unit of measure</param>
-        /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
-        public AbsorbedDose(double amount, IUnit<AbsorbedDose> unit)
-        {
-            if (unit == null) throw new ArgumentNullException("unit");
-            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
-        }
-
-        /// <summary>
-        /// Initializes a measure to the specified amount and unit
-        /// </summary>
-        /// <param name="amount">Measured amount</param>
-        /// <param name="unit">Unit of measure</param>
-        /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
-        public AbsorbedDose(float amount, IUnit<AbsorbedDose> unit)
-        {
-            if (unit == null) throw new ArgumentNullException("unit");
-            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
-        }
-
-        /// <summary>
-        /// Initializes a measure to the specified amount and unit
-        /// </summary>
-        /// <param name="amount">Measured amount</param>
-        /// <param name="unit">Unit of measure</param>
-        /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
-        public AbsorbedDose(decimal amount, IUnit<AbsorbedDose> unit)
-        {
-            if (unit == null) throw new ArgumentNullException("unit");
-            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
-        }
-
-        #endregion
-
-        #region Implementation of IQuantity<AbsorbedDose>
+        #region Implementation of IQuantity<Signal>
 
         /// <summary>
         /// Gets the display name of the quantity
         /// </summary>
-        public string DisplayName 
-        { 
-            get { return "Absorbed Dose"; } 
-        }
+        public string DisplayName => "Signal Number";
 
         /// <summary>
         /// Gets the physical dimension of the quantity in terms of SI units
         /// </summary>
-        QuantityDimension IQuantity.Dimension
-        {
-            get { return dimension; }
-        }
+        QuantityDimension IQuantity.Dimension => dimension;
 
         /// <summary>
         /// Gets the standard unit associated with the quantity
         /// </summary>
-        IUnit IQuantity.StandardUnit
-        {
-            get { return this.StandardUnit; }
-        }
+        IUnit IQuantity.StandardUnit => this.StandardUnit;
 
         /// <summary>
         /// Gets the standard unit associated with the quantity
         /// </summary>
-        public IUnit<AbsorbedDose> StandardUnit
-        {
-            get { return Gray; }
-        }
+        public IUnit<Signal> StandardUnit => DBell;
 
         /// <summary>
         /// Gets the measure factory associated with the quantity.
         /// </summary>
-        IMeasureFactory<AbsorbedDose> IQuantity<AbsorbedDose>.Factory
-        { 
-            get { return factory; }
-        }
+        IMeasureFactory<Signal> IQuantity<Signal>.Factory => factory;
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
@@ -181,40 +71,29 @@ namespace Cureos.Measures.Quantities
         bool IEquatable<IQuantity>.Equals(IQuantity other)
         {
             if (other == null)
-            {
-                throw new ArgumentNullException("other");
-            }
-            return other is AbsorbedDose;
+                throw new ArgumentNullException(nameof(other));
+            return other is Signal;
         }
 
         #endregion
 
-        #region Implementation of IMeasure<AbsorbedDose>
+        #region Implementation of IMeasure<Signal>
 
         /// <summary>
         /// Gets the measured amount in the <see cref="StandardUnit">standard unit of measure</see>
         /// </summary>
-        public AmountType Amount
-        {
-            get { return this.amount; }
-        }
+        public AmountType Amount => this.amount;
 
         /// <summary>
-        /// Gets the measured amount in the standard unit of measure for the absorbed dose quantity
+        /// Gets the measured amount in the standard unit of measure for the wave number quantity
         /// </summary>
-        public AmountType StandardAmount
-        {
-            get { return this.amount; }
-        }
+        public AmountType StandardAmount => this.amount;
 
         /// <summary>
         /// Gets the unit of measure
         /// </summary>
         /// <remarks>Always return the standard unit of measure</remarks>
-        IUnit IMeasure.Unit
-        {
-            get { return this.StandardUnit; }
-        }
+        IUnit IMeasure.Unit => this.StandardUnit;
 
         /// <summary>
         /// Gets the amount of this measure in the requested unit
@@ -223,36 +102,30 @@ namespace Cureos.Measures.Quantities
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
         AmountType IMeasure.GetAmount(IUnit unit)
         {
-            return this.GetAmount(unit as IUnit<AbsorbedDose>);
+            return this.GetAmount(unit as IUnit<Signal>);
         }
 
         /// <summary>
         /// Gets a new unit specific measure based on this measure but in the <paramref name="unit">specified unit</paramref>
         /// </summary>
         /// <param name="unit">Unit in which the new measure should be specified</param>
-        /// <exception cref="ArgumentNullException">if specified unit is null or if specified unit is not of the AbsorbedDose quantity.</exception>
-        IMeasure IMeasure.this[IUnit unit]
-        {
-            get { return this[unit as IUnit<AbsorbedDose>]; }
-        }
+        /// <exception cref="ArgumentNullException">if specified unit is null or if specified unit is not of the Signal quantity.</exception>
+        IMeasure IMeasure.this[IUnit unit] => this[unit as IUnit<Signal>];
 
         /// <summary>
         /// Gets the quantity-typed unit of measure
         /// </summary>
         /// <remarks>Always return the standard unit of measure</remarks>
-        public IUnit<AbsorbedDose> Unit
-        {
-            get { return this.StandardUnit; }
-        }
+        public IUnit<Signal> Unit => this.StandardUnit;
 
         /// <summary>
         /// Gets the amount of this measure in the requested unit
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        public AmountType GetAmount(IUnit<AbsorbedDose> unit)
+        public AmountType GetAmount(IUnit<Signal> unit)
         {
-            if (unit == null) throw new ArgumentNullException("unit");
+            if (unit == null) throw new ArgumentNullException(nameof(unit));
             return unit.ConvertStandardAmountToUnit(this.amount);
         }
 
@@ -260,10 +133,7 @@ namespace Cureos.Measures.Quantities
         /// Gets a new unit specific measure based on this measure but in the <paramref name="unit">specified unit</paramref>
         /// </summary>
         /// <param name="unit">Unit in which the new measure should be specified</param>
-        IMeasure<AbsorbedDose> IMeasure<AbsorbedDose>.this[IUnit<AbsorbedDose> unit]
-        {
-            get { return this[unit]; }
-        }
+        IMeasure<Signal> IMeasure<Signal>.this[IUnit<Signal> unit] => this[unit];
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
@@ -272,7 +142,7 @@ namespace Cureos.Measures.Quantities
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        bool IEquatable<IMeasure<AbsorbedDose>>.Equals(IMeasure<AbsorbedDose> other)
+        bool IEquatable<IMeasure<Signal>>.Equals(IMeasure<Signal> other)
         {
             if (ReferenceEquals(null, other)) return false;
             return this.amount.Equals(other.StandardAmount);
@@ -287,7 +157,7 @@ namespace Cureos.Measures.Quantities
         /// <param name="other">An object to compare with this object.</param>
         bool IEquatable<IMeasure>.Equals(IMeasure other)
         {
-            return this.Equals(other as IMeasure<AbsorbedDose>);
+            return this.Equals(other as IMeasure<Signal>);
         }
 
         /// <summary>
@@ -301,9 +171,9 @@ namespace Cureos.Measures.Quantities
         ///    Greater than zero  This object is greater than <paramref name="other"/>. 
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        int IComparable<IMeasure<AbsorbedDose>>.CompareTo(IMeasure<AbsorbedDose> other)
+        int IComparable<IMeasure<Signal>>.CompareTo(IMeasure<Signal> other)
         {
-            if (other == null) throw new ArgumentNullException("other");
+            if (other == null) throw new ArgumentNullException(nameof(other));
             return this.amount.CompareTo(other.StandardAmount);
         }
 
@@ -320,14 +190,15 @@ namespace Cureos.Measures.Quantities
         /// <param name="other">An object to compare with this object.</param>
         int IComparable<IMeasure>.CompareTo(IMeasure other)
         {
-            if (other == null) throw new ArgumentNullException("other");
-            if (!(other.Unit.Quantity is IMeasure<AbsorbedDose>)) throw new ArgumentException("Measures are of different quantities");
+            if (other == null) throw new ArgumentNullException(nameof(other));
+            if (!(other.Unit.Quantity is IMeasure<Signal>)) throw new ArgumentException("Measures are of different quantities");
             return this.amount.CompareTo(other.StandardAmount);
         }
 
         #endregion
 
-        #region Implementation of IEquatable<AbsorbedDose>
+
+        #region Implementation of IEquatable<Signal>
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
@@ -336,14 +207,31 @@ namespace Cureos.Measures.Quantities
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public bool Equals(AbsorbedDose other)
+        public bool Equals(Signal other)
         {
             return this.amount.Equals(other.amount);
         }
 
         #endregion
 
-        #region Implementation of IComparable<AbsorbedDose>
+        #region INDEXERS
+
+        /// <summary>
+        /// Gets a new unit preserving measure based on this measure but in the <paramref name="unit">specified unit</paramref>
+        /// </summary>
+        /// <param name="unit">Unit in which the new measure should be specified</param>
+        public Measure<Signal> this[IUnit<Signal> unit]
+        {
+            get
+            {
+                if (unit == null) throw new ArgumentNullException(nameof(unit));
+                return new Measure<Signal>(this.GetAmount(unit), unit);
+            }
+        }
+
+        #endregion
+
+        #region Implementation of IComparable<Signal>
 
         /// <summary>
         /// Compares the current object with another object of the same type.
@@ -356,38 +244,14 @@ namespace Cureos.Measures.Quantities
         ///    Greater than zero  This object is greater than <paramref name="other"/>. 
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public int CompareTo(AbsorbedDose other)
+        public int CompareTo(Signal other)
         {
             return this.amount.CompareTo(other.amount);
         }
 
         #endregion
 
-        #region INDEXERS
 
-        /// <summary>
-        /// Gets a new unit preserving measure based on this measure but in the <paramref name="unit">specified unit</paramref>
-        /// </summary>
-        /// <param name="unit">Unit in which the new measure should be specified</param>
-        public Measure<AbsorbedDose> this[IUnit<AbsorbedDose> unit]
-        {
-            get
-            {
-                if (unit == null) throw new ArgumentNullException("unit");
-                return new Measure<AbsorbedDose>(this.GetAmount(unit), unit);
-            }
-        }
-
-        #endregion
-
-        #region PROPERTIES
-        
-        public static AbsorbedDose Zero { get; private set; }
-
-        public static AbsorbedDose Epsilon { get; private set; }
-
-        #endregion
-        
         #region METHODS
 
         /// <summary>
@@ -401,7 +265,7 @@ namespace Cureos.Measures.Quantities
         /// <filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            return obj is IMeasure<AbsorbedDose> && this.Equals((IMeasure<AbsorbedDose>)obj);
+            return obj is IMeasure<Signal> measure && this.Equals(measure);
         }
 
         /// <summary>
@@ -437,7 +301,7 @@ namespace Cureos.Measures.Quantities
         {
             return this.ToString(format, CultureInfo.CurrentCulture);
         }
-        
+
         /// <summary>
         /// Returns the actual value in formatted form with the quantity suffixed
         /// </summary>
@@ -447,7 +311,7 @@ namespace Cureos.Measures.Quantities
         {
             return this.ToString("G", provider);
         }
-        
+
         /// <summary>
         /// Returns the actual value in formatted form with the quantity suffixed
         /// </summary>
@@ -456,41 +320,49 @@ namespace Cureos.Measures.Quantities
         /// <returns>A <see cref="T:System.String"/> containing the actual value in formatted form and unit</returns>
         public string ToString(string format, IFormatProvider provider)
         {
-            return String.Format("{0} {1}", this.amount.ToString(format, provider), this.Unit.Symbol).TrimEnd();
+            return $"{this.amount.ToString(format, provider)} {this.Unit.Symbol}".TrimEnd();
         }
-        
+
         #endregion
 
-        #region OPERATORS
+        #region PROPERTIES
+
+        public static Signal Zero { get; private set; }
+
+        public static Signal Epsilon { get; private set; }
+
+        #endregion
+
+         #region OPERATORS
 
         /// <summary>
-        /// Casts a double value to a AbsorbedDose object
+        /// Casts a double value to a Signal object
         /// </summary>
         /// <param name="standardAmount">Standard amount</param>
-        /// <returns>AbsorbedDose representation of <paramref name="standardAmount"/> in unit Gray</returns>
-        public static explicit operator AbsorbedDose(double standardAmount)
+        /// <returns>Signal representation of <paramref name="standardAmount"/> in unit ReciprocalMeter</returns>
+        public static explicit operator Signal(double standardAmount)
         {
-            return new AbsorbedDose(standardAmount);
+            return new Signal(standardAmount);
         }
 
         /// <summary>
-        /// Casts a float value to a AbsorbedDose object
+        /// Casts a float value to a Signal object
         /// </summary>
         /// <param name="standardAmount">Standard amount</param>
-        /// <returns>AbsorbedDose representation of <paramref name="standardAmount"/> in unit Gray</returns>
-        public static explicit operator AbsorbedDose(float standardAmount)
+        /// <returns>Signal representation of <paramref name="standardAmount"/> in unit ReciprocalMeter</returns>
+        public static explicit operator Signal(float standardAmount)
         {
-            return new AbsorbedDose(standardAmount);
+            return new Signal(standardAmount);
         }
 
         /// <summary>
-        /// Casts a decimal value to a AbsorbedDose object
+        /// Casts a decimal value to a Signal object
         /// </summary>
         /// <param name="standardAmount">Standard amount</param>
-        /// <returns>AbsorbedDose representation of <paramref name="standardAmount"/> in unit Gray</returns>
-        public static explicit operator AbsorbedDose(decimal standardAmount)
+        /// <returns>Signal representation of <paramref name="standardAmount"/> in unit ReciprocalMeter</returns>
+        public static explicit operator Signal(decimal standardAmount)
         {
-            return new AbsorbedDose(standardAmount);
+            return new Signal(standardAmount);
         }
         
         /// <summary>
@@ -499,9 +371,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First measure term</param>
         /// <param name="rhs">Second measure term</param>
         /// <returns>Sum of the two measure objects in the unit of the <paramref name="lhs">left-hand side measure</paramref></returns>
-        public static AbsorbedDose operator +(AbsorbedDose lhs,  AbsorbedDose rhs)
+        public static Signal operator +(Signal lhs,  Signal rhs)
         {
-            return new AbsorbedDose(lhs.amount + rhs.amount);
+            return new Signal(lhs.amount + rhs.amount);
         }
 
         /// <summary>
@@ -510,9 +382,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First measure term</param>
         /// <param name="rhs">Second measure term (any object implementing the IMeasure interface)</param>
         /// <returns>Sum of the two measure objects in the unit of the <paramref name="lhs">left-hand side measure</paramref></returns>
-        public static AbsorbedDose operator +(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static Signal operator +(Signal lhs, IMeasure<Signal> rhs)
         {
-            return new AbsorbedDose(lhs.amount + rhs.StandardAmount);
+            return new Signal(lhs.amount + rhs.StandardAmount);
         }
 
         /// <summary>
@@ -521,9 +393,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First measure object</param>
         /// <param name="rhs">Second measure object</param>
         /// <returns>Difference of the measure objects</returns>
-        public static AbsorbedDose operator -(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static Signal operator -(Signal lhs, Signal rhs)
         {
-            return new AbsorbedDose(lhs.amount - rhs.amount);
+            return new Signal(lhs.amount - rhs.amount);
         }
 
         /// <summary>
@@ -532,9 +404,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First measure object</param>
         /// <param name="rhs">Second measure object (any object implementing the IMeasure interface)</param>
         /// <returns>Difference of the measure objects</returns>
-        public static AbsorbedDose operator -(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static Signal operator -(Signal lhs, IMeasure<Signal> rhs)
         {
-            return new AbsorbedDose(lhs.amount - rhs.StandardAmount);
+            return new Signal(lhs.amount - rhs.StandardAmount);
         }
 
         /// <summary>
@@ -543,9 +415,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static AbsorbedDose operator *(double scalar, AbsorbedDose measure)
+        public static Signal operator *(double scalar, Signal measure)
         {
-            return new AbsorbedDose((AmountType)scalar * measure.amount);
+            return new Signal((AmountType)scalar * measure.amount);
         }
 
         /// <summary>
@@ -554,9 +426,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static AbsorbedDose operator *(float scalar, AbsorbedDose measure)
+        public static Signal operator *(float scalar, Signal measure)
         {
-            return new AbsorbedDose((AmountType)scalar * measure.amount);
+            return new Signal((AmountType)scalar * measure.amount);
         }
 
         /// <summary>
@@ -565,9 +437,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static AbsorbedDose operator *(decimal scalar, AbsorbedDose measure)
+        public static Signal operator *(decimal scalar, Signal measure)
         {
-            return new AbsorbedDose((AmountType)scalar * measure.amount);
+            return new Signal((AmountType)scalar * measure.amount);
         }
 
         /// <summary>
@@ -576,9 +448,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static AbsorbedDose operator *(AbsorbedDose measure, double scalar)
+        public static Signal operator *(Signal measure, double scalar)
         {
-            return new AbsorbedDose(measure.amount * (AmountType)scalar);
+            return new Signal(measure.amount * (AmountType)scalar);
         }
 
         /// <summary>
@@ -587,9 +459,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static AbsorbedDose operator *(AbsorbedDose measure, float scalar)
+        public static Signal operator *(Signal measure, float scalar)
         {
-            return new AbsorbedDose(measure.amount * (AmountType)scalar);
+            return new Signal(measure.amount * (AmountType)scalar);
         }
 
         /// <summary>
@@ -598,9 +470,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static AbsorbedDose operator *(AbsorbedDose measure, decimal scalar)
+        public static Signal operator *(Signal measure, decimal scalar)
         {
-            return new AbsorbedDose(measure.amount * (AmountType)scalar);
+            return new Signal(measure.amount * (AmountType)scalar);
         }
 
         /// <summary>
@@ -609,9 +481,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point number</param>
         /// <returns>Product of the measure object and the number</returns>
-        public static AbsorbedDose operator *(AbsorbedDose measure, IMeasure<Number> scalar)
+        public static Signal operator *(Signal measure, IMeasure<Number> scalar)
         {
-            return new AbsorbedDose(measure.amount * scalar.StandardAmount);
+            return new Signal(measure.amount * scalar.StandardAmount);
         }
 
         /// <summary>
@@ -620,9 +492,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static AbsorbedDose operator /(AbsorbedDose measure, double scalar)
+        public static Signal operator /(Signal measure, double scalar)
         {
-            return new AbsorbedDose(measure.amount / (AmountType)scalar);
+            return new Signal(measure.amount / (AmountType)scalar);
         }
 
         /// <summary>
@@ -631,9 +503,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static AbsorbedDose operator /(AbsorbedDose measure, float scalar)
+        public static Signal operator /(Signal measure, float scalar)
         {
-            return new AbsorbedDose(measure.amount / (AmountType)scalar);
+            return new Signal(measure.amount / (AmountType)scalar);
         }
 
         /// <summary>
@@ -642,9 +514,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static AbsorbedDose operator /(AbsorbedDose measure, decimal scalar)
+        public static Signal operator /(Signal measure, decimal scalar)
         {
-            return new AbsorbedDose(measure.amount / (AmountType)scalar);
+            return new Signal(measure.amount / (AmountType)scalar);
         }
 
         /// <summary>
@@ -653,9 +525,9 @@ namespace Cureos.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point number</param>
         /// <returns>Quotient of the measure object and the number</returns>
-        public static AbsorbedDose operator /(AbsorbedDose measure, IMeasure<Number> scalar)
+        public static Signal operator /(Signal measure, IMeasure<Number> scalar)
         {
-            return new AbsorbedDose(measure.amount / scalar.StandardAmount);
+            return new Signal(measure.amount / scalar.StandardAmount);
         }
 
         /// <summary>
@@ -664,7 +536,7 @@ namespace Cureos.Measures.Quantities
         /// <param name="dividend">Dividend of specific quantity</param>
         /// <param name="divisor">Divisor of same quantity as dividend</param>
         /// <returns>Quotient of the two measure objects</returns>
-        public static Number operator /(AbsorbedDose dividend, AbsorbedDose divisor)
+        public static Number operator /(Signal dividend, Signal divisor)
         {
             return new Number(dividend.amount / divisor.amount);
         }
@@ -675,7 +547,7 @@ namespace Cureos.Measures.Quantities
         /// <param name="dividend">Dividend of specific quantity</param>
         /// <param name="divisor">Divisor of same quantity as dividend</param>
         /// <returns>Quotient of the two measure objects</returns>
-        public static Number operator /(AbsorbedDose dividend, IMeasure<AbsorbedDose> divisor)
+        public static Number operator /(Signal dividend, IMeasure<Signal> divisor)
         {
             return new Number(dividend.amount / divisor.StandardAmount);
         }
@@ -686,29 +558,29 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than second measure object; false otherwise</returns>
-        public static bool operator <(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static bool operator <(Signal lhs, Signal rhs)
         {
             return lhs.amount < rhs.amount;
         }
 
         /// <summary>
-        /// Less than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Less than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <returns>true if first measure object is less than second measure object; false otherwise</returns>
-        public static bool operator <(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static bool operator <(Signal lhs, IMeasure<Signal> rhs)
         {
             return lhs.amount < rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Less than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Less than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than second measure object; false otherwise</returns>
-        public static bool operator <(IMeasure<AbsorbedDose> lhs, AbsorbedDose rhs)
+        public static bool operator <(IMeasure<Signal> lhs, Signal rhs)
         {
             return lhs.StandardAmount < rhs.amount;
         }
@@ -719,29 +591,29 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than second measure object; false otherwise</returns>
-        public static bool operator >(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static bool operator >(Signal lhs, Signal rhs)
         {
             return lhs.amount > rhs.amount;
         }
 
         /// <summary>
-        /// Greater than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Greater than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <returns>true if first measure object is greater than second measure object; false otherwise</returns>
-        public static bool operator >(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static bool operator >(Signal lhs, IMeasure<Signal> rhs)
         {
             return lhs.amount > rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Greater than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Greater than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than second measure object; false otherwise</returns>
-        public static bool operator >(IMeasure<AbsorbedDose> lhs, AbsorbedDose rhs)
+        public static bool operator >(IMeasure<Signal> lhs, Signal rhs)
         {
             return lhs.StandardAmount > rhs.amount;
         }
@@ -752,29 +624,29 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than or equal to second measure object; false otherwise</returns>
-        public static bool operator <=(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static bool operator <=(Signal lhs, Signal rhs)
         {
             return lhs.amount <= rhs.amount;
         }
 
         /// <summary>
-        /// Less than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Less than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <returns>true if first measure object is less than or equal to second measure object; false otherwise</returns>
-        public static bool operator <=(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static bool operator <=(Signal lhs, IMeasure<Signal> rhs)
         {
             return lhs.amount <= rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Less than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Less than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than or equal to second measure object; false otherwise</returns>
-        public static bool operator <=(IMeasure<AbsorbedDose> lhs, AbsorbedDose rhs)
+        public static bool operator <=(IMeasure<Signal> lhs, Signal rhs)
         {
             return lhs.StandardAmount <= rhs.amount;
         }
@@ -785,29 +657,29 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than or equal to second measure object; false otherwise</returns>
-        public static bool operator >=(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static bool operator >=(Signal lhs, Signal rhs)
         {
             return lhs.amount >= rhs.amount;
         }
 
         /// <summary>
-        /// Greater than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Greater than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <returns>true if first measure object is greater than or equal to second measure object; false otherwise</returns>
-        public static bool operator >=(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static bool operator >=(Signal lhs, IMeasure<Signal> rhs)
         {
             return lhs.amount >= rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Greater than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Greater than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than or equal to second measure object; false otherwise</returns>
-        public static bool operator >=(IMeasure<AbsorbedDose> lhs, AbsorbedDose rhs)
+        public static bool operator >=(IMeasure<Signal> lhs, Signal rhs)
         {
             return lhs.StandardAmount >= rhs.amount;
         }
@@ -818,29 +690,29 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are equal; false otherwise</returns>
-        public static bool operator ==(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static bool operator ==(Signal lhs, Signal rhs)
         {
             return lhs.amount == rhs.amount;
         }
 
         /// <summary>
-        /// Equality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Equality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <returns>true if the two measure objects are equal; false otherwise</returns>
-        public static bool operator ==(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static bool operator ==(Signal lhs, IMeasure<Signal> rhs)
         {
             return lhs.amount == rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Equality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Equality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are equal; false otherwise</returns>
-        public static bool operator ==(IMeasure<AbsorbedDose> lhs, AbsorbedDose rhs)
+        public static bool operator ==(IMeasure<Signal> lhs, Signal rhs)
         {
             return lhs.StandardAmount == rhs.amount;
         }
@@ -851,47 +723,132 @@ namespace Cureos.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are not equal; false if they are equal</returns>
-        public static bool operator !=(AbsorbedDose lhs, AbsorbedDose rhs)
+        public static bool operator !=(Signal lhs, Signal rhs)
         {
             return lhs.amount != rhs.amount;
         }
 
         /// <summary>
-        /// Inequality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Inequality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <returns>true if the two measure objects are not equal; false if they are equal</returns>
-        public static bool operator !=(AbsorbedDose lhs, IMeasure<AbsorbedDose> rhs)
+        public static bool operator !=(Signal lhs, IMeasure<Signal> rhs)
         {
             return lhs.amount != rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Inequality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;AbsorbedDose&gt; interface
+        /// Inequality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Signal&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;AbsorbedDose&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;Signal&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are not equal; false if they are equal</returns>
-        public static bool operator !=(IMeasure<AbsorbedDose> lhs, AbsorbedDose rhs)
+        public static bool operator !=(IMeasure<Signal> lhs, Signal rhs)
         {
             return lhs.StandardAmount != rhs.amount;
         }
 
         #endregion
 
-        #region Private class implementation of IMeasureFactory<AbsorbedDose>
+        #region CONSTRUCTORS
 
-        private class MeasureFactory : IMeasureFactory<AbsorbedDose>
+        /// <summary>
+        /// Static constructor for defining static class properties
+        /// </summary>
+        static Signal()
+        {
+            Zero = new Signal(Constants.Zero);
+            Epsilon = new Signal(Constants.MachineEpsilon);
+        }
+
+        /// <summary>
+        /// Initializes a wave number object from an object implementing the IMeasure&lt;Signal&gt; interface
+        /// </summary>
+        /// <param name="other">Object implemeting the IMeasure&lt;Signal&gt; interface</param>
+        public Signal(IMeasure<Signal> other)
+            : this(other.StandardAmount)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a measure to the specified amount and standard unit of the measured quantity
+        /// </summary>
+        /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
+        public Signal(double amount)
+        {
+            this.amount = (AmountType)amount;
+        }
+
+        /// <summary>
+        /// Initializes a measure to the specified amount and standard unit of the measured quantity
+        /// </summary>
+        /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
+        public Signal(float amount)
+        {
+            this.amount = (AmountType)amount;
+        }
+
+        /// <summary>
+        /// Initializes a measure to the specified amount and standard unit of the measured quantity
+        /// </summary>
+        /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
+        public Signal(decimal amount)
+        {
+            this.amount = (AmountType)amount;
+        }
+
+        /// <summary>
+        /// Initializes a measure to the specified amount and unit
+        /// </summary>
+        /// <param name="amount">Measured amount</param>
+        /// <param name="unit">Unit of measure</param>
+        /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
+        public Signal(double amount, IUnit<Signal> unit)
+        {
+            if (unit == null) throw new ArgumentNullException(nameof(unit));
+            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
+        }
+
+        /// <summary>
+        /// Initializes a measure to the specified amount and unit
+        /// </summary>
+        /// <param name="amount">Measured amount</param>
+        /// <param name="unit">Unit of measure</param>
+        /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
+        public Signal(float amount, IUnit<Signal> unit)
+        {
+            if (unit == null) throw new ArgumentNullException(nameof(unit));
+            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
+        }
+
+        /// <summary>
+        /// Initializes a measure to the specified amount and unit
+        /// </summary>
+        /// <param name="amount">Measured amount</param>
+        /// <param name="unit">Unit of measure</param>
+        /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
+        public Signal(decimal amount, IUnit<Signal> unit)
+        {
+            if (unit == null) throw new ArgumentNullException(nameof(unit));
+            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
+        }
+
+        #endregion
+
+        #region Private class implementation of IMeasureFactory<Signal>
+
+        private class MeasureFactory : IMeasureFactory<Signal>
         {
             /// <summary>
             /// Creates a new standard unit measure at the specified <paramref name="amount"/>.
             /// </summary>
             /// <param name="amount">Amount.</param>
             /// <returns>Standard unit measure at the specified <paramref name="amount"/>.</returns>
-            public AbsorbedDose New(double amount)
+            public Signal New(double amount)
             {
-                return new AbsorbedDose(amount);
+                return new Signal(amount);
             }
 
             /// <summary>
@@ -900,9 +857,9 @@ namespace Cureos.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Standard unit measure.</returns>
-            public AbsorbedDose New(double amount, IUnit<AbsorbedDose> unit)
+            public Signal New(double amount, IUnit<Signal> unit)
             {
-                return new AbsorbedDose(amount, unit);
+                return new Signal(amount, unit);
             }
 
             /// <summary>
@@ -910,9 +867,9 @@ namespace Cureos.Measures.Quantities
             /// </summary>
             /// <param name="amount">Amount.</param>
             /// <returns>Standard unit measure at the specified <paramref name="amount"/>.</returns>
-            public AbsorbedDose New(float amount)
+            public Signal New(float amount)
             {
-                return new AbsorbedDose(amount);
+                return new Signal(amount);
             }
 
             /// <summary>
@@ -921,9 +878,9 @@ namespace Cureos.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Standard unit measure.</returns>
-            public AbsorbedDose New(float amount, IUnit<AbsorbedDose> unit)
+            public Signal New(float amount, IUnit<Signal> unit)
             {
-                return new AbsorbedDose(amount, unit);
+                return new Signal(amount, unit);
             }
 
             /// <summary>
@@ -931,9 +888,9 @@ namespace Cureos.Measures.Quantities
             /// </summary>
             /// <param name="amount">Amount.</param>
             /// <returns>Standard unit measure at the specified <paramref name="amount"/>.</returns>
-            public AbsorbedDose New(decimal amount)
+            public Signal New(decimal amount)
             {
-                return new AbsorbedDose(amount);
+                return new Signal(amount);
             }
 
             /// <summary>
@@ -942,9 +899,9 @@ namespace Cureos.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Standard unit measure.</returns>
-            public AbsorbedDose New(decimal amount, IUnit<AbsorbedDose> unit)
+            public Signal New(decimal amount, IUnit<Signal> unit)
             {
-                return new AbsorbedDose(amount, unit);
+                return new Signal(amount, unit);
             }
 
             /// <summary>
@@ -953,9 +910,9 @@ namespace Cureos.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Measure from the specified <paramref name="amount"/> and <paramref name="unit"/>.</returns>
-            public IMeasure<AbsorbedDose> NewPreserveUnit(double amount, IUnit<AbsorbedDose> unit)
+            public IMeasure<Signal> NewPreserveUnit(double amount, IUnit<Signal> unit)
             {
-                return new Measure<AbsorbedDose>(amount, unit);
+                return new Measure<Signal>(amount, unit);
             }
 
             /// <summary>
@@ -964,9 +921,9 @@ namespace Cureos.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Measure from the specified <paramref name="amount"/> and <paramref name="unit"/>.</returns>
-            public IMeasure<AbsorbedDose> NewPreserveUnit(float amount, IUnit<AbsorbedDose> unit)
+            public IMeasure<Signal> NewPreserveUnit(float amount, IUnit<Signal> unit)
             {
-                return new Measure<AbsorbedDose>(amount, unit);
+                return new Measure<Signal>(amount, unit);
             }
 
             /// <summary>
@@ -975,9 +932,9 @@ namespace Cureos.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Measure from the specified <paramref name="amount"/> and <paramref name="unit"/>.</returns>
-            public IMeasure<AbsorbedDose> NewPreserveUnit(decimal amount, IUnit<AbsorbedDose> unit)
+            public IMeasure<Signal> NewPreserveUnit(decimal amount, IUnit<Signal> unit)
             {
-                return new Measure<AbsorbedDose>(amount, unit);
+                return new Measure<Signal>(amount, unit);
             }
         }
 

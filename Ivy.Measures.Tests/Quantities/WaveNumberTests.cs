@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  Copyright (c) 2011-2015, Cureos AB.
  *  All rights reserved.
  *  http://www.cureos.com
@@ -41,7 +41,7 @@ namespace Ivy.Measures.Quantities
         [Test]
         public void SymbolGetter_ReciprocalCentiMeter_ShouldDisplayWithSuperscriptMinus()
         {
-            var expected = "cm\u207b�";
+            var expected = "cm\u207b¹";
             var actual = WaveNumber.ReciprocalCentiMeter.Symbol;
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);

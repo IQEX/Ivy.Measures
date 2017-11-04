@@ -80,7 +80,7 @@ namespace Ivy.Measures
             Force f21 = f02 + f03 - 0.99 * f04;             // 1010 N
             Assert.IsTrue(f21 > f01);
 
-            Measure<Force> f31 = f14 / 2.0;                 // 0.5 kN
+            Measure<Force> f31 = f14 / 2.0f;                 // 0.5 kN
             Force f32 = (Force)f31;                         // 500 N
 
             Assert.IsTrue(f31 == f32);

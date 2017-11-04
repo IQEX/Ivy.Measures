@@ -113,24 +113,12 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the first measure in the measure pair
         /// </summary>
-        public Q1 X
-        {
-            get
-            {
-                return this.x;
-            }
-        }
+        public Q1 X => this.x;
 
         /// <summary>
         /// Gets the second measure in the measure pair
         /// </summary>
-        public Q2 Y
-        {
-            get
-            {
-                return this.y;
-            }
-        }
+        public Q2 Y => this.y;
 
         #endregion
 
@@ -139,24 +127,12 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the first measure in the measure pair
         /// </summary>
-        IMeasure<Q1> IMeasureDoublet<Q1, Q2>.X
-        {
-            get
-            {
-                return this.x;
-            }
-        }
+        IMeasure<Q1> IMeasureDoublet<Q1, Q2>.X => this.x;
 
         /// <summary>
         /// Gets the second measure in the measure pair
         /// </summary>
-        IMeasure<Q2> IMeasureDoublet<Q1, Q2>.Y
-        {
-            get
-            {
-                return this.y;
-            }
-        }
+        IMeasure<Q2> IMeasureDoublet<Q1, Q2>.Y => this.y;
 
         #endregion
 

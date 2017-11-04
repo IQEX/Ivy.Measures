@@ -1,4 +1,4 @@
-namespace Cureos.Measures.Quantities
+namespace Ivy.Measures.Quantities
 {
     using System;
     using System.Globalization;

@@ -116,26 +116,17 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the measured amount in the <see cref="Unit">current unit of measure</see>
         /// </summary>
-        public AmountType Amount
-        {
-            get { return this.amount; }
-        }
+        public AmountType Amount => this.amount;
 
         /// <summary>
         /// Gets the measured amount in the standard unit of measure for the <typeparam name="Q">specified quantity</typeparam>
         /// </summary>
-        public AmountType StandardAmount
-        {
-            get { return this.unit.ConvertAmountToStandardUnit(this.amount); }
-        }
+        public AmountType StandardAmount => this.unit.ConvertAmountToStandardUnit(this.amount);
 
         /// <summary>
         /// Gets the unit of measure
         /// </summary>
-        IUnit IMeasure.Unit
-        {
-            get { return this.unit; }
-        }
+        IUnit IMeasure.Unit => this.unit;
 
         /// <summary>
         /// Gets the amount of this measure in the requested unit
@@ -163,18 +154,12 @@ namespace Ivy.Measures
         /// <param name="unit">Unit in which the new measure should be specified</param>
         /// <exception cref="ArgumentNullException">if specified unit is null or if specified unit is not of the 
         /// <typeparamref name="Q">valid quantity</typeparamref></exception>
-        IMeasure IMeasure.this[IUnit unit]
-        {
-            get { return this[unit as IUnit<Q>]; }
-        }
+        IMeasure IMeasure.this[IUnit unit] => this[unit as IUnit<Q>];
 
         /// <summary>
         /// Gets the quantity-typed unit of measure
         /// </summary>
-        public IUnit<Q> Unit
-        {
-            get { return this.unit; }
-        }
+        public IUnit<Q> Unit => this.unit;
 
         /// <summary>
         /// Gets the amount of this measure in the requested unit
@@ -191,10 +176,7 @@ namespace Ivy.Measures
         /// Gets a new unit specific measure based on this measure but in the <paramref name="unit">specified unit</paramref>
         /// </summary>
         /// <param name="unit">Unit in which the new measure should be specified</param>
-        IMeasure<Q> IMeasure<Q>.this[IUnit<Q> unit]
-        {
-            get { return this[unit]; }
-        }
+        IMeasure<Q> IMeasure<Q>.this[IUnit<Q> unit] => this[unit];
 
         #endregion
 

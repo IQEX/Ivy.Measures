@@ -69,51 +69,27 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the quantity associated with the unit
         /// </summary>
-        IQuantity IUnit.Quantity
-        {
-            get { return quantity; }
-        }
+        IQuantity IUnit.Quantity => quantity;
 
         /// <summary>
         /// Gets a value indicating whether or not the unit is a standard unit of the associated quantity
         /// </summary>
-        public bool IsStandardUnit
-        {
-            get
-            {
-                return this.isStandardUnit;
-            }
-        }
+        public bool IsStandardUnit => this.isStandardUnit;
 
         /// <summary>
         /// Gets the typed quantity associated with the unit
         /// </summary>
-        public IQuantity<Q> Quantity
-        {
-            get { return quantity; }
-        }
+        public IQuantity<Q> Quantity => quantity;
 
         /// <summary>
         /// Gets the display symbol of the unit
         /// </summary>
-        public string Symbol
-        {
-            get
-            {
-                return this.symbol;
-            }
-        }
+        public string Symbol => this.symbol;
 
         /// <summary>
         /// Gets the fully qualified display name of the unit
         /// </summary>
-        public string DisplayName
-        {
-            get
-            {
-                return this.displayName ?? (this.displayName = UnitHelpers.CreateUnitDisplayName(this));
-            }
-        }
+        public string DisplayName => this.displayName ?? (this.displayName = UnitHelpers.CreateUnitDisplayName(this));
 
         /// <summary>
         /// Convert the amount from the current unit to the standard unit of the specified quantity

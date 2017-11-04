@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cureos.Measures", "Cureos.Measures\Cureos.Measures.csproj", "{A89BF529-9E02-4B80-8C4B-94168313DE47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ivy.Measures", "Ivy.Measures\Ivy.Measures.csproj", "{A89BF529-9E02-4B80-8C4B-94168313DE47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cureos.Measures.Tests", "Cureos.Measures.Tests\Cureos.Measures.Tests.csproj", "{0FDA422F-E676-486B-8A73-DB928A057D19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ivy.Measures.Tests", "Ivy.Measures.Tests\Ivy.Measures.Tests.csproj", "{0FDA422F-E676-486B-8A73-DB928A057D19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

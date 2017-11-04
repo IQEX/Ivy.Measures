@@ -95,7 +95,7 @@ namespace Ivy.Measures
         public void TimesOperator_MultiplyScalarRhs_AllMeasuresEquallyScaled()
         {
             var expected = new MeasureTriplet<Time, Power, ElectricPotential>(15.0, 0.36, 1.8);;
-            var actual = _instance * 3.0;
+            var actual = _instance * 3.0f;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
 
@@ -103,7 +103,7 @@ namespace Ivy.Measures
         public void TimesOperator_MultiplyScalarLhs_AllMeasuresEquallyScaled()
         {
             var expected = new MeasureTriplet<Time, Power, ElectricPotential>(15.0, 0.36, 1.8); ;
-            var actual = 3.0 * _instance;
+            var actual = 3.0f * _instance;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
 

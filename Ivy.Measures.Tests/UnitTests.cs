@@ -87,7 +87,7 @@ namespace Ivy.Measures
         public void AmountToStandardUnitConverter_InstanceUnit_ReturnsGigaTimesOriginalValue()
         {
             var expected = AmountConverter.ToAmountType(1.0e9);
-            var actual = this.instance.ConvertAmountToStandardUnit(AmountConverter.ToAmountType(1.0));
+            var actual = this.instance.ConvertAmountToStandardUnit((float)AmountConverter.ToAmountType(1.0d));
             AmountAssert.AreEqual(expected, actual);
         }
 

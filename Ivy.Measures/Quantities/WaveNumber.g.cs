@@ -1,28 +1,3 @@
-/*
- *  Copyright (c) 2011-2015, Cureos AB.
- *  All rights reserved.
- *  http://www.cureos.com
- *
- *	This file is part of CSUnits.
- *
- *  CSUnits is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as
- *  published by the Free Software Foundation, either version 3 of the
- *  License, or (at your option) any later version.
- *
- *  CSUnits is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public
- *  License along with CSUnits. If not, see http://www.gnu.org/licenses/.
- */
-
-/*
- * This file is auto-generated.
- */
-
 namespace Ivy.Measures.Quantities
 {
     using System;
@@ -38,31 +13,23 @@ namespace Ivy.Measures.Quantities
 #endif
 
     /// <summary>
-    /// Implementation of the velocity quantity
+    /// Implementation of the wave number quantity
     /// </summary>
     [DataContract]
-    public partial struct Velocity : IQuantity<Velocity>, IMeasure<Velocity>, IEquatable<Velocity>, IComparable<Velocity>
+    public partial struct WaveNumber : IQuantity<WaveNumber>, IMeasure<WaveNumber>, IEquatable<WaveNumber>, IComparable<WaveNumber>
     {
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming
-        private static readonly IMeasureFactory<Velocity> factory = new MeasureFactory();
+        private static readonly IMeasureFactory<WaveNumber> factory = new MeasureFactory();
 
         // ReSharper disable once InconsistentNaming
-        private static readonly QuantityDimension dimension = new QuantityDimension(1, 0, -1, 0, 0, 0, 0);
+        private static readonly QuantityDimension dimension = new QuantityDimension(-1, 0, 0, 0, 0, 0, 0);
 
-        public static readonly Unit<Velocity> MeterPerSecond = new ConstantConverterUnit<Velocity>("m\\s");
+        public static readonly Unit<WaveNumber> ReciprocalMeter = new ConstantConverterUnit<WaveNumber>("m\u207b¹");
 
-        public static readonly Unit<Velocity> NanoMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Nano);
-        public static readonly Unit<Velocity> MicroMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Micro);
-        public static readonly Unit<Velocity> MilliMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Milli);
-        public static readonly Unit<Velocity> CentiMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Centi);
-        public static readonly Unit<Velocity> DeciMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Deci);
-        public static readonly Unit<Velocity> DekaMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Deka);
-        public static readonly Unit<Velocity> HectoMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Hecto);
-        public static readonly Unit<Velocity> KiloMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Kilo);
-
-        public static readonly Unit<Velocity> KiloMeterPerHour = new ConstantConverterUnit<Velocity>("km\\h", Factors.Kilo / Factors.SecondsPerHour);
+        public static readonly Unit<WaveNumber> ReciprocalCentiMeter = new ConstantConverterUnit<WaveNumber>("cm\u207b¹", Factors.Hecto);
+        public static readonly Unit<WaveNumber> ReciprocalMilliMeter = new ConstantConverterUnit<WaveNumber>("mm\u207b¹", Factors.Kilo);
 
         [DataMember]
         private readonly AmountType amount;
@@ -74,17 +41,17 @@ namespace Ivy.Measures.Quantities
         /// <summary>
         /// Static constructor for defining static class properties
         /// </summary>
-        static Velocity()
+        static WaveNumber()
         {
-            Zero = new Velocity(Constants.Zero);
-            Epsilon = new Velocity(Constants.MachineEpsilon);
+            Zero = new WaveNumber(Constants.Zero);
+            Epsilon = new WaveNumber(Constants.MachineEpsilon);
         }
         
         /// <summary>
-        /// Initializes a velocity object from an object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Initializes a wave number object from an object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="other">Object implemeting the IMeasure&lt;Velocity&gt; interface</param>
-        public Velocity(IMeasure<Velocity> other)
+        /// <param name="other">Object implemeting the IMeasure&lt;WaveNumber&gt; interface</param>
+        public WaveNumber(IMeasure<WaveNumber> other)
             : this(other.StandardAmount)
         {
         }
@@ -93,7 +60,7 @@ namespace Ivy.Measures.Quantities
         /// Initializes a measure to the specified amount and standard unit of the measured quantity
         /// </summary>
         /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
-        public Velocity(double amount)
+        public WaveNumber(double amount)
         {
             this.amount = (AmountType)amount;
         }
@@ -102,7 +69,7 @@ namespace Ivy.Measures.Quantities
         /// Initializes a measure to the specified amount and standard unit of the measured quantity
         /// </summary>
         /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
-        public Velocity(float amount)
+        public WaveNumber(float amount)
         {
             this.amount = (AmountType)amount;
         }
@@ -111,7 +78,7 @@ namespace Ivy.Measures.Quantities
         /// Initializes a measure to the specified amount and standard unit of the measured quantity
         /// </summary>
         /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
-        public Velocity(decimal amount)
+        public WaveNumber(decimal amount)
         {
             this.amount = (AmountType)amount;
         }
@@ -122,7 +89,7 @@ namespace Ivy.Measures.Quantities
         /// <param name="amount">Measured amount</param>
         /// <param name="unit">Unit of measure</param>
         /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
-        public Velocity(double amount, IUnit<Velocity> unit)
+        public WaveNumber(double amount, IUnit<WaveNumber> unit)
         {
             if (unit == null) throw new ArgumentNullException("unit");
             this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
@@ -134,7 +101,7 @@ namespace Ivy.Measures.Quantities
         /// <param name="amount">Measured amount</param>
         /// <param name="unit">Unit of measure</param>
         /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
-        public Velocity(float amount, IUnit<Velocity> unit)
+        public WaveNumber(float amount, IUnit<WaveNumber> unit)
         {
             if (unit == null) throw new ArgumentNullException("unit");
             this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
@@ -146,7 +113,7 @@ namespace Ivy.Measures.Quantities
         /// <param name="amount">Measured amount</param>
         /// <param name="unit">Unit of measure</param>
         /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
-        public Velocity(decimal amount, IUnit<Velocity> unit)
+        public WaveNumber(decimal amount, IUnit<WaveNumber> unit)
         {
             if (unit == null) throw new ArgumentNullException("unit");
             this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
@@ -154,14 +121,14 @@ namespace Ivy.Measures.Quantities
 
         #endregion
 
-        #region Implementation of IQuantity<Velocity>
+        #region Implementation of IQuantity<WaveNumber>
 
         /// <summary>
         /// Gets the display name of the quantity
         /// </summary>
         public string DisplayName 
         { 
-            get { return "Velocity"; } 
+            get { return "Wave Number"; } 
         }
 
         /// <summary>
@@ -183,15 +150,15 @@ namespace Ivy.Measures.Quantities
         /// <summary>
         /// Gets the standard unit associated with the quantity
         /// </summary>
-        public IUnit<Velocity> StandardUnit
+        public IUnit<WaveNumber> StandardUnit
         {
-            get { return KiloMeterPerHour; }
+            get { return ReciprocalMeter; }
         }
 
         /// <summary>
         /// Gets the measure factory associated with the quantity.
         /// </summary>
-        IMeasureFactory<Velocity> IQuantity<Velocity>.Factory
+        IMeasureFactory<WaveNumber> IQuantity<WaveNumber>.Factory
         { 
             get { return factory; }
         }
@@ -209,12 +176,12 @@ namespace Ivy.Measures.Quantities
             {
                 throw new ArgumentNullException("other");
             }
-            return other is Velocity;
+            return other is WaveNumber;
         }
 
         #endregion
 
-        #region Implementation of IMeasure<Velocity>
+        #region Implementation of IMeasure<WaveNumber>
 
         /// <summary>
         /// Gets the measured amount in the <see cref="StandardUnit">standard unit of measure</see>
@@ -225,7 +192,7 @@ namespace Ivy.Measures.Quantities
         }
 
         /// <summary>
-        /// Gets the measured amount in the standard unit of measure for the velocity quantity
+        /// Gets the measured amount in the standard unit of measure for the wave number quantity
         /// </summary>
         public AmountType StandardAmount
         {
@@ -248,24 +215,24 @@ namespace Ivy.Measures.Quantities
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
         AmountType IMeasure.GetAmount(IUnit unit)
         {
-            return this.GetAmount(unit as IUnit<Velocity>);
+            return this.GetAmount(unit as IUnit<WaveNumber>);
         }
 
         /// <summary>
         /// Gets a new unit specific measure based on this measure but in the <paramref name="unit">specified unit</paramref>
         /// </summary>
         /// <param name="unit">Unit in which the new measure should be specified</param>
-        /// <exception cref="ArgumentNullException">if specified unit is null or if specified unit is not of the Velocity quantity.</exception>
+        /// <exception cref="ArgumentNullException">if specified unit is null or if specified unit is not of the WaveNumber quantity.</exception>
         IMeasure IMeasure.this[IUnit unit]
         {
-            get { return this[unit as IUnit<Velocity>]; }
+            get { return this[unit as IUnit<WaveNumber>]; }
         }
 
         /// <summary>
         /// Gets the quantity-typed unit of measure
         /// </summary>
         /// <remarks>Always return the standard unit of measure</remarks>
-        public IUnit<Velocity> Unit
+        public IUnit<WaveNumber> Unit
         {
             get { return this.StandardUnit; }
         }
@@ -275,7 +242,7 @@ namespace Ivy.Measures.Quantities
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        public AmountType GetAmount(IUnit<Velocity> unit)
+        public AmountType GetAmount(IUnit<WaveNumber> unit)
         {
             if (unit == null) throw new ArgumentNullException("unit");
             return unit.ConvertStandardAmountToUnit(this.amount);
@@ -285,7 +252,7 @@ namespace Ivy.Measures.Quantities
         /// Gets a new unit specific measure based on this measure but in the <paramref name="unit">specified unit</paramref>
         /// </summary>
         /// <param name="unit">Unit in which the new measure should be specified</param>
-        IMeasure<Velocity> IMeasure<Velocity>.this[IUnit<Velocity> unit]
+        IMeasure<WaveNumber> IMeasure<WaveNumber>.this[IUnit<WaveNumber> unit]
         {
             get { return this[unit]; }
         }
@@ -297,7 +264,7 @@ namespace Ivy.Measures.Quantities
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        bool IEquatable<IMeasure<Velocity>>.Equals(IMeasure<Velocity> other)
+        bool IEquatable<IMeasure<WaveNumber>>.Equals(IMeasure<WaveNumber> other)
         {
             if (ReferenceEquals(null, other)) return false;
             return this.amount.Equals(other.StandardAmount);
@@ -312,7 +279,7 @@ namespace Ivy.Measures.Quantities
         /// <param name="other">An object to compare with this object.</param>
         bool IEquatable<IMeasure>.Equals(IMeasure other)
         {
-            return this.Equals(other as IMeasure<Velocity>);
+            return this.Equals(other as IMeasure<WaveNumber>);
         }
 
         /// <summary>
@@ -326,7 +293,7 @@ namespace Ivy.Measures.Quantities
         ///    Greater than zero  This object is greater than <paramref name="other"/>. 
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        int IComparable<IMeasure<Velocity>>.CompareTo(IMeasure<Velocity> other)
+        int IComparable<IMeasure<WaveNumber>>.CompareTo(IMeasure<WaveNumber> other)
         {
             if (other == null) throw new ArgumentNullException("other");
             return this.amount.CompareTo(other.StandardAmount);
@@ -346,13 +313,13 @@ namespace Ivy.Measures.Quantities
         int IComparable<IMeasure>.CompareTo(IMeasure other)
         {
             if (other == null) throw new ArgumentNullException("other");
-            if (!(other.Unit.Quantity is IMeasure<Velocity>)) throw new ArgumentException("Measures are of different quantities");
+            if (!(other.Unit.Quantity is IMeasure<WaveNumber>)) throw new ArgumentException("Measures are of different quantities");
             return this.amount.CompareTo(other.StandardAmount);
         }
 
         #endregion
 
-        #region Implementation of IEquatable<Velocity>
+        #region Implementation of IEquatable<WaveNumber>
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
@@ -361,14 +328,14 @@ namespace Ivy.Measures.Quantities
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public bool Equals(Velocity other)
+        public bool Equals(WaveNumber other)
         {
             return this.amount.Equals(other.amount);
         }
 
         #endregion
 
-        #region Implementation of IComparable<Velocity>
+        #region Implementation of IComparable<WaveNumber>
 
         /// <summary>
         /// Compares the current object with another object of the same type.
@@ -381,7 +348,7 @@ namespace Ivy.Measures.Quantities
         ///    Greater than zero  This object is greater than <paramref name="other"/>. 
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public int CompareTo(Velocity other)
+        public int CompareTo(WaveNumber other)
         {
             return this.amount.CompareTo(other.amount);
         }
@@ -394,12 +361,12 @@ namespace Ivy.Measures.Quantities
         /// Gets a new unit preserving measure based on this measure but in the <paramref name="unit">specified unit</paramref>
         /// </summary>
         /// <param name="unit">Unit in which the new measure should be specified</param>
-        public Measure<Velocity> this[IUnit<Velocity> unit]
+        public Measure<WaveNumber> this[IUnit<WaveNumber> unit]
         {
             get
             {
                 if (unit == null) throw new ArgumentNullException("unit");
-                return new Measure<Velocity>(this.GetAmount(unit), unit);
+                return new Measure<WaveNumber>(this.GetAmount(unit), unit);
             }
         }
 
@@ -407,9 +374,9 @@ namespace Ivy.Measures.Quantities
 
         #region PROPERTIES
         
-        public static Velocity Zero { get; private set; }
+        public static WaveNumber Zero { get; private set; }
 
-        public static Velocity Epsilon { get; private set; }
+        public static WaveNumber Epsilon { get; private set; }
 
         #endregion
         
@@ -426,7 +393,7 @@ namespace Ivy.Measures.Quantities
         /// <filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            return obj is IMeasure<Velocity> && this.Equals((IMeasure<Velocity>)obj);
+            return obj is IMeasure<WaveNumber> && this.Equals((IMeasure<WaveNumber>)obj);
         }
 
         /// <summary>
@@ -489,33 +456,33 @@ namespace Ivy.Measures.Quantities
         #region OPERATORS
 
         /// <summary>
-        /// Casts a double value to a Velocity object
+        /// Casts a double value to a WaveNumber object
         /// </summary>
         /// <param name="standardAmount">Standard amount</param>
-        /// <returns>Velocity representation of <paramref name="standardAmount"/> in unit MeterPerSecond</returns>
-        public static explicit operator Velocity(double standardAmount)
+        /// <returns>WaveNumber representation of <paramref name="standardAmount"/> in unit ReciprocalMeter</returns>
+        public static explicit operator WaveNumber(double standardAmount)
         {
-            return new Velocity(standardAmount);
+            return new WaveNumber(standardAmount);
         }
 
         /// <summary>
-        /// Casts a float value to a Velocity object
+        /// Casts a float value to a WaveNumber object
         /// </summary>
         /// <param name="standardAmount">Standard amount</param>
-        /// <returns>Velocity representation of <paramref name="standardAmount"/> in unit MeterPerSecond</returns>
-        public static explicit operator Velocity(float standardAmount)
+        /// <returns>WaveNumber representation of <paramref name="standardAmount"/> in unit ReciprocalMeter</returns>
+        public static explicit operator WaveNumber(float standardAmount)
         {
-            return new Velocity(standardAmount);
+            return new WaveNumber(standardAmount);
         }
 
         /// <summary>
-        /// Casts a decimal value to a Velocity object
+        /// Casts a decimal value to a WaveNumber object
         /// </summary>
         /// <param name="standardAmount">Standard amount</param>
-        /// <returns>Velocity representation of <paramref name="standardAmount"/> in unit MeterPerSecond</returns>
-        public static explicit operator Velocity(decimal standardAmount)
+        /// <returns>WaveNumber representation of <paramref name="standardAmount"/> in unit ReciprocalMeter</returns>
+        public static explicit operator WaveNumber(decimal standardAmount)
         {
-            return new Velocity(standardAmount);
+            return new WaveNumber(standardAmount);
         }
         
         /// <summary>
@@ -524,9 +491,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First measure term</param>
         /// <param name="rhs">Second measure term</param>
         /// <returns>Sum of the two measure objects in the unit of the <paramref name="lhs">left-hand side measure</paramref></returns>
-        public static Velocity operator +(Velocity lhs,  Velocity rhs)
+        public static WaveNumber operator +(WaveNumber lhs,  WaveNumber rhs)
         {
-            return new Velocity(lhs.amount + rhs.amount);
+            return new WaveNumber(lhs.amount + rhs.amount);
         }
 
         /// <summary>
@@ -535,9 +502,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First measure term</param>
         /// <param name="rhs">Second measure term (any object implementing the IMeasure interface)</param>
         /// <returns>Sum of the two measure objects in the unit of the <paramref name="lhs">left-hand side measure</paramref></returns>
-        public static Velocity operator +(Velocity lhs, IMeasure<Velocity> rhs)
+        public static WaveNumber operator +(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
-            return new Velocity(lhs.amount + rhs.StandardAmount);
+            return new WaveNumber(lhs.amount + rhs.StandardAmount);
         }
 
         /// <summary>
@@ -546,9 +513,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First measure object</param>
         /// <param name="rhs">Second measure object</param>
         /// <returns>Difference of the measure objects</returns>
-        public static Velocity operator -(Velocity lhs, Velocity rhs)
+        public static WaveNumber operator -(WaveNumber lhs, WaveNumber rhs)
         {
-            return new Velocity(lhs.amount - rhs.amount);
+            return new WaveNumber(lhs.amount - rhs.amount);
         }
 
         /// <summary>
@@ -557,9 +524,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First measure object</param>
         /// <param name="rhs">Second measure object (any object implementing the IMeasure interface)</param>
         /// <returns>Difference of the measure objects</returns>
-        public static Velocity operator -(Velocity lhs, IMeasure<Velocity> rhs)
+        public static WaveNumber operator -(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
-            return new Velocity(lhs.amount - rhs.StandardAmount);
+            return new WaveNumber(lhs.amount - rhs.StandardAmount);
         }
 
         /// <summary>
@@ -568,9 +535,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static Velocity operator *(double scalar, Velocity measure)
+        public static WaveNumber operator *(double scalar, WaveNumber measure)
         {
-            return new Velocity((AmountType)scalar * measure.amount);
+            return new WaveNumber((AmountType)scalar * measure.amount);
         }
 
         /// <summary>
@@ -579,9 +546,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static Velocity operator *(float scalar, Velocity measure)
+        public static WaveNumber operator *(float scalar, WaveNumber measure)
         {
-            return new Velocity((AmountType)scalar * measure.amount);
+            return new WaveNumber((AmountType)scalar * measure.amount);
         }
 
         /// <summary>
@@ -590,9 +557,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static Velocity operator *(decimal scalar, Velocity measure)
+        public static WaveNumber operator *(decimal scalar, WaveNumber measure)
         {
-            return new Velocity((AmountType)scalar * measure.amount);
+            return new WaveNumber((AmountType)scalar * measure.amount);
         }
 
         /// <summary>
@@ -601,9 +568,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static Velocity operator *(Velocity measure, double scalar)
+        public static WaveNumber operator *(WaveNumber measure, double scalar)
         {
-            return new Velocity(measure.amount * (AmountType)scalar);
+            return new WaveNumber(measure.amount * (AmountType)scalar);
         }
 
         /// <summary>
@@ -612,9 +579,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static Velocity operator *(Velocity measure, float scalar)
+        public static WaveNumber operator *(WaveNumber measure, float scalar)
         {
-            return new Velocity(measure.amount * (AmountType)scalar);
+            return new WaveNumber(measure.amount * (AmountType)scalar);
         }
 
         /// <summary>
@@ -623,9 +590,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static Velocity operator *(Velocity measure, decimal scalar)
+        public static WaveNumber operator *(WaveNumber measure, decimal scalar)
         {
-            return new Velocity(measure.amount * (AmountType)scalar);
+            return new WaveNumber(measure.amount * (AmountType)scalar);
         }
 
         /// <summary>
@@ -634,9 +601,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point number</param>
         /// <returns>Product of the measure object and the number</returns>
-        public static Velocity operator *(Velocity measure, IMeasure<Number> scalar)
+        public static WaveNumber operator *(WaveNumber measure, IMeasure<Number> scalar)
         {
-            return new Velocity(measure.amount * scalar.StandardAmount);
+            return new WaveNumber(measure.amount * scalar.StandardAmount);
         }
 
         /// <summary>
@@ -645,9 +612,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static Velocity operator /(Velocity measure, double scalar)
+        public static WaveNumber operator /(WaveNumber measure, double scalar)
         {
-            return new Velocity(measure.amount / (AmountType)scalar);
+            return new WaveNumber(measure.amount / (AmountType)scalar);
         }
 
         /// <summary>
@@ -656,9 +623,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static Velocity operator /(Velocity measure, float scalar)
+        public static WaveNumber operator /(WaveNumber measure, float scalar)
         {
-            return new Velocity(measure.amount / (AmountType)scalar);
+            return new WaveNumber(measure.amount / (AmountType)scalar);
         }
 
         /// <summary>
@@ -667,9 +634,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static Velocity operator /(Velocity measure, decimal scalar)
+        public static WaveNumber operator /(WaveNumber measure, decimal scalar)
         {
-            return new Velocity(measure.amount / (AmountType)scalar);
+            return new WaveNumber(measure.amount / (AmountType)scalar);
         }
 
         /// <summary>
@@ -678,9 +645,9 @@ namespace Ivy.Measures.Quantities
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point number</param>
         /// <returns>Quotient of the measure object and the number</returns>
-        public static Velocity operator /(Velocity measure, IMeasure<Number> scalar)
+        public static WaveNumber operator /(WaveNumber measure, IMeasure<Number> scalar)
         {
-            return new Velocity(measure.amount / scalar.StandardAmount);
+            return new WaveNumber(measure.amount / scalar.StandardAmount);
         }
 
         /// <summary>
@@ -689,7 +656,7 @@ namespace Ivy.Measures.Quantities
         /// <param name="dividend">Dividend of specific quantity</param>
         /// <param name="divisor">Divisor of same quantity as dividend</param>
         /// <returns>Quotient of the two measure objects</returns>
-        public static Number operator /(Velocity dividend, Velocity divisor)
+        public static Number operator /(WaveNumber dividend, WaveNumber divisor)
         {
             return new Number(dividend.amount / divisor.amount);
         }
@@ -700,7 +667,7 @@ namespace Ivy.Measures.Quantities
         /// <param name="dividend">Dividend of specific quantity</param>
         /// <param name="divisor">Divisor of same quantity as dividend</param>
         /// <returns>Quotient of the two measure objects</returns>
-        public static Number operator /(Velocity dividend, IMeasure<Velocity> divisor)
+        public static Number operator /(WaveNumber dividend, IMeasure<WaveNumber> divisor)
         {
             return new Number(dividend.amount / divisor.StandardAmount);
         }
@@ -711,29 +678,29 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than second measure object; false otherwise</returns>
-        public static bool operator <(Velocity lhs, Velocity rhs)
+        public static bool operator <(WaveNumber lhs, WaveNumber rhs)
         {
             return lhs.amount < rhs.amount;
         }
 
         /// <summary>
-        /// Less than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Less than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <returns>true if first measure object is less than second measure object; false otherwise</returns>
-        public static bool operator <(Velocity lhs, IMeasure<Velocity> rhs)
+        public static bool operator <(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
             return lhs.amount < rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Less than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Less than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than second measure object; false otherwise</returns>
-        public static bool operator <(IMeasure<Velocity> lhs, Velocity rhs)
+        public static bool operator <(IMeasure<WaveNumber> lhs, WaveNumber rhs)
         {
             return lhs.StandardAmount < rhs.amount;
         }
@@ -744,29 +711,29 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than second measure object; false otherwise</returns>
-        public static bool operator >(Velocity lhs, Velocity rhs)
+        public static bool operator >(WaveNumber lhs, WaveNumber rhs)
         {
             return lhs.amount > rhs.amount;
         }
 
         /// <summary>
-        /// Greater than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Greater than operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <returns>true if first measure object is greater than second measure object; false otherwise</returns>
-        public static bool operator >(Velocity lhs, IMeasure<Velocity> rhs)
+        public static bool operator >(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
             return lhs.amount > rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Greater than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Greater than operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than second measure object; false otherwise</returns>
-        public static bool operator >(IMeasure<Velocity> lhs, Velocity rhs)
+        public static bool operator >(IMeasure<WaveNumber> lhs, WaveNumber rhs)
         {
             return lhs.StandardAmount > rhs.amount;
         }
@@ -777,29 +744,29 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than or equal to second measure object; false otherwise</returns>
-        public static bool operator <=(Velocity lhs, Velocity rhs)
+        public static bool operator <=(WaveNumber lhs, WaveNumber rhs)
         {
             return lhs.amount <= rhs.amount;
         }
 
         /// <summary>
-        /// Less than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Less than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <returns>true if first measure object is less than or equal to second measure object; false otherwise</returns>
-        public static bool operator <=(Velocity lhs, IMeasure<Velocity> rhs)
+        public static bool operator <=(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
             return lhs.amount <= rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Less than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Less than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is less than or equal to second measure object; false otherwise</returns>
-        public static bool operator <=(IMeasure<Velocity> lhs, Velocity rhs)
+        public static bool operator <=(IMeasure<WaveNumber> lhs, WaveNumber rhs)
         {
             return lhs.StandardAmount <= rhs.amount;
         }
@@ -810,29 +777,29 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than or equal to second measure object; false otherwise</returns>
-        public static bool operator >=(Velocity lhs, Velocity rhs)
+        public static bool operator >=(WaveNumber lhs, WaveNumber rhs)
         {
             return lhs.amount >= rhs.amount;
         }
 
         /// <summary>
-        /// Greater than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Greater than or equal to operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <returns>true if first measure object is greater than or equal to second measure object; false otherwise</returns>
-        public static bool operator >=(Velocity lhs, IMeasure<Velocity> rhs)
+        public static bool operator >=(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
             return lhs.amount >= rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Greater than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Greater than or equal to operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if first measure object is greater than or equal to second measure object; false otherwise</returns>
-        public static bool operator >=(IMeasure<Velocity> lhs, Velocity rhs)
+        public static bool operator >=(IMeasure<WaveNumber> lhs, WaveNumber rhs)
         {
             return lhs.StandardAmount >= rhs.amount;
         }
@@ -843,29 +810,29 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are equal; false otherwise</returns>
-        public static bool operator ==(Velocity lhs, Velocity rhs)
+        public static bool operator ==(WaveNumber lhs, WaveNumber rhs)
         {
             return lhs.amount == rhs.amount;
         }
 
         /// <summary>
-        /// Equality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Equality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <returns>true if the two measure objects are equal; false otherwise</returns>
-        public static bool operator ==(Velocity lhs, IMeasure<Velocity> rhs)
+        public static bool operator ==(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
             return lhs.amount == rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Equality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Equality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are equal; false otherwise</returns>
-        public static bool operator ==(IMeasure<Velocity> lhs, Velocity rhs)
+        public static bool operator ==(IMeasure<WaveNumber> lhs, WaveNumber rhs)
         {
             return lhs.StandardAmount == rhs.amount;
         }
@@ -876,47 +843,47 @@ namespace Ivy.Measures.Quantities
         /// <param name="lhs">First object</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are not equal; false if they are equal</returns>
-        public static bool operator !=(Velocity lhs, Velocity rhs)
+        public static bool operator !=(WaveNumber lhs, WaveNumber rhs)
         {
             return lhs.amount != rhs.amount;
         }
 
         /// <summary>
-        /// Inequality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Inequality operator for measure objects, where right-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
         /// <param name="lhs">First object</param>
-        /// <param name="rhs">Second object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="rhs">Second object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <returns>true if the two measure objects are not equal; false if they are equal</returns>
-        public static bool operator !=(Velocity lhs, IMeasure<Velocity> rhs)
+        public static bool operator !=(WaveNumber lhs, IMeasure<WaveNumber> rhs)
         {
             return lhs.amount != rhs.StandardAmount;
         }
 
         /// <summary>
-        /// Inequality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;Velocity&gt; interface
+        /// Inequality operator for measure objects, where left-hand side may be any object implementing the IMeasure&lt;WaveNumber&gt; interface
         /// </summary>
-        /// <param name="lhs">First object (any object implementing IMeasure&lt;Velocity&gt; interface)</param>
+        /// <param name="lhs">First object (any object implementing IMeasure&lt;WaveNumber&gt; interface)</param>
         /// <param name="rhs">Second object</param>
         /// <returns>true if the two measure objects are not equal; false if they are equal</returns>
-        public static bool operator !=(IMeasure<Velocity> lhs, Velocity rhs)
+        public static bool operator !=(IMeasure<WaveNumber> lhs, WaveNumber rhs)
         {
             return lhs.StandardAmount != rhs.amount;
         }
 
         #endregion
 
-        #region Private class implementation of IMeasureFactory<Velocity>
+        #region Private class implementation of IMeasureFactory<WaveNumber>
 
-        private class MeasureFactory : IMeasureFactory<Velocity>
+        private class MeasureFactory : IMeasureFactory<WaveNumber>
         {
             /// <summary>
             /// Creates a new standard unit measure at the specified <paramref name="amount"/>.
             /// </summary>
             /// <param name="amount">Amount.</param>
             /// <returns>Standard unit measure at the specified <paramref name="amount"/>.</returns>
-            public Velocity New(double amount)
+            public WaveNumber New(double amount)
             {
-                return new Velocity(amount);
+                return new WaveNumber(amount);
             }
 
             /// <summary>
@@ -925,9 +892,9 @@ namespace Ivy.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Standard unit measure.</returns>
-            public Velocity New(double amount, IUnit<Velocity> unit)
+            public WaveNumber New(double amount, IUnit<WaveNumber> unit)
             {
-                return new Velocity(amount, unit);
+                return new WaveNumber(amount, unit);
             }
 
             /// <summary>
@@ -935,9 +902,9 @@ namespace Ivy.Measures.Quantities
             /// </summary>
             /// <param name="amount">Amount.</param>
             /// <returns>Standard unit measure at the specified <paramref name="amount"/>.</returns>
-            public Velocity New(float amount)
+            public WaveNumber New(float amount)
             {
-                return new Velocity(amount);
+                return new WaveNumber(amount);
             }
 
             /// <summary>
@@ -946,9 +913,9 @@ namespace Ivy.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Standard unit measure.</returns>
-            public Velocity New(float amount, IUnit<Velocity> unit)
+            public WaveNumber New(float amount, IUnit<WaveNumber> unit)
             {
-                return new Velocity(amount, unit);
+                return new WaveNumber(amount, unit);
             }
 
             /// <summary>
@@ -956,9 +923,9 @@ namespace Ivy.Measures.Quantities
             /// </summary>
             /// <param name="amount">Amount.</param>
             /// <returns>Standard unit measure at the specified <paramref name="amount"/>.</returns>
-            public Velocity New(decimal amount)
+            public WaveNumber New(decimal amount)
             {
-                return new Velocity(amount);
+                return new WaveNumber(amount);
             }
 
             /// <summary>
@@ -967,9 +934,9 @@ namespace Ivy.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Standard unit measure.</returns>
-            public Velocity New(decimal amount, IUnit<Velocity> unit)
+            public WaveNumber New(decimal amount, IUnit<WaveNumber> unit)
             {
-                return new Velocity(amount, unit);
+                return new WaveNumber(amount, unit);
             }
 
             /// <summary>
@@ -978,9 +945,9 @@ namespace Ivy.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Measure from the specified <paramref name="amount"/> and <paramref name="unit"/>.</returns>
-            public IMeasure<Velocity> NewPreserveUnit(double amount, IUnit<Velocity> unit)
+            public IMeasure<WaveNumber> NewPreserveUnit(double amount, IUnit<WaveNumber> unit)
             {
-                return new Measure<Velocity>(amount, unit);
+                return new Measure<WaveNumber>(amount, unit);
             }
 
             /// <summary>
@@ -989,9 +956,9 @@ namespace Ivy.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Measure from the specified <paramref name="amount"/> and <paramref name="unit"/>.</returns>
-            public IMeasure<Velocity> NewPreserveUnit(float amount, IUnit<Velocity> unit)
+            public IMeasure<WaveNumber> NewPreserveUnit(float amount, IUnit<WaveNumber> unit)
             {
-                return new Measure<Velocity>(amount, unit);
+                return new Measure<WaveNumber>(amount, unit);
             }
 
             /// <summary>
@@ -1000,9 +967,9 @@ namespace Ivy.Measures.Quantities
             /// <param name="amount">Amount.</param>
             /// <param name="unit">Unit.</param>
             /// <returns>Measure from the specified <paramref name="amount"/> and <paramref name="unit"/>.</returns>
-            public IMeasure<Velocity> NewPreserveUnit(decimal amount, IUnit<Velocity> unit)
+            public IMeasure<WaveNumber> NewPreserveUnit(decimal amount, IUnit<WaveNumber> unit)
             {
-                return new Measure<Velocity>(amount, unit);
+                return new Measure<WaveNumber>(amount, unit);
             }
         }
 

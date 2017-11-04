@@ -6,7 +6,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DefineConstants>TRACE;DEBUG;NET47;SINGLE</DefineConstants>
+      <DefineConstants>TRACE;DEBUG;SINGLE;NET47</DefineConstants>
     </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="2.0.1" />
