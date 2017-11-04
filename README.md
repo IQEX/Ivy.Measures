@@ -1,4 +1,4 @@
-# CSUnits
+# Ivy.Measures
 [![NuGet](https://img.shields.io/nuget/v/Ivy.Measures.svg)](https://www.nuget.org/packages/Ivy.Measures/)
 [![NuGet](https://img.shields.io/nuget/dt/Ivy.Measures.svg)](https://www.nuget.org/packages/Ivy.Measures/)
 
