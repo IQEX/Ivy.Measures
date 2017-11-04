@@ -51,7 +51,7 @@ namespace Cureos.Measures.Quantities
         // ReSharper disable once InconsistentNaming
         private static readonly QuantityDimension dimension = new QuantityDimension(1, 0, -1, 0, 0, 0, 0);
 
-        public static readonly Unit<Velocity> MeterPerSecond = new ConstantConverterUnit<Velocity>("m s\u207b¹");
+        public static readonly Unit<Velocity> MeterPerSecond = new ConstantConverterUnit<Velocity>("m\\s");
 
         public static readonly Unit<Velocity> NanoMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Nano);
         public static readonly Unit<Velocity> MicroMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Micro);
@@ -62,7 +62,7 @@ namespace Cureos.Measures.Quantities
         public static readonly Unit<Velocity> HectoMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Hecto);
         public static readonly Unit<Velocity> KiloMeterPerSecond = new ConstantConverterUnit<Velocity>(UnitPrefix.Kilo);
 
-        public static readonly Unit<Velocity> KiloMeterPerHour = new ConstantConverterUnit<Velocity>("km h\u207b¹", Factors.Kilo / Factors.SecondsPerHour);
+        public static readonly Unit<Velocity> KiloMeterPerHour = new ConstantConverterUnit<Velocity>("km\\h", Factors.Kilo / Factors.SecondsPerHour);
 
         [DataMember]
         private readonly AmountType amount;
@@ -185,7 +185,7 @@ namespace Cureos.Measures.Quantities
         /// </summary>
         public IUnit<Velocity> StandardUnit
         {
-            get { return MeterPerSecond; }
+            get { return KiloMeterPerHour; }
         }
 
         /// <summary>
