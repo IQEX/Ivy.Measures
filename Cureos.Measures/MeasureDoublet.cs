@@ -19,10 +19,9 @@
  *  License along with CSUnits. If not, see http://www.gnu.org/licenses/.
  */
 
-namespace Cureos.Measures
+namespace Ivy.Measures
 {
-    using Cureos.Measures.Quantities;
-
+    using Quantities;
 #if SINGLE
     using AmountType = System.Single;
 #elif DECIMAL

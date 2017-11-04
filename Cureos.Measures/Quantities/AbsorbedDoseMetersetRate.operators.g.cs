@@ -23,7 +23,7 @@
  * This file is auto-generated.
  */
 
-namespace Cureos.Measures.Quantities
+namespace Ivy.Measures.Quantities
 {
     /// <summary>
     /// Multiplicative operators for the absorbed dose meterset rate quantity

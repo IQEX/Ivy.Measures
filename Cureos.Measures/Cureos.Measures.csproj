@@ -5,24 +5,10 @@
     <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DefineConstants>TRACE;DEBUG;NET47;SINGLE</DefineConstants>
+    </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="2.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Quantities\QuantityGenerator.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QuantityGenerator.cs</LastGenOutput>
-    </None>
-    <None Include="Quantities\T4\MultiOutput.ttinclude" />
-    <None Include="Quantities\T4\Operators.csv" />
-    <None Include="Quantities\T4\Quantities.csv" />
-    <None Include="Quantities\T4\OperatorTemplate.ttinclude" />
-    <None Include="Quantities\T4\QuantityTemplate.ttinclude" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Quantities\OperatorGenerator.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>OperatorGenerator.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 </Project>

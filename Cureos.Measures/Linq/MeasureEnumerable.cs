@@ -19,7 +19,7 @@
  *  License along with CSUnits. If not, see http://www.gnu.org/licenses/.
  */
 
-namespace Cureos.Measures.Linq
+namespace Ivy.Measures.Linq
 {
     using System.Collections.Generic;
     using System.Linq;

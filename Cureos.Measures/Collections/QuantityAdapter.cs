@@ -19,7 +19,7 @@
  *  License along with CSUnits. If not, see http://www.gnu.org/licenses/.
  */
 
-namespace Cureos.Measures.Collections
+namespace Ivy.Measures.Collections
 {
     using System.Collections.Generic;
 

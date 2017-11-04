@@ -19,7 +19,7 @@
  *  License along with CSUnits. If not, see http://www.gnu.org/licenses/.
  */
 
-namespace Cureos.Measures
+namespace Ivy.Measures
 {
     /// <summary>
     /// Interface representing a triplet of measures given in three (potentially different) quantities

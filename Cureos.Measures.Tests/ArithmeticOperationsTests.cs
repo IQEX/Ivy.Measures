@@ -19,11 +19,11 @@
  *  License along with CSUnits. If not, see http://www.gnu.org/licenses/.
  */
 
-namespace Cureos.Measures
+namespace Ivy.Measures
 {
     using System;
 
-    using Cureos.Measures.Quantities;
+    using Ivy.Measures.Quantities;
 
     using NUnit.Framework;
 
