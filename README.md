@@ -4,7 +4,7 @@
 
 Simple C# framework to support Units of Measurement
 
-Copyright 2011-2015 (c) Anders Gustafsson, Cureos AB.  
+Copyright 2017 (c) Yuuki Wesp 
 Made available under GNU Lesser General Public License, LGPL, version 3.
 
 
