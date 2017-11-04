@@ -27,3 +27,4 @@ UpgradeLog*.htm*
 [Pp]ackages/
 [Bb]in/
 [Oo]bj/
+/.vs/*
