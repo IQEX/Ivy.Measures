@@ -1,5 +1,6 @@
 # CSUnits
-
+[![NuGet](https://img.shields.io/nuget/v/Ivy.Measures.svg)](https://www.nuget.org/packages/Ivy.Measures/)
+[![NuGet](https://img.shields.io/nuget/dt/Ivy.Measures.svg)](https://www.nuget.org/packages/Ivy.Measures/)
 [![Build status](https://ci.appveyor.com/api/projects/status/6rntuke5f9y307n0?svg=true)](https://ci.appveyor.com/project/anders9ustafsson/csunits)
 [![Join the chat at https://gitter.im/cureos/csunits](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cureos/csunits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -11,7 +12,7 @@ Made available under GNU Lesser General Public License, LGPL, version 3.
 
 ## Introduction
 
-The *Cureos.Measures* class library is portable and can without modifications be included in .NET 4+, Silverlight 5, Windows Phone 8+ (Silverlight and non-Silverlight), Windows 8+, Xamarin.Android and Xamarin.iOS applications.
+The *Cureos.Measures* class library is portable and can without modifications be included in .NET 4+
 
 Quantity `Q` and `Measure<Q>` are the main "work-horses" of the library. `Q` represents both the quantity itself and a measure in the same quantity, and is always expressed in the reference unit of the associated quantity. If a different unit is specified in instantiation of `Q`, the measured amount is automatically converted to the equivalent reference unit amount. On the other hand, the amount and unit used in instantiation of `Measure<Q>` are internally maintained.
 
@@ -21,7 +22,7 @@ There are also `MeasureDoublet<Q1, Q2>` and `MeasureTriplet<Q1, Q2, Q3>` structu
 
 ## How to get it
 
-Download *CSUnits* from [NuGet](https://www.nuget.org/packages/csunits/) or, if you prefer, build it from source.
+Download *CSUnits* from [NuGet](https://www.nuget.org/packages/Ivy.Measures/) or, if you prefer, build it from source.
 
 ## Usage
 
@@ -113,6 +114,3 @@ Download *CSUnits* from [NuGet](https://www.nuget.org/packages/csunits/) or, if 
 	Time t = new Time(2.0, Time.Hour);
 	Velocity v1 = s / t;							// 25 m/s
 
-## Application
-
-For pure demonstration and testing purposes, there are very simple unit converter applications included in the solution. Implementation of these applications were inspired by Andrew Cheng's feedback and usage of CSUnits in a [Windows Forms application](https://github.com/hamxiaoz/cureos.uomnet.tests.winform).
