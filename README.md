@@ -1,18 +1,16 @@
-# CSUnits
+# Ivy.Measures
 [![NuGet](https://img.shields.io/nuget/v/Ivy.Measures.svg)](https://www.nuget.org/packages/Ivy.Measures/)
 [![NuGet](https://img.shields.io/nuget/dt/Ivy.Measures.svg)](https://www.nuget.org/packages/Ivy.Measures/)
-[![Build status](https://ci.appveyor.com/api/projects/status/6rntuke5f9y307n0?svg=true)](https://ci.appveyor.com/project/anders9ustafsson/csunits)
-[![Join the chat at https://gitter.im/cureos/csunits](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cureos/csunits?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Simple C# framework to support Units of Measurement
 
-Copyright 2011-2015 (c) Anders Gustafsson, Cureos AB.  
+Copyright 2017 (c) Yuuki Wesp 
 Made available under GNU Lesser General Public License, LGPL, version 3.
 
 
 ## Introduction
 
-The *Cureos.Measures* class library is portable and can without modifications be included in .NET 4+
+The *Ivy.Measures* class library is .NETStandard
 
 Quantity `Q` and `Measure<Q>` are the main "work-horses" of the library. `Q` represents both the quantity itself and a measure in the same quantity, and is always expressed in the reference unit of the associated quantity. If a different unit is specified in instantiation of `Q`, the measured amount is automatically converted to the equivalent reference unit amount. On the other hand, the amount and unit used in instantiation of `Measure<Q>` are internally maintained.
 
@@ -22,7 +20,7 @@ There are also `MeasureDoublet<Q1, Q2>` and `MeasureTriplet<Q1, Q2, Q3>` structu
 
 ## How to get it
 
-Download *CSUnits* from [NuGet](https://www.nuget.org/packages/Ivy.Measures/) or, if you prefer, build it from source.
+Download *Ivy.Measures* from [NuGet](https://www.nuget.org/packages/Ivy.Measures/) or, if you prefer, build it from source.
 
 ## Usage
 
@@ -47,21 +45,21 @@ Download *CSUnits* from [NuGet](https://www.nuget.org/packages/Ivy.Measures/) or
 
 	Area a = new Area(5.0, Area.SquareDeciMeter);
 	...
-	double amount = a.Amount;							// 0.05;
-	IUnit<Area> unit = a.Unit;							// Area.SquareMeter
-	double stdAmount = a.StandardAmount;						// 0.05;
-	IUnit<Area> stdUnit = a.StandardUnit;						// Area.SquareMeter
-	double amountInCm2 = a.GetAmount(Area.SquareCentiMeter);			// 500
-	IMeasure<Area> measureInMm2 = a[Area.SquareMilliMeter];				// 50000 mm²
+	double amount = a.Amount;					// 0.05;
+	IUnit<Area> unit = a.Unit;					// Area.SquareMeter
+	double stdAmount = a.StandardAmount;				// 0.05;
+	IUnit<Area> stdUnit = a.StandardUnit;				// Area.SquareMeter
+	double amountInCm2 = a.GetAmount(Area.SquareCentiMeter);	// 500
+	IMeasure<Area> measureInMm2 = a[Area.SquareMilliMeter];		// 50000 mm²
 	
 	Measure<Volume> v = new Measure<Volume>(2.0, Volume.Liter);
 	...
-	double amount = v.Amount;							// 2
-	IUnit<Volume> unit = v.Unit;							// Volume.Liter
-	double stdAmount = v.StandardAmount;						// 0.002
-	IUnit<Volume> stdUnit = v.StandardUnit;						// Volume.CubicMeter
-	double amountInCm3 = v.GetAmount(Volume.CubicCentiMeter);			// 2000
-	IMeasure<Volume> measureInDm3 = v[Volume.CubicDeciMeter];			// 2 dm³
+	double amount = v.Amount;					// 2
+	IUnit<Volume> unit = v.Unit;					// Volume.Liter
+	double stdAmount = v.StandardAmount;				// 0.002
+	IUnit<Volume> stdUnit = v.StandardUnit;				// Volume.CubicMeter
+	double amountInCm3 = v.GetAmount(Volume.CubicCentiMeter);	// 2000
+	IMeasure<Volume> measureInDm3 = v[Volume.CubicDeciMeter];	// 2 dm³
 
 ### Non-generic API
 
@@ -114,3 +112,7 @@ Download *CSUnits* from [NuGet](https://www.nuget.org/packages/Ivy.Measures/) or
 	Time t = new Time(2.0, Time.Hour);
 	Velocity v1 = s / t;							// 25 m/s
 
+
+# Based on		
+Copyright 2011-2015 (c) Anders Gustafsson, Cureos AB.  		
+https://github.com/cureos/csunits		
