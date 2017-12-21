@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the frequency quantity
     /// </summary>
     [DataContract]
-    public partial struct Frequency : IQuantity<Frequency>, IMeasure<Frequency>, IEquatable<Frequency>, IComparable<Frequency>
+    public partial class Frequency : IQuantity<Frequency>, IMeasure<Frequency>, IEquatable<Frequency>, IComparable<Frequency>
     {
+        public Frequency() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

@@ -38,9 +38,9 @@ namespace Ivy.Measures
     /// <typeparam name="Q2">Quantity type of the second measure</typeparam>
     /// <typeparam name="Q3">Quantity type of the third measure</typeparam>
     public struct MeasureTriplet<Q1, Q2, Q3> : IMeasureTriplet<Q1, Q2, Q3>
-        where Q1 : struct, IQuantity<Q1>, IMeasure<Q1>
-        where Q2 : struct, IQuantity<Q2>, IMeasure<Q2>
-        where Q3 : struct, IQuantity<Q3>, IMeasure<Q3>
+        where Q1 : class, IQuantity<Q1>, IMeasure<Q1>, new()
+        where Q2 : class, IQuantity<Q2>, IMeasure<Q2>, new()
+        where Q3 : class, IQuantity<Q3>, IMeasure<Q3>, new()
     {
         #region MEMBER VARIABLES
 
@@ -233,7 +233,7 @@ namespace Ivy.Measures
         /// <param name="iLhs">Multiplicative factor</param>
         /// <param name="iRhs">Measure triplet</param>
         /// <returns>Product of the measure triplet and the multiplicative factor</returns>
-        public static MeasureTriplet<Q1, Q2, Q3> operator *(AmountType iLhs, MeasureTriplet<Q1, Q2, Q3> iRhs)
+        public static MeasureTriplet<Q1, Q2, Q3> operator *(float iLhs, MeasureTriplet<Q1, Q2, Q3> iRhs)
         {
             return new MeasureTriplet<Q1, Q2, Q3>(iLhs * iRhs.x.Amount, iLhs * iRhs.y.Amount, iLhs * iRhs.z.Amount);
         }
@@ -258,7 +258,7 @@ namespace Ivy.Measures
         /// <param name="iLhs">Measure triplet</param>
         /// <param name="iRhs">Multiplicative factor</param>
         /// <returns>Product of the measure triplet and the multiplicative factor</returns>
-        public static MeasureTriplet<Q1, Q2, Q3> operator *(MeasureTriplet<Q1, Q2, Q3> iLhs, AmountType iRhs)
+        public static MeasureTriplet<Q1, Q2, Q3> operator *(MeasureTriplet<Q1, Q2, Q3> iLhs, float iRhs)
         {
             return iRhs * iLhs;
         }
@@ -312,7 +312,7 @@ namespace Ivy.Measures
         /// <param name="iLhs">Measure triplet</param>
         /// <param name="iRhs">Scalar denominator</param>
         /// <returns>Quotient of the measure triplet and the scalar denominator</returns>
-        public static MeasureTriplet<Q1, Q2, Q3> operator /(MeasureTriplet<Q1, Q2, Q3> iLhs, AmountType iRhs)
+        public static MeasureTriplet<Q1, Q2, Q3> operator /(MeasureTriplet<Q1, Q2, Q3> iLhs, float iRhs)
         {
             return new MeasureTriplet<Q1, Q2, Q3>(iLhs.x.Amount / iRhs, iLhs.y.Amount / iRhs, iLhs.z.Amount / iRhs);
         }

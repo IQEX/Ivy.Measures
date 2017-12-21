@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the magnetic field strength quantity
     /// </summary>
     [DataContract]
-    public partial struct MagneticFieldStrength : IQuantity<MagneticFieldStrength>, IMeasure<MagneticFieldStrength>, IEquatable<MagneticFieldStrength>, IComparable<MagneticFieldStrength>
+    public partial class MagneticFieldStrength : IQuantity<MagneticFieldStrength>, IMeasure<MagneticFieldStrength>, IEquatable<MagneticFieldStrength>, IComparable<MagneticFieldStrength>
     {
+        public MagneticFieldStrength() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

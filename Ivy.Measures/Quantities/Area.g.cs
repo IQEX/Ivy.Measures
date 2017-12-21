@@ -16,8 +16,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the area quantity
     /// </summary>
     [DataContract]
-    public partial struct Area : IQuantity<Area>, IMeasure<Area>, IEquatable<Area>, IComparable<Area>
+    public partial class Area : IQuantity<Area>, IMeasure<Area>, IEquatable<Area>, IComparable<Area>
     {
+        public Area() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

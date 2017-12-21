@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the power quantity
     /// </summary>
     [DataContract]
-    public partial struct Power : IQuantity<Power>, IMeasure<Power>, IEquatable<Power>, IComparable<Power>
+    public partial class Power : IQuantity<Power>, IMeasure<Power>, IEquatable<Power>, IComparable<Power>
     {
+        public Power() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

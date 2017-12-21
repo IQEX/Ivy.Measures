@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the acceleration quantity
     /// </summary>
     [DataContract]
-    public partial struct Acceleration : IQuantity<Acceleration>, IMeasure<Acceleration>, IEquatable<Acceleration>, IComparable<Acceleration>
+    public partial class Acceleration : IQuantity<Acceleration>, IMeasure<Acceleration>, IEquatable<Acceleration>, IComparable<Acceleration>
     {
+        public Acceleration() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the force quantity
     /// </summary>
-    public partial struct Force
+    public partial class Force
     {
         #region OPERATORS
 

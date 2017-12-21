@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the length quantity
     /// </summary>
     [DataContract]
-    public partial struct Length : IQuantity<Length>, IMeasure<Length>, IEquatable<Length>, IComparable<Length>
+    public partial class Length : IQuantity<Length>, IMeasure<Length>, IEquatable<Length>, IComparable<Length>
     {
+        public Length() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

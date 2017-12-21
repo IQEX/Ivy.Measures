@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the heat flux density quantity
     /// </summary>
     [DataContract]
-    public partial struct HeatFluxDensity : IQuantity<HeatFluxDensity>, IMeasure<HeatFluxDensity>, IEquatable<HeatFluxDensity>, IComparable<HeatFluxDensity>
+    public partial class HeatFluxDensity : IQuantity<HeatFluxDensity>, IMeasure<HeatFluxDensity>, IEquatable<HeatFluxDensity>, IComparable<HeatFluxDensity>
     {
+        public  HeatFluxDensity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

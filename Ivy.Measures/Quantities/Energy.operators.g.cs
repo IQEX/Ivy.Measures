@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the energy quantity
     /// </summary>
-    public partial struct Energy
+    public partial class Energy
     {
         #region OPERATORS
 

@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the meterset quantity
     /// </summary>
-    public partial struct Meterset
+    public partial class Meterset
     {
         #region OPERATORS
 

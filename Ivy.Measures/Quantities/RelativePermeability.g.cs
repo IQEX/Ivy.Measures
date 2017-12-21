@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the relative permeability quantity
     /// </summary>
     [DataContract]
-    public partial struct RelativePermeability : IQuantity<RelativePermeability>, IMeasure<RelativePermeability>, IEquatable<RelativePermeability>, IComparable<RelativePermeability>
+    public partial class RelativePermeability : IQuantity<RelativePermeability>, IMeasure<RelativePermeability>, IEquatable<RelativePermeability>, IComparable<RelativePermeability>
     {
+        public RelativePermeability() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

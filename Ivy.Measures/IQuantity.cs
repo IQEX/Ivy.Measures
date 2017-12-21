@@ -48,7 +48,7 @@ namespace Ivy.Measures
     /// Typed interface representing a physical quantity
     /// </summary>
     /// <typeparam name="Q"></typeparam>
-    public interface IQuantity<Q> : IQuantity where Q : struct, IQuantity<Q>
+    public interface IQuantity<Q> : IQuantity where Q : class, IQuantity<Q>
     {
         /// <summary>
         /// Gets the standard unit associated with the quantity

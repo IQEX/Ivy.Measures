@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the volume quantity
     /// </summary>
-    public partial struct Volume
+    public partial class Volume
     {
         #region OPERATORS
 

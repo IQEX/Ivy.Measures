@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the electric charge quantity
     /// </summary>
     [DataContract]
-    public partial struct ElectricCharge : IQuantity<ElectricCharge>, IMeasure<ElectricCharge>, IEquatable<ElectricCharge>, IComparable<ElectricCharge>
+    public partial class ElectricCharge : IQuantity<ElectricCharge>, IMeasure<ElectricCharge>, IEquatable<ElectricCharge>, IComparable<ElectricCharge>
     {
+        public ElectricCharge() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

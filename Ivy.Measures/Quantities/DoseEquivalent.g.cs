@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the dose equivalent quantity
     /// </summary>
     [DataContract]
-    public partial struct DoseEquivalent : IQuantity<DoseEquivalent>, IMeasure<DoseEquivalent>, IEquatable<DoseEquivalent>, IComparable<DoseEquivalent>
+    public partial class DoseEquivalent : IQuantity<DoseEquivalent>, IMeasure<DoseEquivalent>, IEquatable<DoseEquivalent>, IComparable<DoseEquivalent>
     {
+        public DoseEquivalent() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

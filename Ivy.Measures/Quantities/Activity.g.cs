@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the activity quantity
     /// </summary>
     [DataContract]
-    public partial struct Activity : IQuantity<Activity>, IMeasure<Activity>, IEquatable<Activity>, IComparable<Activity>
+    public partial class Activity : IQuantity<Activity>, IMeasure<Activity>, IEquatable<Activity>, IComparable<Activity>
     {
+        public Activity() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

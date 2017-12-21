@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the amount concentration quantity
     /// </summary>
     [DataContract]
-    public partial struct AmountConcentration : IQuantity<AmountConcentration>, IMeasure<AmountConcentration>, IEquatable<AmountConcentration>, IComparable<AmountConcentration>
+    public partial class AmountConcentration : IQuantity<AmountConcentration>, IMeasure<AmountConcentration>, IEquatable<AmountConcentration>, IComparable<AmountConcentration>
     {
+        public AmountConcentration() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

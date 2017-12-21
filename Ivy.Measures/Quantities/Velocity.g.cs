@@ -41,7 +41,7 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the velocity quantity
     /// </summary>
     [DataContract]
-    public partial struct Velocity : IQuantity<Velocity>, IMeasure<Velocity>, IEquatable<Velocity>, IComparable<Velocity>
+    public partial class Velocity : IQuantity<Velocity>, IMeasure<Velocity>, IEquatable<Velocity>, IComparable<Velocity>
     {
         #region FIELDS
 
@@ -70,6 +70,8 @@ namespace Ivy.Measures.Quantities
         #endregion
 
         #region CONSTRUCTORS
+        
+        public Velocity() { }
 
         /// <summary>
         /// Static constructor for defining static class properties

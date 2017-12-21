@@ -3,7 +3,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the absorbed dose quantity
     /// </summary>
-    public partial struct AbsorbedDose
+    public partial class AbsorbedDose
     {
         #region OPERATORS
 

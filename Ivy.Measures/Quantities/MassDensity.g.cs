@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the mass density quantity
     /// </summary>
     [DataContract]
-    public partial struct MassDensity : IQuantity<MassDensity>, IMeasure<MassDensity>, IEquatable<MassDensity>, IComparable<MassDensity>
+    public partial class MassDensity : IQuantity<MassDensity>, IMeasure<MassDensity>, IEquatable<MassDensity>, IComparable<MassDensity>
     {
+        public MassDensity() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the velocity quantity
     /// </summary>
-    public partial struct Velocity
+    public partial class Velocity
     {
         #region OPERATORS
 

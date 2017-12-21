@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the plane angle quantity
     /// </summary>
     [DataContract]
-    public partial struct PlaneAngle : IQuantity<PlaneAngle>, IMeasure<PlaneAngle>, IEquatable<PlaneAngle>, IComparable<PlaneAngle>
+    public partial class PlaneAngle : IQuantity<PlaneAngle>, IMeasure<PlaneAngle>, IEquatable<PlaneAngle>, IComparable<PlaneAngle>
     {
+        public PlaneAngle() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

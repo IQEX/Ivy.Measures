@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the electric resistance quantity
     /// </summary>
     [DataContract]
-    public partial struct ElectricResistance : IQuantity<ElectricResistance>, IMeasure<ElectricResistance>, IEquatable<ElectricResistance>, IComparable<ElectricResistance>
+    public partial class ElectricResistance : IQuantity<ElectricResistance>, IMeasure<ElectricResistance>, IEquatable<ElectricResistance>, IComparable<ElectricResistance>
     {
+        public ElectricResistance() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

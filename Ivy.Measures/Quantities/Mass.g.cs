@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the mass quantity
     /// </summary>
     [DataContract]
-    public partial struct Mass : IQuantity<Mass>, IMeasure<Mass>, IEquatable<Mass>, IComparable<Mass>
+    public partial class Mass : IQuantity<Mass>, IMeasure<Mass>, IEquatable<Mass>, IComparable<Mass>
     {
+        public Mass() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

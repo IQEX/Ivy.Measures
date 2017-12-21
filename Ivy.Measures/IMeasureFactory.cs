@@ -27,7 +27,7 @@ namespace Ivy.Measures
     /// <typeparam name="Q">
     /// A struct that should implement both the IQuantity and IMeasure interfaces
     /// </typeparam>
-    public interface IMeasureFactory<Q> where Q : struct, IQuantity<Q>
+    public interface IMeasureFactory<Q> where Q : class, IQuantity<Q>
     {
         /// <summary>
         /// Creates a new standard unit measure at the specified <paramref name="amount"/>.

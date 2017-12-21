@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the number quantity
     /// </summary>
     [DataContract]
-    public partial struct Number : IQuantity<Number>, IMeasure<Number>, IEquatable<Number>, IComparable<Number>
+    public partial class Number : IQuantity<Number>, IMeasure<Number>, IEquatable<Number>, IComparable<Number>
     {
+        public Number() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

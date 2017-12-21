@@ -30,7 +30,7 @@ namespace Ivy.Measures
     {
         private ConstantConverterUnit<UnitTestsQuantity> instance;
 
-        private struct UnitTestsQuantity : IQuantity<UnitTestsQuantity>
+        private class UnitTestsQuantity : IQuantity<UnitTestsQuantity>
         {
             public string DisplayName { get; private set; }
 

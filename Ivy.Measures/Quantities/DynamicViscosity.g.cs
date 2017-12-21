@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the dynamic viscosity quantity
     /// </summary>
     [DataContract]
-    public partial struct DynamicViscosity : IQuantity<DynamicViscosity>, IMeasure<DynamicViscosity>, IEquatable<DynamicViscosity>, IComparable<DynamicViscosity>
+    public partial class DynamicViscosity : IQuantity<DynamicViscosity>, IMeasure<DynamicViscosity>, IEquatable<DynamicViscosity>, IComparable<DynamicViscosity>
     {
+        public DynamicViscosity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

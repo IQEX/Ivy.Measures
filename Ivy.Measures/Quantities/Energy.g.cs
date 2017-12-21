@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the energy quantity
     /// </summary>
     [DataContract]
-    public partial struct Energy : IQuantity<Energy>, IMeasure<Energy>, IEquatable<Energy>, IComparable<Energy>
+    public partial class Energy : IQuantity<Energy>, IMeasure<Energy>, IEquatable<Energy>, IComparable<Energy>
     {
+        public Energy() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

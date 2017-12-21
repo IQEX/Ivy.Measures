@@ -34,19 +34,19 @@ namespace Ivy.Measures
 
     internal static class AmountConverter
     {
-        internal static AmountType ToAmountType(double iValue)
+        internal static double ToAmountType(double iValue)
         {
-            return (AmountType) iValue;
+            return (double) iValue;
         }
 
-        internal static IEnumerable<AmountType> ToAmountType(IEnumerable<double> iValues)
+        internal static IEnumerable<double> ToAmountType(IEnumerable<double> iValues)
         {
-            return iValues.Select(a => (AmountType)a);
+            return iValues.Select(a => (double)a);
         }
 
-        internal static AmountType[] CastToArray(IEnumerable<AmountType> iAmounts)
+        internal static double[] CastToArray(IEnumerable<double> iAmounts)
         {
-            return (AmountType[])iAmounts;
+            return (double[])iAmounts;
         }
     }
 }

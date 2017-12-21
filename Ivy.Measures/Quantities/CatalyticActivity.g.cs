@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the catalytic activity quantity
     /// </summary>
     [DataContract]
-    public partial struct CatalyticActivity : IQuantity<CatalyticActivity>, IMeasure<CatalyticActivity>, IEquatable<CatalyticActivity>, IComparable<CatalyticActivity>
+    public partial class CatalyticActivity : IQuantity<CatalyticActivity>, IMeasure<CatalyticActivity>, IEquatable<CatalyticActivity>, IComparable<CatalyticActivity>
     {
+        public CatalyticActivity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

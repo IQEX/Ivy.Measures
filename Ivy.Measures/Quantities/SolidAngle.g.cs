@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the solid angle quantity
     /// </summary>
     [DataContract]
-    public partial struct SolidAngle : IQuantity<SolidAngle>, IMeasure<SolidAngle>, IEquatable<SolidAngle>, IComparable<SolidAngle>
+    public partial class SolidAngle : IQuantity<SolidAngle>, IMeasure<SolidAngle>, IEquatable<SolidAngle>, IComparable<SolidAngle>
     {
+        public SolidAngle() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

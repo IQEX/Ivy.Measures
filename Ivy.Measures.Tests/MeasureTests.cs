@@ -44,8 +44,8 @@ namespace Ivy.Measures
         [Test]
         public void Indexer_SameQuantityNonGenericInterface_YieldsValidMeasureObject()
         {
-            var expected = new Measure<Volume>(5000.0, Volume.Liter);
-            IMeasure meas = new Volume(5.0);
+            var expected = new Measure<Volume>(5000.0f, Volume.Liter);
+            IMeasure meas = new Volume(5.0f);
             var actual = meas[Volume.Liter];
             MeasureAssert.MeasuresAreEqual(expected, actual);
         }
@@ -88,8 +88,8 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_BothArgumentsHaveValuesValuesWithinTolerance_ReturnsTrue()
         {
-            AmountConcentration? lhs = new AmountConcentration(5.0);
-            AmountConcentration? rhs = new AmountConcentration(5.0001);
+            AmountConcentration lhs = new AmountConcentration(5.0);
+            AmountConcentration rhs = new AmountConcentration(5.0001);
             AmountConcentration tol = new AmountConcentration(0.001);
 
             var expected = true;
@@ -100,8 +100,8 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_BothArgumentsHaveValuesValuesNotWithinTolerance_ReturnsFalse()
         {
-            AmountConcentration? lhs = new AmountConcentration(5.0);
-            AmountConcentration? rhs = new AmountConcentration(5.001);
+            AmountConcentration lhs = new AmountConcentration(5.0);
+            AmountConcentration rhs = new AmountConcentration(5.001);
             AmountConcentration tol = new AmountConcentration(0.0001);
 
             var expected = false;
@@ -112,8 +112,8 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_LhsArgumentHasValue_ReturnsFalse()
         {
-            AmountConcentration? lhs = new AmountConcentration(5.0);
-            AmountConcentration? rhs = null;
+            AmountConcentration lhs = new AmountConcentration(5.0);
+            AmountConcentration rhs = null;
             AmountConcentration tol = AmountConcentration.Zero;
 
             var expected = false;
@@ -124,8 +124,8 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_RhsArgumentHasValue_ReturnsFalse()
         {
-            AmountConcentration? lhs = null;
-            AmountConcentration? rhs = new AmountConcentration(5.0);
+            AmountConcentration lhs = null;
+            AmountConcentration rhs = new AmountConcentration(5.0);
             AmountConcentration tol = AmountConcentration.Zero;
 
             var expected = false;
@@ -136,8 +136,8 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_NoArgumentHasValue_ReturnsFalse()
         {
-            AmountConcentration? lhs = null;
-            AmountConcentration? rhs = null;
+            AmountConcentration lhs = null;
+            AmountConcentration rhs = null;
             AmountConcentration tol = AmountConcentration.Zero;
 
             var expected = false;
@@ -149,9 +149,9 @@ namespace Ivy.Measures
 
         #region Private support methods
 
-        private static bool AreApproximatelyEqual<Q>(Q? lhs, Q? rhs, Q tol) where Q : struct, IQuantity<Q>, IMeasure<Q>
+        private static bool AreApproximatelyEqual<Q>(Q lhs, Q rhs, Q tol) where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
-            return lhs.HasValue && rhs.HasValue && Math.Abs(lhs.Value.Amount - rhs.Value.Amount) < tol.Amount;
+            return lhs != null && rhs != null && Math.Abs(lhs.Amount - rhs.Amount) < tol.Amount;
         }
 
         #endregion

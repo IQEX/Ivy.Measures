@@ -33,7 +33,7 @@ namespace Ivy.Measures
     /// Representation of a physical unit of a specific quanity
     /// </summary>
     /// <typeparam name="Q">Quantity type with which the unit is associated</typeparam>
-    public abstract class Unit<Q> : IUnit<Q> where Q : struct, IQuantity<Q>
+    public abstract class Unit<Q> : IUnit<Q> where Q : class, IQuantity<Q>, new()
     {
         #region FIELDS
 
@@ -96,7 +96,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="amount">Amount in this unit</param>
         /// <returns>Amount converted to standard unit</returns>
-        public abstract AmountType ConvertAmountToStandardUnit(AmountType amount);
+        public abstract float ConvertAmountToStandardUnit(float amount);
 
         /// <summary>
         /// Convert a standard amount to this unit of the specified quantity
@@ -104,7 +104,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="standardAmount">Standard amount of the current <see cref="IUnit.Quantity"/>.</param>
         /// <returns>Amount in this unit.</returns>
-        public abstract AmountType ConvertStandardAmountToUnit(AmountType standardAmount);
+        public abstract float ConvertStandardAmountToUnit(float standardAmount);
 
         #endregion
 

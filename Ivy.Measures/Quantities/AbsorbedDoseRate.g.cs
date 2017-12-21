@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the absorbed dose rate quantity
     /// </summary>
     [DataContract]
-    public partial struct AbsorbedDoseRate : IQuantity<AbsorbedDoseRate>, IMeasure<AbsorbedDoseRate>, IEquatable<AbsorbedDoseRate>, IComparable<AbsorbedDoseRate>
+    public partial class AbsorbedDoseRate : IQuantity<AbsorbedDoseRate>, IMeasure<AbsorbedDoseRate>, IEquatable<AbsorbedDoseRate>, IComparable<AbsorbedDoseRate>
     {
+        public AbsorbedDoseRate() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

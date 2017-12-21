@@ -37,7 +37,7 @@ namespace Ivy.Measures
     /// <typeparam name="Q1">Quantity type of the first measure</typeparam>
     /// <typeparam name="Q2">Quantity type of the second measure</typeparam>
     public struct MeasureDoublet<Q1, Q2> : IMeasureDoublet<Q1, Q2>
-        where Q1 : struct, IQuantity<Q1>, IMeasure<Q1> where Q2 : struct, IQuantity<Q2>, IMeasure<Q2>
+        where Q1 : class, IQuantity<Q1>, IMeasure<Q1>, new() where Q2 : class, IQuantity<Q2>, IMeasure<Q2>, new()
     {
         #region MEMBER VARIABLES
 

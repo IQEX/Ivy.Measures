@@ -28,9 +28,9 @@ namespace Ivy.Measures
     /// <typeparam name="Q2">Quantity type of the second measure</typeparam>
     /// <typeparam name="Q3">Quantity type of the third measure</typeparam>
     public interface IMeasureTriplet<Q1, Q2, Q3>
-        where Q1 : struct, IQuantity<Q1>
-        where Q2 : struct, IQuantity<Q2>
-        where Q3 : struct, IQuantity<Q3>
+        where Q1 : class, IQuantity<Q1>, new()
+        where Q2 : class, IQuantity<Q2>, new()
+        where Q3 : class, IQuantity<Q3>, new()
     {
         /// <summary>
         /// Gets the first measure in the measure triplet

@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the amount of substance quantity
     /// </summary>
     [DataContract]
-    public partial struct AmountOfSubstance : IQuantity<AmountOfSubstance>, IMeasure<AmountOfSubstance>, IEquatable<AmountOfSubstance>, IComparable<AmountOfSubstance>
+    public partial class AmountOfSubstance : IQuantity<AmountOfSubstance>, IMeasure<AmountOfSubstance>, IEquatable<AmountOfSubstance>, IComparable<AmountOfSubstance>
     {
+        public AmountOfSubstance() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

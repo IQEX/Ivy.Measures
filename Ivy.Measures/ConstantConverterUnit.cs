@@ -33,13 +33,13 @@ namespace Ivy.Measures
     /// Representation of a physical unit of a specific quanity
     /// </summary>
     /// <typeparam name="Q">Quantity type with which the unit is associated</typeparam>
-    public sealed class ConstantConverterUnit<Q> : Unit<Q> where Q : struct, IQuantity<Q>
+    public sealed class ConstantConverterUnit<Q> : Unit<Q> where Q : class, IQuantity<Q>, new()
     {
         #region FIELDS
 
-        private readonly AmountType amountToStandardUnitFactor;
+        private readonly float amountToStandardUnitFactor;
 
-        private readonly AmountType standardAmountToUnitFactor;
+        private readonly float standardAmountToUnitFactor;
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="prefix">Prefix to use in unit naming and scaling vis-a-vis standard unit</param>
         public ConstantConverterUnit(UnitPrefix prefix)
-            : this($"{prefix.GetSymbol()}{default(Q).StandardUnit.Symbol}", prefix.GetFactor())
+            : this($"{prefix.GetSymbol()}{new Q().StandardUnit.Symbol}", prefix.GetFactor())
         {
         }
 
@@ -70,7 +70,7 @@ namespace Ivy.Measures
         /// <param name="symbol">Unit display symbol</param>
         /// <param name="toStandardUnitFactor">Amount converter factor from this unit to quantity's standard unit</param>
         // ReSharper disable once CompareOfFloatsByEqualityOperator
-        public ConstantConverterUnit(string symbol, AmountType toStandardUnitFactor)
+        public ConstantConverterUnit(string symbol, float toStandardUnitFactor)
             : base(toStandardUnitFactor == Constants.One, symbol)
         {
             this.amountToStandardUnitFactor = toStandardUnitFactor;
@@ -86,7 +86,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="amount">Amount in this unit</param>
         /// <returns>Amount converted to standard unit</returns>
-        public override AmountType ConvertAmountToStandardUnit(AmountType amount)
+        public override float ConvertAmountToStandardUnit(float amount)
         {
             return this.amountToStandardUnitFactor * amount;
         }
@@ -97,7 +97,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="standardAmount">Standard amount of the current <see cref="IUnit.Quantity"/>.</param>
         /// <returns>Amount in this unit.</returns>
-        public override AmountType ConvertStandardAmountToUnit(AmountType standardAmount)
+        public override float ConvertStandardAmountToUnit(float standardAmount)
         {
             return this.standardAmountToUnitFactor * standardAmount;
         }

@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the temperature quantity
     /// </summary>
     [DataContract]
-    public partial struct Temperature : IQuantity<Temperature>, IMeasure<Temperature>, IEquatable<Temperature>, IComparable<Temperature>
+    public partial class Temperature : IQuantity<Temperature>, IMeasure<Temperature>, IEquatable<Temperature>, IComparable<Temperature>
     {
+        public Temperature() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

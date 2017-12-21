@@ -16,8 +16,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the wave number quantity
     /// </summary>
     [DataContract]
-    public partial struct WaveNumber : IQuantity<WaveNumber>, IMeasure<WaveNumber>, IEquatable<WaveNumber>, IComparable<WaveNumber>
+    public partial class WaveNumber : IQuantity<WaveNumber>, IMeasure<WaveNumber>, IEquatable<WaveNumber>, IComparable<WaveNumber>
     {
+        public WaveNumber() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

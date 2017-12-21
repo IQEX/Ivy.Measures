@@ -36,13 +36,13 @@ namespace Ivy.Measures
     /// where unit conversion is applied via defined functions.
     /// </summary>
     /// <typeparam name="Q">Quantity type with which the unit is associated</typeparam>
-    public sealed class FunctionConverterUnit<Q> : Unit<Q> where Q : struct, IQuantity<Q>
+    public sealed class FunctionConverterUnit<Q> : Unit<Q> where Q : class, IQuantity<Q>, new()
     {
         #region FIELDS
 
-        private readonly Func<AmountType, AmountType> convertAmountToStandardUnit;
+        private readonly Func<float, float> convertAmountToStandardUnit;
 
-        private readonly Func<AmountType, AmountType> convertStandardAmountToUnit;
+        private readonly Func<float, float> convertStandardAmountToUnit;
 
         #endregion
 
@@ -56,8 +56,8 @@ namespace Ivy.Measures
         /// <param name="convertStandardAmountToUnit">Amount converter function from quantity's standard unit to this unit</param>
         public FunctionConverterUnit(
             string symbol,
-            Func<AmountType, AmountType> convertAmountToStandardUnit,
-            Func<AmountType, AmountType> convertStandardAmountToUnit)
+            Func<float, float> convertAmountToStandardUnit,
+            Func<float, float> convertStandardAmountToUnit)
             : base(false, symbol)
         {
             this.convertAmountToStandardUnit = convertAmountToStandardUnit;
@@ -73,7 +73,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="amount">Amount in this unit</param>
         /// <returns>Amount converted to standard unit</returns>
-        public override AmountType ConvertAmountToStandardUnit(AmountType amount)
+        public override float ConvertAmountToStandardUnit(float amount)
         {
             return this.convertAmountToStandardUnit(amount);
         }
@@ -84,7 +84,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="standardAmount">Standard amount of the current <see cref="IUnit.Quantity"/>.</param>
         /// <returns>Amount in this unit.</returns>
-        public override AmountType ConvertStandardAmountToUnit(AmountType standardAmount)
+        public override float ConvertStandardAmountToUnit(float standardAmount)
         {
             return this.convertStandardAmountToUnit(standardAmount);
         }

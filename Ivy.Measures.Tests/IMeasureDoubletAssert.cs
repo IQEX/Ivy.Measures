@@ -26,8 +26,8 @@ namespace Ivy.Measures
     public static class IMeasureDoubletAssert
     {
         public static void AreEqual<Q1, Q2>(IMeasureDoublet<Q1, Q2> expected, IMeasureDoublet<Q1, Q2> actual)
-            where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2>
+            where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new()
         {
             Assert.AreEqual(expected.X.Unit, actual.X.Unit);
             Assert.AreEqual(expected.Y.Unit, actual.Y.Unit);

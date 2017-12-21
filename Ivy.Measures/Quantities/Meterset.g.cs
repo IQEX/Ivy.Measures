@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the meterset quantity
     /// </summary>
     [DataContract]
-    public partial struct Meterset : IQuantity<Meterset>, IMeasure<Meterset>, IEquatable<Meterset>, IComparable<Meterset>
+    public partial class Meterset : IQuantity<Meterset>, IMeasure<Meterset>, IEquatable<Meterset>, IComparable<Meterset>
     {
+        public Meterset() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

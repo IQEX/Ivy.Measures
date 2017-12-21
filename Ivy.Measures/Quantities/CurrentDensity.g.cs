@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the current density quantity
     /// </summary>
     [DataContract]
-    public partial struct CurrentDensity : IQuantity<CurrentDensity>, IMeasure<CurrentDensity>, IEquatable<CurrentDensity>, IComparable<CurrentDensity>
+    public partial class CurrentDensity : IQuantity<CurrentDensity>, IMeasure<CurrentDensity>, IEquatable<CurrentDensity>, IComparable<CurrentDensity>
     {
+        public CurrentDensity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

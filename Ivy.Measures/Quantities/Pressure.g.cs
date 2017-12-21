@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the pressure quantity
     /// </summary>
     [DataContract]
-    public partial struct Pressure : IQuantity<Pressure>, IMeasure<Pressure>, IEquatable<Pressure>, IComparable<Pressure>
+    public partial class Pressure : IQuantity<Pressure>, IMeasure<Pressure>, IEquatable<Pressure>, IComparable<Pressure>
     {
+        public Pressure() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

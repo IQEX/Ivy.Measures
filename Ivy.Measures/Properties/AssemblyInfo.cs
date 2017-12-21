@@ -11,9 +11,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark("Ivy.Measures")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en-US")]
-[assembly: AssemblyVersion("3.0.0")]
-[assembly: AssemblyInformationalVersion("3.0.0")]
-[assembly: AssemblyFileVersion("3.0.0.167")]
+[assembly: AssemblyVersion("2017.12.10")]
+[assembly: AssemblyInformationalVersion("3.5.0")]
+[assembly: AssemblyFileVersion("2017.12.10.167")]
 
 
 [assembly: InternalsVisibleTo("Ivy.Measures.Tests")]

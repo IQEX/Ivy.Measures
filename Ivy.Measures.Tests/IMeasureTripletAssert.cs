@@ -26,9 +26,9 @@ namespace Ivy.Measures
     public static class IMeasureTripletAssert
     {
         public static void AreEqual<Q1, Q2, Q3>(IMeasureTriplet<Q1, Q2, Q3> expected, IMeasureTriplet<Q1, Q2, Q3> actual)
-            where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2>
-            where Q3 : struct, IQuantity<Q3>
+            where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new()
+            where Q3 : class, IQuantity<Q3>, new()
         {
             Assert.AreEqual(expected.X.Unit, actual.X.Unit);
             Assert.AreEqual(expected.Y.Unit, actual.Y.Unit);

@@ -26,7 +26,7 @@ namespace Ivy.Measures
     /// </summary>
     /// <typeparam name="Q1">Quantity type of the first measure</typeparam>
     /// <typeparam name="Q2">Quantity type of the second measure</typeparam>
-    public interface IMeasureDoublet<Q1, Q2> where Q1 : struct, IQuantity<Q1> where Q2 : struct, IQuantity<Q2>
+    public interface IMeasureDoublet<Q1, Q2> where Q1 : class, IQuantity<Q1>, new() where Q2 : class, IQuantity<Q2>, new()
     {
         /// <summary>
         /// Gets the first measure in the measure pair

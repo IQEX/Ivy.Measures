@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the moment of force quantity
     /// </summary>
     [DataContract]
-    public partial struct MomentOfForce : IQuantity<MomentOfForce>, IMeasure<MomentOfForce>, IEquatable<MomentOfForce>, IComparable<MomentOfForce>
+    public partial class MomentOfForce : IQuantity<MomentOfForce>, IMeasure<MomentOfForce>, IEquatable<MomentOfForce>, IComparable<MomentOfForce>
     {
+        public MomentOfForce() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

@@ -38,8 +38,8 @@ namespace Ivy.Measures
         /// <param name="iSecond">Second measure to multiply</param>
         /// <param name="oResult">Measure resulting from multiplication, given in standard unit of quantity</param>
         public static void Times<Q, Q1, Q2>(IMeasure<Q1> iFirst, IMeasure<Q2> iSecond, out Q oResult)
-            where Q : struct, IQuantity<Q>, IMeasure<Q> where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new()
         {
             AssertMatchingQuantities<Q, Q1, Q2>(1, 1);
             oResult = new Q().Factory.New(iFirst.StandardAmount * iSecond.StandardAmount);
@@ -55,8 +55,8 @@ namespace Ivy.Measures
         /// <param name="iDenominator">Denominator measure</param>
         /// <param name="oResult">Resulting measure quotient, given in standard unit of quantity</param>
         public static void Divide<Q, Q1, Q2>(IMeasure<Q1> iNumerator, IMeasure<Q2> iDenominator, out Q oResult)
-            where Q : struct, IQuantity<Q>, IMeasure<Q> where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new()
         {
             AssertMatchingQuantities<Q, Q1, Q2>(1, -1);
             oResult = new Q().Factory.New(iNumerator.StandardAmount / iDenominator.StandardAmount);
@@ -71,7 +71,7 @@ namespace Ivy.Measures
         /// <param name="iExponent">Exponent</param>
         /// <param name="oResult">Resulting measure, given in standard unit of the specified quantity</param>
         public static void Power<Q, Q1>(IMeasure<Q1> iBase, int iExponent, out Q oResult)
-            where Q : struct, IQuantity<Q>, IMeasure<Q> where Q1 : struct, IQuantity<Q1>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
         {
             AssertMatchingQuantities<Q, Q1>(iExponent);
             oResult = new Q().Factory.New(Math.Pow((double)iBase.StandardAmount, iExponent));
@@ -93,8 +93,8 @@ namespace Ivy.Measures
             int iFirstExponent,
             IMeasure<Q2> iSecond,
             int iSecondExponent,
-            out Q oResult) where Q : struct, IQuantity<Q>, IMeasure<Q> where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2>
+            out Q oResult) where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new()
         {
             AssertMatchingQuantities<Q, Q1, Q2>(iFirstExponent, iSecondExponent);
             oResult =
@@ -124,8 +124,8 @@ namespace Ivy.Measures
             int iSecondExponent,
             IMeasure<Q3> iThird,
             int iThirdExponent,
-            out Q oResult) where Q : struct, IQuantity<Q>, IMeasure<Q> where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2> where Q3 : struct, IQuantity<Q3>
+            out Q oResult) where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new() where Q3 : class, IQuantity<Q3>, new()
         {
             AssertMatchingQuantities<Q, Q1, Q2, Q3>(iFirstExponent, iSecondExponent, iThirdExponent);
             oResult =
@@ -161,8 +161,8 @@ namespace Ivy.Measures
             int iThirdExponent,
             IMeasure<Q4> iFourth,
             int iFourthExponent,
-            out Q oResult) where Q : struct, IQuantity<Q>, IMeasure<Q> where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2> where Q3 : struct, IQuantity<Q3> where Q4 : struct, IQuantity<Q4>
+            out Q oResult) where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new() where Q3 : class, IQuantity<Q3>, new() where Q4 : class, IQuantity<Q4>, new()
         {
             AssertMatchingQuantities<Q, Q1, Q2, Q3, Q4>(
                 iFirstExponent,
@@ -179,50 +179,46 @@ namespace Ivy.Measures
 
         #region PRIVATE SUPPORT METHODS
 
-        private static void AssertMatchingQuantities<Q, Q1>(int iQ1Exponent) where Q : struct, IQuantity<Q>
-            where Q1 : struct, IQuantity<Q1>
+        private static void AssertMatchingQuantities<Q, Q1>(int iQ1Exponent) where Q : class, IQuantity<Q>, new()
+            where Q1 : class, IQuantity<Q1>, new()
         {
-            AssertMatchingQuantityDimensions<Q>(default(Q1).Dimension ^ iQ1Exponent);
+            AssertMatchingQuantityDimensions<Q>(new Q1().Dimension ^ iQ1Exponent);
         }
 
         private static void AssertMatchingQuantities<Q, Q1, Q2>(int iQ1Exponent, int iQ2Exponent)
-            where Q : struct, IQuantity<Q> where Q1 : struct, IQuantity<Q1> where Q2 : struct, IQuantity<Q2>
+            where Q : class, IQuantity<Q>, new() where Q1 : class, IQuantity<Q1>, new() where Q2 : class, IQuantity<Q2>, new()
         {
             AssertMatchingQuantityDimensions<Q>(
-                (default(Q1).Dimension ^ iQ1Exponent) * (default(Q2).Dimension ^ iQ2Exponent));
+                (new Q1().Dimension ^ iQ1Exponent) * (new Q2().Dimension ^ iQ2Exponent));
         }
 
         private static void AssertMatchingQuantities<Q, Q1, Q2, Q3>(int iQ1Exponent, int iQ2Exponent, int iQ3Exponent)
-            where Q : struct, IQuantity<Q> where Q1 : struct, IQuantity<Q1> where Q2 : struct, IQuantity<Q2>
-            where Q3 : struct, IQuantity<Q3>
+            where Q : class, IQuantity<Q>, new() where Q1 : class, IQuantity<Q1>, new() where Q2 : class, IQuantity<Q2>, new()
+            where Q3 : class, IQuantity<Q3>, new()
         {
             AssertMatchingQuantityDimensions<Q>(
-                (default(Q1).Dimension ^ iQ1Exponent) * (default(Q2).Dimension ^ iQ2Exponent)
-                * (default(Q3).Dimension ^ iQ3Exponent));
+                (new Q1().Dimension ^ iQ1Exponent) * (new Q2().Dimension ^ iQ2Exponent)
+                * (new Q3().Dimension ^ iQ3Exponent));
         }
 
         private static void AssertMatchingQuantities<Q, Q1, Q2, Q3, Q4>(
             int iQ1Exponent,
             int iQ2Exponent,
             int iQ3Exponent,
-            int iQ4Exponent) where Q : struct, IQuantity<Q> where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2> where Q3 : struct, IQuantity<Q3> where Q4 : struct, IQuantity<Q4>
+            int iQ4Exponent) where Q : class, IQuantity<Q>, new() where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new() where Q3 : class, IQuantity<Q3>, new() where Q4 : class, IQuantity<Q4>, new()
         {
             AssertMatchingQuantityDimensions<Q>(
-                (default(Q1).Dimension ^ iQ1Exponent) * (default(Q2).Dimension ^ iQ2Exponent)
-                * (default(Q3).Dimension ^ iQ3Exponent) * (default(Q4).Dimension ^ iQ4Exponent));
+                (new Q1().Dimension ^ iQ1Exponent) * (new Q2().Dimension ^ iQ2Exponent)
+                * (new Q3().Dimension ^ iQ3Exponent) * (new Q4().Dimension ^ iQ4Exponent));
         }
 
         private static void AssertMatchingQuantityDimensions<Q>(QuantityDimension iActualDimension)
-            where Q : struct, IQuantity<Q>
+            where Q : class, IQuantity<Q>, new()
         {
-            if (default(Q).Dimension.Equals(iActualDimension)) return;
+            if (new Q().Dimension.Equals(iActualDimension)) return;
             throw new InvalidOperationException(
-                String.Format(
-                    "Actual quantity dimension: {0}, expected {1} for quantity {2}",
-                    iActualDimension,
-                    default(Q).Dimension,
-                    default(Q).GetType().Name));
+                $"Actual quantity dimension: {iActualDimension}, expected {new Q().Dimension} for quantity {new Q().GetType().Name}");
         }
 
         #endregion

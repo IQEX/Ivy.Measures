@@ -88,7 +88,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="iPrefix">Requested unit prefix</param>
         /// <returns>Unit prefix scaling factor</returns>
-        public static AmountType GetFactor(this UnitPrefix iPrefix)
+        public static float GetFactor(this UnitPrefix iPrefix)
         {
 #if DOUBLE
             return Math.Pow(10.0, (double)iPrefix);

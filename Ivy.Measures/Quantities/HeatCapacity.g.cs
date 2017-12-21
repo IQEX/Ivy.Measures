@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the heat capacity quantity
     /// </summary>
     [DataContract]
-    public partial struct HeatCapacity : IQuantity<HeatCapacity>, IMeasure<HeatCapacity>, IEquatable<HeatCapacity>, IComparable<HeatCapacity>
+    public partial class HeatCapacity : IQuantity<HeatCapacity>, IMeasure<HeatCapacity>, IEquatable<HeatCapacity>, IComparable<HeatCapacity>
     {
+        public HeatCapacity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

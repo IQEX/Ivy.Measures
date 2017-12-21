@@ -41,7 +41,7 @@ namespace Ivy.Measures
         [Test]
         public void ToString_DimensionlessQuantity_ReturnsEmptyString()
         {
-            var expected = String.Empty;
+            var expected = string.Empty;
             var actual = QuantityDimension.Pi.ToString();
             Assert.AreEqual(expected, actual);
         }

@@ -15,8 +15,9 @@
     /// Implementation of the Signal-to-noise ratio (abbreviated SNR or S/N) 
     /// </summary>
     [DataContract]
-    public struct Signal : IQuantity<Signal>, IMeasure<Signal>, IEquatable<Signal>, IComparable<Signal>
+    public class Signal : IQuantity<Signal>, IMeasure<Signal>, IEquatable<Signal>, IComparable<Signal>
     {
+        public Signal() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming
@@ -30,7 +31,7 @@
         public static readonly Unit<Signal> DBell = new ConstantConverterUnit<Signal>("dB");
 
         [DataMember]
-        private readonly AmountType amount;
+        private readonly float amount;
 
         #endregion
 
@@ -82,12 +83,12 @@
         /// <summary>
         /// Gets the measured amount in the <see cref="StandardUnit">standard unit of measure</see>
         /// </summary>
-        public AmountType Amount => this.amount;
+        public float Amount => this.amount;
 
         /// <summary>
         /// Gets the measured amount in the standard unit of measure for the wave number quantity
         /// </summary>
-        public AmountType StandardAmount => this.amount;
+        public float StandardAmount => this.amount;
 
         /// <summary>
         /// Gets the unit of measure
@@ -100,7 +101,7 @@
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        AmountType IMeasure.GetAmount(IUnit unit)
+        float IMeasure.GetAmount(IUnit unit)
         {
             return this.GetAmount(unit as IUnit<Signal>);
         }
@@ -123,7 +124,7 @@
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        public AmountType GetAmount(IUnit<Signal> unit)
+        public float GetAmount(IUnit<Signal> unit)
         {
             if (unit == null) throw new ArgumentNullException(nameof(unit));
             return unit.ConvertStandardAmountToUnit(this.amount);
@@ -417,7 +418,7 @@
         /// <returns>Product of the scalar and the measure object</returns>
         public static Signal operator *(double scalar, Signal measure)
         {
-            return new Signal((AmountType)scalar * measure.amount);
+            return new Signal((float)scalar * measure.amount);
         }
 
         /// <summary>
@@ -428,7 +429,7 @@
         /// <returns>Product of the scalar and the measure object</returns>
         public static Signal operator *(float scalar, Signal measure)
         {
-            return new Signal((AmountType)scalar * measure.amount);
+            return new Signal((float)scalar * measure.amount);
         }
 
         /// <summary>
@@ -439,7 +440,7 @@
         /// <returns>Product of the scalar and the measure object</returns>
         public static Signal operator *(decimal scalar, Signal measure)
         {
-            return new Signal((AmountType)scalar * measure.amount);
+            return new Signal((float)scalar * measure.amount);
         }
 
         /// <summary>
@@ -450,7 +451,7 @@
         /// <returns>Product of the measure object and the scalar</returns>
         public static Signal operator *(Signal measure, double scalar)
         {
-            return new Signal(measure.amount * (AmountType)scalar);
+            return new Signal(measure.amount * (float)scalar);
         }
 
         /// <summary>
@@ -461,7 +462,7 @@
         /// <returns>Product of the measure object and the scalar</returns>
         public static Signal operator *(Signal measure, float scalar)
         {
-            return new Signal(measure.amount * (AmountType)scalar);
+            return new Signal(measure.amount * (float)scalar);
         }
 
         /// <summary>
@@ -472,7 +473,7 @@
         /// <returns>Product of the measure object and the scalar</returns>
         public static Signal operator *(Signal measure, decimal scalar)
         {
-            return new Signal(measure.amount * (AmountType)scalar);
+            return new Signal(measure.amount * (float)scalar);
         }
 
         /// <summary>
@@ -494,7 +495,7 @@
         /// <returns>Quotient of the measure object and the scalar</returns>
         public static Signal operator /(Signal measure, double scalar)
         {
-            return new Signal(measure.amount / (AmountType)scalar);
+            return new Signal(measure.amount / (float)scalar);
         }
 
         /// <summary>
@@ -505,7 +506,7 @@
         /// <returns>Quotient of the measure object and the scalar</returns>
         public static Signal operator /(Signal measure, float scalar)
         {
-            return new Signal(measure.amount / (AmountType)scalar);
+            return new Signal(measure.amount / (float)scalar);
         }
 
         /// <summary>
@@ -516,7 +517,7 @@
         /// <returns>Quotient of the measure object and the scalar</returns>
         public static Signal operator /(Signal measure, decimal scalar)
         {
-            return new Signal(measure.amount / (AmountType)scalar);
+            return new Signal(measure.amount / (float)scalar);
         }
 
         /// <summary>
@@ -778,7 +779,7 @@
         /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
         public Signal(double amount)
         {
-            this.amount = (AmountType)amount;
+            this.amount = (float)amount;
         }
 
         /// <summary>
@@ -787,7 +788,7 @@
         /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
         public Signal(float amount)
         {
-            this.amount = (AmountType)amount;
+            this.amount = (float)amount;
         }
 
         /// <summary>
@@ -796,7 +797,7 @@
         /// <param name="amount">Measured amount in standard unit of the specified quantity</param>
         public Signal(decimal amount)
         {
-            this.amount = (AmountType)amount;
+            this.amount = (float)amount;
         }
 
         /// <summary>
@@ -808,7 +809,7 @@
         public Signal(double amount, IUnit<Signal> unit)
         {
             if (unit == null) throw new ArgumentNullException(nameof(unit));
-            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
+            this.amount = unit.ConvertAmountToStandardUnit((float)amount);
         }
 
         /// <summary>
@@ -820,7 +821,7 @@
         public Signal(float amount, IUnit<Signal> unit)
         {
             if (unit == null) throw new ArgumentNullException(nameof(unit));
-            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
+            this.amount = unit.ConvertAmountToStandardUnit((float)amount);
         }
 
         /// <summary>
@@ -832,7 +833,7 @@
         public Signal(decimal amount, IUnit<Signal> unit)
         {
             if (unit == null) throw new ArgumentNullException(nameof(unit));
-            this.amount = unit.ConvertAmountToStandardUnit((AmountType)amount);
+            this.amount = unit.ConvertAmountToStandardUnit((float)amount);
         }
 
         #endregion

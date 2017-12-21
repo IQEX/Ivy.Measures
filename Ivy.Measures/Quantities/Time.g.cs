@@ -41,7 +41,7 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the time quantity
     /// </summary>
     [DataContract]
-    public partial struct Time : IQuantity<Time>, IMeasure<Time>, IEquatable<Time>, IComparable<Time>
+    public partial class Time : IQuantity<Time>, IMeasure<Time>, IEquatable<Time>, IComparable<Time>
     {
         #region FIELDS
 
@@ -84,6 +84,8 @@ namespace Ivy.Measures.Quantities
         {
         }
 
+        public Time()
+        { }
         /// <summary>
         /// Initializes a measure to the specified amount and standard unit of the measured quantity
         /// </summary>

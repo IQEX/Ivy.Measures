@@ -39,7 +39,7 @@ namespace Ivy.Measures
     {
         #region PRIVATE STATIC MEMBERS
 
-        private const double EPSILON = Double.Epsilon;
+        private const double EPSILON = double.Epsilon;
         private static readonly IEnumerator<int> _primesEnumerator = new PrimeNumbers().GetEnumerator();
 
         #endregion
@@ -242,7 +242,7 @@ namespace Ivy.Measures
         /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
-            return String.Format("{0}{1}{2}{3}{4}{5}{6}",
+            return string.Format("{0}{1}{2}{3}{4}{5}{6}",
                 ConditionalOutput("m", LengthExponent), ConditionalOutput("kg", MassExponent),
                 ConditionalOutput("s", TimeExponent), ConditionalOutput("A", ElectricCurrentExponent),
                 ConditionalOutput("K", TemperatureExponent), ConditionalOutput("Cd", LuminousIntensityExponent),
@@ -262,8 +262,8 @@ namespace Ivy.Measures
         private static string ConditionalOutput(string iSiUnit, int iExponent)
         {
             return iExponent == 0
-                       ? String.Empty
-                       : iExponent == 1 ? String.Format(" {0}", iSiUnit) : String.Format(" {0}^{1}", iSiUnit, iExponent);
+                       ? string.Empty
+                       : iExponent == 1 ? string.Format(" {0}", iSiUnit) : string.Format(" {0}^{1}", iSiUnit, iExponent);
         }
 
         private static int GetNextPrime()

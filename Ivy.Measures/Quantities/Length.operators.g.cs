@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the length quantity
     /// </summary>
-    public partial struct Length
+    public partial class Length
     {
         #region OPERATORS
 

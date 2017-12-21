@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the probability quantity
     /// </summary>
     [DataContract]
-    public partial struct Probability : IQuantity<Probability>, IMeasure<Probability>, IEquatable<Probability>, IComparable<Probability>
+    public partial class Probability : IQuantity<Probability>, IMeasure<Probability>, IEquatable<Probability>, IComparable<Probability>
     {
+        public Probability() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

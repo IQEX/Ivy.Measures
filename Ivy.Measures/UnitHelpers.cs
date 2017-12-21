@@ -38,10 +38,10 @@ namespace Ivy.Measures
 
             return fieldInfo == null
                        ? unit.Symbol
-                       : String.Format(
+                       : string.Format(
                            "{0} | {1}",
                            fieldInfo.Name,
-                           String.IsNullOrWhiteSpace(unit.Symbol) ? "<none>" : unit.Symbol);
+                           string.IsNullOrWhiteSpace(unit.Symbol) ? "<none>" : unit.Symbol);
         }
     }
 }

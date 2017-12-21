@@ -46,7 +46,7 @@ namespace Ivy.Measures.Linq
         /// <param name="amounts">Collection of amounts to be cast into a collection of standard measures</param>
         /// <returns>Collection of standard measures</returns>
         public static IEnumerable<Q> Cast<Q>(this IEnumerable<double> amounts)
-            where Q : struct, IQuantity<Q>, IMeasure<Q>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
             var factory = new Q().Factory;
             return amounts.Select(val => factory.New(val));
@@ -60,7 +60,7 @@ namespace Ivy.Measures.Linq
         /// <param name="unit">Unit in which the amounts are specified</param>
         /// <returns>Collection of standard measures, converted from specified unit into quantity's standard unit</returns>
         public static IEnumerable<Q> Cast<Q>(this IEnumerable<double> amounts, IUnit<Q> unit)
-            where Q : struct, IQuantity<Q>, IMeasure<Q>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
             var factory = new Q().Factory;
             return amounts.Select(val => factory.New(factory.New(val, unit).StandardAmount));
@@ -72,7 +72,7 @@ namespace Ivy.Measures.Linq
         /// <typeparam name="Q">Quantity of measurements</typeparam>
         /// <param name="amounts">Collection of amounts to be cast into a collection of standard measures</param>
         /// <returns>Collection of standard measures</returns>
-        public static IEnumerable<Q> Cast<Q>(this IEnumerable<float> amounts) where Q : struct, IQuantity<Q>, IMeasure<Q>
+        public static IEnumerable<Q> Cast<Q>(this IEnumerable<float> amounts) where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
             var factory = new Q().Factory;
             return amounts.Select(val => factory.New(val));
@@ -86,7 +86,7 @@ namespace Ivy.Measures.Linq
         /// <param name="unit">Unit in which the amounts are specified</param>
         /// <returns>Collection of standard measures, converted from specified unit into quantity's standard unit</returns>
         public static IEnumerable<Q> Cast<Q>(this IEnumerable<float> amounts, IUnit<Q> unit)
-            where Q : struct, IQuantity<Q>, IMeasure<Q>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
             var factory = new Q().Factory;
             return amounts.Select(val => factory.New(factory.New(val, unit).StandardAmount));
@@ -99,7 +99,7 @@ namespace Ivy.Measures.Linq
         /// <param name="amounts">Collection of amounts to be cast into a collection of standard measures</param>
         /// <returns>Collection of standard measures</returns>
         public static IEnumerable<Q> Cast<Q>(this IEnumerable<decimal> amounts)
-            where Q : struct, IQuantity<Q>, IMeasure<Q>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
             var factory = new Q().Factory;
             return amounts.Select(val => factory.New(val));
@@ -113,7 +113,7 @@ namespace Ivy.Measures.Linq
         /// <param name="unit">Unit in which the amounts are specified</param>
         /// <returns>Collection of standard measures, converted from specified unit into quantity's standard unit</returns>
         public static IEnumerable<Q> Cast<Q>(this IEnumerable<decimal> amounts, IUnit<Q> unit)
-            where Q : struct, IQuantity<Q>, IMeasure<Q>
+            where Q : class, IQuantity<Q>, IMeasure<Q>, new()
         {
             var factory = new Q().Factory;
             return amounts.Select(val => factory.New(factory.New(val, unit).StandardAmount));
@@ -125,8 +125,8 @@ namespace Ivy.Measures.Linq
         /// <typeparam name="Q">Quantity of measures.</typeparam>
         /// <param name="measures">Collection of measures.</param>
         /// <returns>Enumerable of amounts in standard unit.</returns>
-        public static IEnumerable<AmountType> Cast<Q>(this IEnumerable<IMeasure<Q>> measures)
-            where Q : struct, IQuantity<Q>
+        public static IEnumerable<float> Cast<Q>(this IEnumerable<IMeasure<Q>> measures)
+            where Q : class, IQuantity<Q>, new()
         {
             return measures.Select(measure => measure.StandardAmount);
         }
@@ -138,8 +138,8 @@ namespace Ivy.Measures.Linq
         /// <param name="measures">Collection of measures.</param>
         /// <param name="unitOfAmounts">Unit in which the amounts should be given.</param>
         /// <returns>Enumerable of amounts in specified <paramref name="unitOfAmounts">unit of amounts</paramref>.</returns>
-        public static IEnumerable<AmountType> Cast<Q>(this IEnumerable<IMeasure<Q>> measures, IUnit<Q> unitOfAmounts)
-            where Q : struct, IQuantity<Q>
+        public static IEnumerable<float> Cast<Q>(this IEnumerable<IMeasure<Q>> measures, IUnit<Q> unitOfAmounts)
+            where Q : class, IQuantity<Q>, new()
         {
             return measures.Select(measure => measure.GetAmount(unitOfAmounts));
         }

@@ -33,7 +33,7 @@ namespace Ivy.Measures
 
     public static class AmountAssert
     {
-        public static void AreEqual(AmountType expected, AmountType actual)
+        public static void AreEqual(double expected, double actual)
         {
             Assert.AreEqual(0, AmountComparer.Instance.Compare(expected, actual));
         }

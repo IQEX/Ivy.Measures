@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the capacitance quantity
     /// </summary>
     [DataContract]
-    public partial struct Capacitance : IQuantity<Capacitance>, IMeasure<Capacitance>, IEquatable<Capacitance>, IComparable<Capacitance>
+    public partial class Capacitance : IQuantity<Capacitance>, IMeasure<Capacitance>, IEquatable<Capacitance>, IComparable<Capacitance>
     {
+        public Capacitance() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

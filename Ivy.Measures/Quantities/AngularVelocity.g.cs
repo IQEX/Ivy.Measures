@@ -16,8 +16,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the angular velocity quantity
     /// </summary>
     [DataContract]
-    public partial struct AngularVelocity : IQuantity<AngularVelocity>, IMeasure<AngularVelocity>, IEquatable<AngularVelocity>, IComparable<AngularVelocity>
+    public partial class AngularVelocity : IQuantity<AngularVelocity>, IMeasure<AngularVelocity>, IEquatable<AngularVelocity>, IComparable<AngularVelocity>
     {
+        public AngularVelocity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

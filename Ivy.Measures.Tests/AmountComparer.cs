@@ -36,7 +36,7 @@ namespace Ivy.Measures
 	{
 		public static readonly AmountComparer Instance;
 
-		private static readonly AmountType smkEqualityTolerance;
+		private static readonly double smkEqualityTolerance;
 
 		#region CONSTRUCTORS
 
@@ -71,12 +71,12 @@ namespace Ivy.Measures
 		///                 </exception><filterpriority>2</filterpriority>
 		public int Compare(object x, object y)
 		{
-			if (x is AmountType && y is AmountType)
+			if (x is double && y is double)
 			{
-				AmountType diff = (AmountType)x - (AmountType)y;
+				double diff = (double)x - (double)y;
 				return diff < -smkEqualityTolerance ? -1 : diff < smkEqualityTolerance ? 0 : 1;
 			}
-			throw new InvalidOperationException(String.Format("Compared objects are not of the required amount type: {0}; {1}",
+			throw new InvalidOperationException(string.Format("Compared objects are not of the required amount type: {0}; {1}",
 															  x.GetType(), y.GetType()));
 		}
 

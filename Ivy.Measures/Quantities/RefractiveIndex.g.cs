@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the refractive index quantity
     /// </summary>
     [DataContract]
-    public partial struct RefractiveIndex : IQuantity<RefractiveIndex>, IMeasure<RefractiveIndex>, IEquatable<RefractiveIndex>, IComparable<RefractiveIndex>
+    public partial class RefractiveIndex : IQuantity<RefractiveIndex>, IMeasure<RefractiveIndex>, IEquatable<RefractiveIndex>, IComparable<RefractiveIndex>
     {
+        public RefractiveIndex() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

@@ -35,7 +35,7 @@ namespace Ivy.Measures
 
     public static class MeasureAssert
     {
-        private const AmountType smkEqualityTolerance = (AmountType)1.0e-7;
+        private const float smkEqualityTolerance = (float)1.0e-7;
 
         internal static void MeasuresAreEqual(IMeasure expected, IMeasure actual)
         {
@@ -51,8 +51,8 @@ namespace Ivy.Measures
         }
 
         internal static void AmountsAreEqual<Q1, Q2>(IMeasure<Q1> expected, IMeasure<Q2> actual)
-            where Q1 : struct, IQuantity<Q1>
-            where Q2 : struct, IQuantity<Q2>
+            where Q1 : class, IQuantity<Q1>, new()
+            where Q2 : class, IQuantity<Q2>, new()
         {
             if (typeof(Q1).Equals(typeof(Q2)))
             {

@@ -51,7 +51,7 @@ namespace Ivy.Measures
         public const double Two = 2.0;
         public const double Half = 0.5;
 #endif
-        public static readonly AmountType MachineEpsilon;
+        public static readonly float MachineEpsilon;
 
         #endregion
 

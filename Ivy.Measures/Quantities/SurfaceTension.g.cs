@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the surface tension quantity
     /// </summary>
     [DataContract]
-    public partial struct SurfaceTension : IQuantity<SurfaceTension>, IMeasure<SurfaceTension>, IEquatable<SurfaceTension>, IComparable<SurfaceTension>
+    public partial class SurfaceTension : IQuantity<SurfaceTension>, IMeasure<SurfaceTension>, IEquatable<SurfaceTension>, IComparable<SurfaceTension>
     {
+        public SurfaceTension() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

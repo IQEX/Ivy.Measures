@@ -31,7 +31,7 @@ namespace Ivy.Measures
     /// Adapted from an implementation by Clinton Sheppard, published at
     /// http://handcraftsman.wordpress.com/2010/09/02/ienumerable-of-prime-numbers-in-csharp/.
     /// </summary>
-    internal sealed class PrimeNumbers : IEnumerable<int>
+    public sealed class PrimeNumbers : IEnumerable<int>
     {
         #region Implementation of IEnumerable
 
@@ -71,7 +71,7 @@ namespace Ivy.Measures
 
         #region PRIVATE SUPPORT METHODS
 
-        internal static IEnumerable<int> OddInts()
+        public static IEnumerable<int> OddInts()
         {
             int start = 1;
             while (start > 0)

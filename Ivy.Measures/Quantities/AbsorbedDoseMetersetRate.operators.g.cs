@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the absorbed dose meterset rate quantity
     /// </summary>
-    public partial struct AbsorbedDoseMetersetRate
+    public partial class AbsorbedDoseMetersetRate
     {
         #region OPERATORS
 

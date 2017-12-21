@@ -39,12 +39,12 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the measured amount in the <see cref="Unit">current unit of measure</see>
         /// </summary>
-        AmountType Amount { get; }
+        float Amount { get; }
 
         /// <summary>
         /// Gets the measured amount in the standard unit of measure for the inherent quantity
         /// </summary>
-        AmountType StandardAmount { get; }
+        float StandardAmount { get; }
 
         /// <summary>
         /// Gets the unit of measure
@@ -56,7 +56,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="iUnit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="iUnit">specified unit</paramref></returns>
-        AmountType GetAmount(IUnit iUnit);
+        float GetAmount(IUnit iUnit);
 
         /// <summary>
         /// Gets a new unit specific measure based on this measure but in the <paramref name="iUnit">specified unit</paramref>
@@ -69,7 +69,7 @@ namespace Ivy.Measures
     /// Interface representing a scalar measure of a specific quantity
     /// </summary>
     /// <typeparam name="Q">Measured quantity</typeparam>
-    public interface IMeasure<Q> : IMeasure, IComparable<IMeasure<Q>>, IEquatable<IMeasure<Q>> where Q : struct, IQuantity<Q>
+    public interface IMeasure<Q> : IMeasure, IComparable<IMeasure<Q>>, IEquatable<IMeasure<Q>> where Q : class, IQuantity<Q>
     {
         /// <summary>
         /// Gets the quantity-typed unit of measure
@@ -81,7 +81,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        AmountType GetAmount(IUnit<Q> unit);
+        float GetAmount(IUnit<Q> unit);
 
         /// <summary>
         /// Gets a new unit specific measure based on this measure but in the <paramref name="iUnit">specified unit</paramref>

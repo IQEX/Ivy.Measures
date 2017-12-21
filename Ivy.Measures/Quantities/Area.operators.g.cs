@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the area quantity
     /// </summary>
-    public partial struct Area
+    public partial class Area
     {
         #region OPERATORS
 

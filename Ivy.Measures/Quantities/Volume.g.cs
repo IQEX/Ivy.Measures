@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the volume quantity
     /// </summary>
     [DataContract]
-    public partial struct Volume : IQuantity<Volume>, IMeasure<Volume>, IEquatable<Volume>, IComparable<Volume>
+    public partial class Volume : IQuantity<Volume>, IMeasure<Volume>, IEquatable<Volume>, IComparable<Volume>
     {
+        public Volume() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

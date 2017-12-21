@@ -41,8 +41,10 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the magnetic flux quantity
     /// </summary>
     [DataContract]
-    public partial struct MagneticFlux : IQuantity<MagneticFlux>, IMeasure<MagneticFlux>, IEquatable<MagneticFlux>, IComparable<MagneticFlux>
+    public partial class MagneticFlux : IQuantity<MagneticFlux>, IMeasure<MagneticFlux>, IEquatable<MagneticFlux>, IComparable<MagneticFlux>
     {
+        public MagneticFlux() { }
+
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

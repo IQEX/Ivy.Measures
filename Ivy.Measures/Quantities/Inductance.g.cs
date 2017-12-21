@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the inductance quantity
     /// </summary>
     [DataContract]
-    public partial struct Inductance : IQuantity<Inductance>, IMeasure<Inductance>, IEquatable<Inductance>, IComparable<Inductance>
+    public partial class Inductance : IQuantity<Inductance>, IMeasure<Inductance>, IEquatable<Inductance>, IComparable<Inductance>
     {
+        public Inductance() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

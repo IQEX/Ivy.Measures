@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the surface density quantity
     /// </summary>
     [DataContract]
-    public partial struct SurfaceDensity : IQuantity<SurfaceDensity>, IMeasure<SurfaceDensity>, IEquatable<SurfaceDensity>, IComparable<SurfaceDensity>
+    public partial class SurfaceDensity : IQuantity<SurfaceDensity>, IMeasure<SurfaceDensity>, IEquatable<SurfaceDensity>, IComparable<SurfaceDensity>
     {
+        public SurfaceDensity() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

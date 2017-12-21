@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the acceleration quantity
     /// </summary>
-    public partial struct Acceleration
+    public partial class Acceleration
     {
         #region OPERATORS
 

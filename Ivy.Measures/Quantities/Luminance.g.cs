@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the luminance quantity
     /// </summary>
     [DataContract]
-    public partial struct Luminance : IQuantity<Luminance>, IMeasure<Luminance>, IEquatable<Luminance>, IComparable<Luminance>
+    public partial class Luminance : IQuantity<Luminance>, IMeasure<Luminance>, IEquatable<Luminance>, IComparable<Luminance>
     {
+        public Luminance() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

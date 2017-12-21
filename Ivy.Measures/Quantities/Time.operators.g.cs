@@ -28,7 +28,7 @@ namespace Ivy.Measures.Quantities
     /// <summary>
     /// Multiplicative operators for the time quantity
     /// </summary>
-    public partial struct Time
+    public partial class Time
     {
         #region OPERATORS
 

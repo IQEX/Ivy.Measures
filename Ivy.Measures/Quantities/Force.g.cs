@@ -41,8 +41,9 @@ namespace Ivy.Measures.Quantities
     /// Implementation of the force quantity
     /// </summary>
     [DataContract]
-    public partial struct Force : IQuantity<Force>, IMeasure<Force>, IEquatable<Force>, IComparable<Force>
+    public partial class Force : IQuantity<Force>, IMeasure<Force>, IEquatable<Force>, IComparable<Force>
     {
+        public  Force() { }
         #region FIELDS
 
         // ReSharper disable once InconsistentNaming

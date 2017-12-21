@@ -59,7 +59,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="amount">Amount in this unit</param>
         /// <returns>Amount converted to standard unit</returns>
-        AmountType ConvertAmountToStandardUnit(AmountType amount);
+        float ConvertAmountToStandardUnit(float amount);
 
         /// <summary>
         /// Convert a standard amount to this unit of the specified quantity
@@ -67,14 +67,14 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="standardAmount">Standard amount of the current <see cref="Quantity"/>.</param>
         /// <returns>Amount in this unit.</returns>
-        AmountType ConvertStandardAmountToUnit(AmountType standardAmount);
+        float ConvertStandardAmountToUnit(float standardAmount);
     }
 
     /// <summary>
     /// Interface representing a physical unit confined to a specific quantity
     /// </summary>
     /// <typeparam name="Q">Unit quantity</typeparam>
-    public interface IUnit<Q> : IUnit where Q : struct, IQuantity<Q>
+    public interface IUnit<Q> : IUnit where Q : class, IQuantity<Q>
     {
         /// <summary>
         /// Gets the typed quantity associated with the unit

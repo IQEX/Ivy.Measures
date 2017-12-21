@@ -36,13 +36,13 @@ namespace Ivy.Measures
     /// Representation of a unit preserving measure of a specific quantity
     /// </summary>
     /// <typeparam name="Q">Measured quantity</typeparam>
-    public class Measure<Q> : IMeasure<Q> where Q : struct, IQuantity<Q>
+    public class Measure<Q> : IMeasure<Q> where Q : class, IQuantity<Q>, new()
     {
         #region FIELDS
 
         private static readonly IMeasureFactory<Q> Factory = new Q().Factory;
  
-        private readonly AmountType amount;
+        private readonly float amount;
         private readonly IUnit<Q> unit;
 
         #endregion
@@ -57,7 +57,7 @@ namespace Ivy.Measures
         {
             if (measure == null)
             {
-                throw new ArgumentNullException("measure");
+                throw new ArgumentNullException(nameof(measure));
             }
 
             this.amount = measure.Amount;
@@ -72,10 +72,8 @@ namespace Ivy.Measures
         /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
         public Measure(double amount, IUnit<Q> unit)
         {
-            if (unit == null) throw new ArgumentNullException("unit");
-
-            this.amount = (AmountType)amount;
-            this.unit = unit;
+            this.amount = (float)amount;
+            this.unit = unit ?? throw new ArgumentNullException(nameof(unit));
         }
 
         /// <summary>
@@ -86,10 +84,8 @@ namespace Ivy.Measures
         /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
         public Measure(float amount, IUnit<Q> unit)
         {
-            if (unit == null) throw new ArgumentNullException("unit");
-
-            this.amount = (AmountType)amount;
-            this.unit = unit;
+            this.amount = (float)amount;
+            this.unit = unit ?? throw new ArgumentNullException(nameof(unit));
         }
 
         /// <summary>
@@ -100,13 +96,8 @@ namespace Ivy.Measures
         /// <exception cref="ArgumentNullException">if the specified unit is null</exception>
         public Measure(decimal amount, IUnit<Q> unit)
         {
-            if (unit == null)
-            {
-                throw new ArgumentNullException("unit");
-            }
-
-            this.amount = (AmountType)amount;
-            this.unit = unit;
+            this.amount = (float)amount;
+            this.unit = unit ?? throw new ArgumentNullException(nameof(unit));
         }
 
         #endregion
@@ -116,12 +107,12 @@ namespace Ivy.Measures
         /// <summary>
         /// Gets the measured amount in the <see cref="Unit">current unit of measure</see>
         /// </summary>
-        public AmountType Amount => this.amount;
+        public float Amount => this.amount;
 
         /// <summary>
         /// Gets the measured amount in the standard unit of measure for the <typeparam name="Q">specified quantity</typeparam>
         /// </summary>
-        public AmountType StandardAmount => this.unit.ConvertAmountToStandardUnit(this.amount);
+        public float StandardAmount => this.unit.ConvertAmountToStandardUnit(this.amount);
 
         /// <summary>
         /// Gets the unit of measure
@@ -133,11 +124,11 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        AmountType IMeasure.GetAmount(IUnit unit)
+        float IMeasure.GetAmount(IUnit unit)
         {
             if (unit == null)
             {
-                throw new ArgumentNullException("unit");
+                throw new ArgumentNullException(nameof(unit));
             }
 
             if (!unit.Quantity.Equals(default(Q)))
@@ -166,9 +157,9 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="unit">Unit to which the measured amount should be converted</param>
         /// <returns>Measured amount converted into <paramref name="unit">specified unit</paramref></returns>
-        public AmountType GetAmount(IUnit<Q> unit)
+        public float GetAmount(IUnit<Q> unit)
         {
-            if (unit == null) throw new ArgumentNullException("unit");
+            if (unit == null) throw new ArgumentNullException(nameof(unit));
             return unit.ConvertStandardAmountToUnit(this.StandardAmount);
         }
 
@@ -192,7 +183,7 @@ namespace Ivy.Measures
             {
                 if (unit == null)
                 {
-                    throw new ArgumentNullException("unit");
+                    throw new ArgumentNullException(nameof(unit));
                 }
 
                 return new Measure<Q>(this.GetAmount(unit), unit);
@@ -236,7 +227,7 @@ namespace Ivy.Measures
         {
             if (other == null)
             {
-                throw new ArgumentNullException("other");
+                throw new ArgumentNullException(nameof(other));
             }
 
             if (!other.Unit.Quantity.Equals(default(Q)))
@@ -266,7 +257,7 @@ namespace Ivy.Measures
         {
             if (other == null)
             {
-                throw new ArgumentNullException("other");
+                throw new ArgumentNullException(nameof(other));
             }
 
             return this.amount.CompareTo(other.GetAmount(this.unit));
@@ -287,7 +278,7 @@ namespace Ivy.Measures
         {
             if (other == null)
             {
-                throw new ArgumentNullException("other");
+                throw new ArgumentNullException(nameof(other));
             }
 
             if (!other.Unit.Quantity.Equals(default(Q)))
@@ -446,7 +437,7 @@ namespace Ivy.Measures
         /// <param name="scalar">Floating-point scalar</param>
         /// <param name="measure">Measure object</param>
         /// <returns>Product of the scalar and the measure object</returns>
-        public static Measure<Q> operator *(AmountType scalar, Measure<Q> measure)
+        public static Measure<Q> operator *(float scalar, Measure<Q> measure)
         {
             return new Measure<Q>(scalar * measure.amount, measure.unit);
         }
@@ -457,7 +448,7 @@ namespace Ivy.Measures
         /// <param name="measure">Measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Product of the measure object and the scalar</returns>
-        public static Measure<Q> operator *(Measure<Q> measure, AmountType scalar)
+        public static Measure<Q> operator *(Measure<Q> measure, float scalar)
         {
             return new Measure<Q>(measure.amount * scalar, measure.unit);
         }
@@ -468,7 +459,7 @@ namespace Ivy.Measures
         /// <param name="measure">measure object</param>
         /// <param name="scalar">Floating-point scalar</param>
         /// <returns>Quotient of the measure object and the scalar</returns>
-        public static Measure<Q> operator /(Measure<Q> measure, AmountType scalar)
+        public static Measure<Q> operator /(Measure<Q> measure, float scalar)
         {
             return new Measure<Q>(measure.amount / scalar, measure.unit);
         }
