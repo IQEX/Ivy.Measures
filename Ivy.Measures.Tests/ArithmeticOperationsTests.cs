@@ -26,7 +26,7 @@ namespace Ivy.Measures
     using Ivy.Measures.Quantities;
 
     using NUnit.Framework;
-
+    public class ExpectedException : Attribute { public ExpectedException(Type t){} }
     [TestFixture]
     public class ArithmeticOperationsTests
     {
@@ -43,12 +43,13 @@ namespace Ivy.Measures
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void Times_MultiplyAreaAndAreaToVolume_Throws()
         {
             var lhs = new Area(2.0);
             var rhs = new Area(3.0);
-            Volume throws; ArithmeticOperations.Times(lhs, rhs, out throws);
+            Volume throws;
+            Assert.That(() => ArithmeticOperations.Times(lhs, rhs, out throws),
+               Throws.TypeOf<InvalidOperationException>());
         }
 
         [Test]
@@ -62,12 +63,13 @@ namespace Ivy.Measures
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void Divide_DivideAreaAndAreaToLength_Throws()
         {
             var numerator = new Area(8.0);
             var denominator = new Area(200.0, Area.SquareDeciMeter);
-            Length throws; ArithmeticOperations.Divide(numerator, denominator, out throws);
+            Length throws;
+            Assert.That(() => ArithmeticOperations.Divide(numerator, denominator, out throws),
+             Throws.TypeOf<InvalidOperationException>());
         }
 
         [Test]

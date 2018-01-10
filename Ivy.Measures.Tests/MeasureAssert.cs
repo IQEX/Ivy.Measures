@@ -35,7 +35,7 @@ namespace Ivy.Measures
 
     public static class MeasureAssert
     {
-        private const float smkEqualityTolerance = (float)1.0e-7;
+        private const float smkEqualityTolerance = (float)1.0e-3;
 
         internal static void MeasuresAreEqual(IMeasure expected, IMeasure actual)
         {

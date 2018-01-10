@@ -41,7 +41,7 @@ namespace Ivy.Measures.Collections
         [SetUp]
         public void Setup()
         {
-            _instance = new QuantityAdapter(default(Force), new[] { Force.Newton, Force.KiloNewton });
+            _instance = new QuantityAdapter(new Force(), new[] { Force.Newton, Force.KiloNewton });
         }
 
         [TearDown]
@@ -64,17 +64,15 @@ namespace Ivy.Measures.Collections
         [Test]
         public void UnitsGetter_CheckContainsKiloNewton_ReturnsTrue()
         {
-            var expected = true;
             var actual = _instance.Units.Contains(Force.KiloNewton);
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(true, actual);
         }
 
         [Test]
         public void UnitsGetter_CheckContainsKiloJoule_ReturnsFalse()
         {
-            var expected = false;
             var actual = _instance.Units.Contains(Energy.KiloJoule);
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(false, actual);
         }
 
         #endregion

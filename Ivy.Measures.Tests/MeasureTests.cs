@@ -51,11 +51,13 @@ namespace Ivy.Measures
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void Indexer_DifferentQuantitiesNonGenericInterface_Throws()
         {
             IMeasure meas = new SpecificVolume(1.0);
-            var throws = meas[Volume.CubicMeter];
+           Assert.That(() =>
+           {
+               var throws = meas[Volume.CubicMeter];
+           }, Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]

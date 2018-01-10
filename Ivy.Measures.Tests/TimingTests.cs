@@ -65,70 +65,6 @@ namespace Ivy.Measures
                 0.0);
         }
 
-        [Test]
-        public void TimeMeasureAdditionsStandardUnitWithStandardMeasure()
-        {
-            PerformTiming(
-                () =>
-                    {
-                        var val = new Measure<Mass>(0.0, Mass.KiloGram);
-                        for (var i = 0.0; i < no; ++i)
-                        {
-                            val += new Mass(i);
-                        }
-                        return val;
-                    },
-                0.5 * no * (no - 1.0));
-        }
-
-        [Test]
-        public void TimeMeasureAdditionsWithDifferentUnit()
-        {
-            PerformTiming(
-                () =>
-                    {
-                        var val = new Measure<Mass>(0.0, Mass.KiloGram);
-                        for (var i = 0.0; i < no; ++i)
-                        {
-                            val += new Measure<Mass>(i, Mass.Gram);
-                        }
-                        return val;
-                    },
-                0.5 * no * (no - 1.0) / 1000.0);
-        }
-
-        [Test]
-        public void TimeStandardMeasureAdditions()
-        {
-            PerformTiming(
-                () =>
-                    {
-                        var val = new Length(0.0);
-                        for (var i = 0.0; i < no; ++i)
-                        {
-                            val += new Length(i);
-                        }
-                        return val;
-                    },
-                0.5 * no * (no - 1.0));
-        }
-
-        [Test]
-        public void TimeMeasureAdditionsNonStandardUnitWithStandardMeasure()
-        {
-            PerformTiming(
-                () =>
-                    {
-                        var val = new Measure<Length>(0.0, Length.CentiMeter);
-                        for (var i = 0.0; i < no; ++i)
-                        {
-                            val += new Length(i);
-                        }
-                        return val;
-                    },
-                0.5 * no * (no - 1.0) * 100.0);
-        }
-
         private static void PerformTiming(Func<object> a, double expected)
         {
             var timer = new Stopwatch();
@@ -136,10 +72,9 @@ namespace Ivy.Measures
             var val = a.Invoke();
             timer.Stop();
 
-            var measure = val as IMeasure;
-            if (measure != null)
+            if (val is IMeasure measure)
             {
-                Assert.AreEqual(expected, measure.Amount, 1.0e-7);
+                Assert.AreEqual(expected, measure.Amount, 1.0e-3);
             }
 
 #if NUNIT24
