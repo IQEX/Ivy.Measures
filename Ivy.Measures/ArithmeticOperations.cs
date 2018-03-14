@@ -41,7 +41,7 @@ namespace Ivy.Measures
             where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
             where Q2 : class, IQuantity<Q2>, new()
         {
-            AssertMatchingQuantities<Q, Q1, Q2>(1, 1);
+            AssertMatchingQuantities<Q, Q1, Q2>(iQ1Exponent: 1, iQ2Exponent: 1);
             oResult = new Q().Factory.New(iFirst.StandardAmount * iSecond.StandardAmount);
         }
 
@@ -58,7 +58,7 @@ namespace Ivy.Measures
             where Q : class, IQuantity<Q>, IMeasure<Q>, new() where Q1 : class, IQuantity<Q1>, new()
             where Q2 : class, IQuantity<Q2>, new()
         {
-            AssertMatchingQuantities<Q, Q1, Q2>(1, -1);
+            AssertMatchingQuantities<Q, Q1, Q2>(iQ1Exponent: 1, iQ2Exponent: -1);
             oResult = new Q().Factory.New(iNumerator.StandardAmount / iDenominator.StandardAmount);
         }
 

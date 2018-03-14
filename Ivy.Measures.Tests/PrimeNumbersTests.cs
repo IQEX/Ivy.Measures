@@ -77,7 +77,7 @@ namespace Ivy.Measures
         {
             var expected = 1299709;
             var start = DateTime.Now;
-            var actual = _instance.ElementAt(99999);
+            var actual = _instance.ElementAt(index: 99999);
             var stop = DateTime.Now;
             var duration = (stop - start).Ticks / 10000;
             Console.WriteLine("Timing {0} ms", duration);

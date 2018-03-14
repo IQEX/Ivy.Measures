@@ -117,7 +117,7 @@ namespace Ivy.Measures
         /// <returns>Standard unit measure object, corresponding to 1.0 of the specified <paramref name="unit"/>.</returns>
         public static implicit operator Q(Unit<Q> unit)
         {
-            return quantity.Factory.New(1.0, unit);
+            return quantity.Factory.New(amount: 1.0, unit: unit);
         }
 
         /// <summary>

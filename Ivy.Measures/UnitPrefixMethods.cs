@@ -93,7 +93,7 @@ namespace Ivy.Measures
 #if DOUBLE
             return Math.Pow(10.0, (double)iPrefix);
 #elif SINGLE
-            return (float)Math.Pow(10.0, (double)iPrefix);
+            return (float)Math.Pow(x: 10.0, y: (double)iPrefix);
 #elif DECIMAL
             return (decimal)Math.Pow(10.0, (double)iPrefix);
 #endif

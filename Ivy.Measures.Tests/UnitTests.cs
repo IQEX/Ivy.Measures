@@ -86,8 +86,8 @@ namespace Ivy.Measures
         [Test]
         public void AmountToStandardUnitConverter_InstanceUnit_ReturnsGigaTimesOriginalValue()
         {
-            var expected = AmountConverter.ToAmountType(1.0e9);
-            var actual = this.instance.ConvertAmountToStandardUnit((float)AmountConverter.ToAmountType(1.0d));
+            var expected = AmountConverter.ToAmountType(iValue: 1.0e9);
+            var actual = this.instance.ConvertAmountToStandardUnit((float)AmountConverter.ToAmountType(iValue: 1.0d));
             AmountAssert.AreEqual(expected, actual);
         }
 
@@ -117,7 +117,7 @@ namespace Ivy.Measures
         {
             var length = 5.0 * Length.CentiMeter;
             Assert.IsInstanceOf<Length>(length);
-            Assert.AreEqual(0.05, length.Amount, 1e-7);
+            Assert.AreEqual(expected: 0.05, actual: length.Amount, delta: 1e-7);
         }
 
         [Test]

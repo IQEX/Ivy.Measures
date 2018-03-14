@@ -49,7 +49,7 @@ namespace Ivy.Measures
         /// Initialize a physical unit object that is the standard unit of the specific quantity
         /// </summary>
         /// <param name="symbol">Unit display symbol</param>
-        public ConstantConverterUnit(string symbol) : base(true, symbol)
+        public ConstantConverterUnit(string symbol) : base(isStandardUnit: true, symbol: symbol)
         {
             this.amountToStandardUnitFactor = Constants.One;
             this.standardAmountToUnitFactor = Constants.One;

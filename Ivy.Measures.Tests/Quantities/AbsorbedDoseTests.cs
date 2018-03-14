@@ -39,8 +39,8 @@ namespace Ivy.Measures.Quantities
         [Test]
         public void LessThan_CompareTwoInstances_YieldsValidComparisonResult()
         {
-            var lhs = new AbsorbedDose(1.0, AbsorbedDose.CentiGray);
-            var rhs = new AbsorbedDose(0.02);
+            var lhs = new AbsorbedDose(amount: 1.0, unit: AbsorbedDose.CentiGray);
+            var rhs = new AbsorbedDose(amount: 0.02);
             Assert.IsTrue(lhs < rhs);
         }
 

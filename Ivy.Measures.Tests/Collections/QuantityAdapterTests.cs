@@ -65,14 +65,14 @@ namespace Ivy.Measures.Collections
         public void UnitsGetter_CheckContainsKiloNewton_ReturnsTrue()
         {
             var actual = _instance.Units.Contains(Force.KiloNewton);
-            Assert.AreEqual(true, actual);
+            Assert.AreEqual(expected: true, actual: actual);
         }
 
         [Test]
         public void UnitsGetter_CheckContainsKiloJoule_ReturnsFalse()
         {
             var actual = _instance.Units.Contains(Energy.KiloJoule);
-            Assert.AreEqual(false, actual);
+            Assert.AreEqual(expected: false, actual: actual);
         }
 
         #endregion

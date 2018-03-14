@@ -35,9 +35,9 @@ namespace Ivy.Measures
         [Test]
         public void Times_MultiplyAreaAndLength_ReturnsVolume()
         {
-            var expected = new Volume(6.0);
-            var lhs = new Area(2.0);
-            var rhs = new Length(3.0);
+            var expected = new Volume(amount: 6.0);
+            var lhs = new Area(amount: 2.0);
+            var rhs = new Length(amount: 3.0);
             Volume actual; ArithmeticOperations.Times(lhs, rhs, out actual);
             MeasureAssert.MeasuresAreEqual(expected, actual);
         }
@@ -45,8 +45,8 @@ namespace Ivy.Measures
         [Test]
         public void Times_MultiplyAreaAndAreaToVolume_Throws()
         {
-            var lhs = new Area(2.0);
-            var rhs = new Area(3.0);
+            var lhs = new Area(amount: 2.0);
+            var rhs = new Area(amount: 3.0);
             Volume throws;
             Assert.That(() => ArithmeticOperations.Times(lhs, rhs, out throws),
                Throws.TypeOf<InvalidOperationException>());
@@ -55,9 +55,9 @@ namespace Ivy.Measures
         [Test]
         public void Divide_DivideVolumeAndLength_ReturnsArea()
         {
-            var expected = new Area(4.0);
-            var numerator = new Volume(8.0);
-            var denominator = new Length(200.0, Length.CentiMeter);
+            var expected = new Area(amount: 4.0);
+            var numerator = new Volume(amount: 8.0);
+            var denominator = new Length(amount: 200.0, unit: Length.CentiMeter);
             Area actual; ArithmeticOperations.Divide(numerator, denominator, out actual);
             MeasureAssert.MeasuresAreEqual(expected, actual);
         }
@@ -65,8 +65,8 @@ namespace Ivy.Measures
         [Test]
         public void Divide_DivideAreaAndAreaToLength_Throws()
         {
-            var numerator = new Area(8.0);
-            var denominator = new Area(200.0, Area.SquareDeciMeter);
+            var numerator = new Area(amount: 8.0);
+            var denominator = new Area(amount: 200.0, unit: Area.SquareDeciMeter);
             Length throws;
             Assert.That(() => ArithmeticOperations.Divide(numerator, denominator, out throws),
              Throws.TypeOf<InvalidOperationException>());
@@ -75,9 +75,9 @@ namespace Ivy.Measures
         [Test]
         public void Power_LengthRaisedWith3_ReturnsVolume()
         {
-            var expected = new Volume(1.0, Volume.CubicDeciMeter);
-            var len = new Measure<Length>(1.0, Length.DeciMeter);
-            Volume actual; ArithmeticOperations.Power(len, 3, out actual);
+            var expected = new Volume(amount: 1.0, unit: Volume.CubicDeciMeter);
+            var len = new Measure<Length>(amount: 1.0, unit: Length.DeciMeter);
+            Volume actual; ArithmeticOperations.Power(len, iExponent: 3, oResult: out actual);
             MeasureAssert.AmountsAreEqual(expected, actual);
         }
 
