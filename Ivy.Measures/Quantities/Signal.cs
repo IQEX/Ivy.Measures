@@ -24,7 +24,7 @@
         private static readonly IMeasureFactory<Signal> factory = new MeasureFactory();
 
         // ReSharper disable once InconsistentNaming
-        private static readonly QuantityDimension dimension = new QuantityDimension(-1, 0, 0, 0, 0, 0, 0);
+        private static readonly QuantityDimension dimension = new QuantityDimension(iLengthExponent: -1, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0);
 
         public static readonly Unit<Signal> Bell = new ConstantConverterUnit<Signal>("b");
         public static readonly Unit<Signal> Neper = new ConstantConverterUnit<Signal>("Np");
@@ -145,7 +145,7 @@
         /// <param name="other">An object to compare with this object.</param>
         bool IEquatable<IMeasure<Signal>>.Equals(IMeasure<Signal> other)
         {
-            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(objA: null, objB: other)) return false;
             return this.amount.Equals(other.StandardAmount);
         }
 

@@ -58,7 +58,7 @@ namespace Ivy.Measures
             string symbol,
             Func<float, float> convertAmountToStandardUnit,
             Func<float, float> convertStandardAmountToUnit)
-            : base(false, symbol)
+            : base(isStandardUnit: false, symbol: symbol)
         {
             this.convertAmountToStandardUnit = convertAmountToStandardUnit;
             this.convertStandardAmountToUnit = convertStandardAmountToUnit;

@@ -33,8 +33,8 @@ namespace Ivy.Measures
         [Test]
         public void Example1()
         {
-            Mass initialWgt = new Mass(75.0);
-            Mass gainedWgt = new Mass(2.5, Mass.HectoGram);
+            Mass initialWgt = new Mass(amount: 75.0);
+            Mass gainedWgt = new Mass(amount: 2.5, unit: Mass.HectoGram);
             Mass newWgt = initialWgt + gainedWgt;
 
             Measure<Mass> newWgtInGram = newWgt[Mass.Gram];
@@ -46,7 +46,7 @@ namespace Ivy.Measures
             Area area = (Area)0.02;
 
             Volume vol = height * area;
-            var maxVol = new Volume(10.0, Volume.Liter);
+            var maxVol = new Volume(amount: 10.0, unit: Volume.Liter);
 
             if (vol < maxVol)
             {
@@ -63,14 +63,14 @@ namespace Ivy.Measures
         [Test]
         public void InitializationExample()
         {
-            Force f01 = new Force(1000.0);                  // 1000 N
-            Force f02 = new Force(1.0m, Force.KiloNewton);  // 1000 N
+            Force f01 = new Force(amount: 1000.0);                  // 1000 N
+            Force f02 = new Force(amount: 1.0m, unit: Force.KiloNewton);  // 1000 N
             Force f03 = (Force)1000.0m;                     // 1000 N
             Force f04 = 0.001f * Force.MegaNewton;          // ~1000 N
             Force f05 = Force.KiloNewton;                   // 1000 N
 
             Measure<Force> f11 = new Measure<Force>(f01);                       // 1000 N
-            Measure<Force> f12 = new Measure<Force>(0.001f, Force.MegaNewton);  // ~0.001 MN
+            Measure<Force> f12 = new Measure<Force>(amount: 0.001f, unit: Force.MegaNewton);  // ~0.001 MN
             IMeasure<Force> f13 = 1.0 | Force.KiloNewton;                       // 1 kN
             Measure<Force> f14 = (Measure<Force>)f13;                           // 1 kN
 
@@ -91,9 +91,9 @@ namespace Ivy.Measures
         [Test]
         public void ComparisonExample()
         {
-	        Length l1 = new Length(0.02);										// 0.02 m
+	        Length l1 = new Length(amount: 0.02);										// 0.02 m
 	        Length l2 = Length.CentiMeter;										// 0.01 m
-	        Measure<Length> l3 = new Measure<Length>(15.0, Length.MilliMeter);	// 15 mm
+	        Measure<Length> l3 = new Measure<Length>(amount: 15.0, unit: Length.MilliMeter);	// 15 mm
 
 	        Assert.IsTrue(l1 > l2);		// true
 	        Assert.IsFalse(l2 >= l1);	// false
@@ -106,16 +106,16 @@ namespace Ivy.Measures
         [Test]
         public void UnitConversionExample()
         {
-	        Length s = new Length(180.0, Length.KiloMeter);
-	        Time t = new Time(2.0, Time.Hour);
+	        Length s = new Length(amount: 180.0, unit: Length.KiloMeter);
+	        Time t = new Time(amount: 2.0, unit: Time.Hour);
 	        Velocity v1 = s / t;
 
-            Assert.AreEqual(25.0, v1.Amount, 1.0e-7);
+            Assert.AreEqual(expected: 25.0, actual: v1.Amount, delta: 1.0e-7);
             Assert.AreEqual(Velocity.MeterPerSecond, v1.Unit);
 
             IMeasure<Velocity> v2 = v1[Velocity.KiloMeterPerHour]; // 90 km/h
 
-            Assert.AreEqual(90.0, v2.Amount, 1.0e-7);
+            Assert.AreEqual(expected: 90.0, actual: v2.Amount, delta: 1.0e-7);
             Assert.AreEqual(Velocity.KiloMeterPerHour, v2.Unit);
         }
     }

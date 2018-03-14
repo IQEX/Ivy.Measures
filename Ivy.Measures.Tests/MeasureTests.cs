@@ -35,8 +35,8 @@ namespace Ivy.Measures
         [Test]
         public void GetAmount_UsingIUnit_ValidConversion()
         {
-            var expected = AmountConverter.ToAmountType(500.0);
-            var instance = new Measure<Length>(5.0, Length.Meter);
+            var expected = AmountConverter.ToAmountType(iValue: 500.0);
+            var instance = new Measure<Length>(amount: 5.0, unit: Length.Meter);
             var actual = instance.GetAmount(Length.CentiMeter);
             Assert.AreEqual(expected, actual);
         }
@@ -44,8 +44,8 @@ namespace Ivy.Measures
         [Test]
         public void Indexer_SameQuantityNonGenericInterface_YieldsValidMeasureObject()
         {
-            var expected = new Measure<Volume>(5000.0f, Volume.Liter);
-            IMeasure meas = new Volume(5.0f);
+            var expected = new Measure<Volume>(amount: 5000.0f, unit: Volume.Liter);
+            IMeasure meas = new Volume(amount: 5.0f);
             var actual = meas[Volume.Liter];
             MeasureAssert.MeasuresAreEqual(expected, actual);
         }
@@ -53,7 +53,7 @@ namespace Ivy.Measures
         [Test]
         public void Indexer_DifferentQuantitiesNonGenericInterface_Throws()
         {
-            IMeasure meas = new SpecificVolume(1.0);
+            IMeasure meas = new SpecificVolume(amount: 1.0);
            Assert.That(() =>
            {
                var throws = meas[Volume.CubicMeter];
@@ -63,8 +63,8 @@ namespace Ivy.Measures
         [Test]
         public void Constructor_WithNonReferenceUnit_InitializesMeasureInReferenceUnit()
         {
-            var expected = new Measure<Time>(180.0, Time.Second);
-            var actual = new Time(3.0, Time.Minute);
+            var expected = new Measure<Time>(amount: 180.0, unit: Time.Second);
+            var actual = new Time(amount: 3.0, unit: Time.Minute);
             MeasureAssert.MeasuresAreEqual(expected, actual);
         }
 
@@ -72,17 +72,17 @@ namespace Ivy.Measures
         public void DivisionOperator_DivideGenericSameQuantity_ReturnsScalar()
         {
             var expected = 1.0;
-            var numerator = new Area(500.0, Area.SquareCentiMeter);
-            var denominator = new Area(5.0, Area.SquareDeciMeter);
+            var numerator = new Area(amount: 500.0, unit: Area.SquareCentiMeter);
+            var denominator = new Area(amount: 5.0, unit: Area.SquareDeciMeter);
             var actual = (double)(numerator / denominator);
-            Assert.AreEqual(expected, actual, 1.0e-6);
+            Assert.AreEqual(expected, actual, delta: 1.0e-6);
         }
 
         [Test]
         public void GetAmountOfQuantity_UsingIUnit_ValidConversion()
         {
-            var expected = AmountConverter.ToAmountType(500.0);
-            var instance = new Length(5.0);
+            var expected = AmountConverter.ToAmountType(iValue: 500.0);
+            var instance = new Length(amount: 5.0);
             var actual = instance.GetAmount(Length.CentiMeter);
             Assert.AreEqual(expected, actual);
         }
@@ -90,9 +90,9 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_BothArgumentsHaveValuesValuesWithinTolerance_ReturnsTrue()
         {
-            AmountConcentration lhs = new AmountConcentration(5.0);
-            AmountConcentration rhs = new AmountConcentration(5.0001);
-            AmountConcentration tol = new AmountConcentration(0.001);
+            AmountConcentration lhs = new AmountConcentration(amount: 5.0);
+            AmountConcentration rhs = new AmountConcentration(amount: 5.0001);
+            AmountConcentration tol = new AmountConcentration(amount: 0.001);
 
             var expected = true;
             var actual = AreApproximatelyEqual(lhs, rhs, tol);
@@ -102,9 +102,9 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_BothArgumentsHaveValuesValuesNotWithinTolerance_ReturnsFalse()
         {
-            AmountConcentration lhs = new AmountConcentration(5.0);
-            AmountConcentration rhs = new AmountConcentration(5.001);
-            AmountConcentration tol = new AmountConcentration(0.0001);
+            AmountConcentration lhs = new AmountConcentration(amount: 5.0);
+            AmountConcentration rhs = new AmountConcentration(amount: 5.001);
+            AmountConcentration tol = new AmountConcentration(amount: 0.0001);
 
             var expected = false;
             var actual = AreApproximatelyEqual(lhs, rhs, tol);
@@ -114,7 +114,7 @@ namespace Ivy.Measures
         [Test]
         public void AreEqual_LhsArgumentHasValue_ReturnsFalse()
         {
-            AmountConcentration lhs = new AmountConcentration(5.0);
+            AmountConcentration lhs = new AmountConcentration(amount: 5.0);
             AmountConcentration rhs = null;
             AmountConcentration tol = AmountConcentration.Zero;
 
@@ -127,7 +127,7 @@ namespace Ivy.Measures
         public void AreEqual_RhsArgumentHasValue_ReturnsFalse()
         {
             AmountConcentration lhs = null;
-            AmountConcentration rhs = new AmountConcentration(5.0);
+            AmountConcentration rhs = new AmountConcentration(amount: 5.0);
             AmountConcentration tol = AmountConcentration.Zero;
 
             var expected = false;

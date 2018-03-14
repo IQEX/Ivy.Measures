@@ -35,7 +35,7 @@ namespace Ivy.Measures
     {
         public static void AreEqual(double expected, double actual)
         {
-            Assert.AreEqual(0, AmountComparer.Instance.Compare(expected, actual));
+            Assert.AreEqual(expected: 0, actual: AmountComparer.Instance.Compare(expected, actual));
         }
     }
 }

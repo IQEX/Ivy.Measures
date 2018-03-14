@@ -39,7 +39,7 @@ namespace Ivy.Measures
         [SetUp]
         public void Setup()
         {
-            _instance = new MeasureTriplet<Time, Power, ElectricPotential>(5.0, 0.12, 0.6);
+            _instance = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 5.0, iAmount2: 0.12, iAmount3: 0.6);
         }
 
         [TearDown]
@@ -54,7 +54,7 @@ namespace Ivy.Measures
         [Test]
         public void PlusOperator_AddInstanceWithItself_ReturnsDoubleInstance()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(10.0, 0.24, 1.2);
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 10.0, iAmount2: 0.24, iAmount3: 1.2);
             var actual = _instance + _instance;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
@@ -62,7 +62,7 @@ namespace Ivy.Measures
         [Test]
         public void MinusOperator_SubtractInstanceWithItself_ReturnsZero()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(0.0, 0.0, 0.0);
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 0.0, iAmount2: 0.0, iAmount3: 0.0);
             var actual = _instance - _instance;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
@@ -70,23 +70,23 @@ namespace Ivy.Measures
         [Test]
         public void TimesOperator_MultiplyBy2And3And4_ReturnsDoubleTimeThreeTimesPowerFourTimesPotential()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(10.0, 0.36, 2.4);
-            var actual = _instance * new MeasureTriplet<Number, Number, Number>(2.0, 3.0, 4.0);
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 10.0, iAmount2: 0.36, iAmount3: 2.4);
+            var actual = _instance * new MeasureTriplet<Number, Number, Number>(iAmount1: 2.0, iAmount2: 3.0, iAmount3: 4.0);
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
 
         [Test]
         public void DivideOperator_DivideBy2And3And4_ReturnsHalfTimeOneThirdPowerOneFourthPotential()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(2.5, 0.04, 0.15);
-            var actual = _instance / new MeasureTriplet<Number, Number, Number>(2.0, 3.0, 4.0);
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 2.5, iAmount2: 0.04, iAmount3: 0.15);
+            var actual = _instance / new MeasureTriplet<Number, Number, Number>(iAmount1: 2.0, iAmount2: 3.0, iAmount3: 4.0);
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
 
         [Test]
         public void DivideOperator_DivideByItself_ReturnsUnityDoublet()
         {
-            var expected = new MeasureTriplet<Number, Number, Number>(1.0, 1.0, 1.0);
+            var expected = new MeasureTriplet<Number, Number, Number>(iAmount1: 1.0, iAmount2: 1.0, iAmount3: 1.0);
             var actual = _instance / _instance;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
@@ -94,7 +94,7 @@ namespace Ivy.Measures
         [Test]
         public void TimesOperator_MultiplyScalarRhs_AllMeasuresEquallyScaled()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(15.0, 0.36, 1.8);;
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 15.0, iAmount2: 0.36, iAmount3: 1.8);;
             var actual = _instance * 3.0f;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
@@ -102,7 +102,7 @@ namespace Ivy.Measures
         [Test]
         public void TimesOperator_MultiplyScalarLhs_AllMeasuresEquallyScaled()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(15.0, 0.36, 1.8); ;
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 15.0, iAmount2: 0.36, iAmount3: 1.8); ;
             var actual = 3.0f * _instance;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
@@ -110,16 +110,16 @@ namespace Ivy.Measures
         [Test]
         public void TimesOperator_MultiplyNumberLhs_AllMeasuresEquallyScaled()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(15.0, 0.36, 1.8); ;
-            var actual = _instance * new Number(3.0);
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 15.0, iAmount2: 0.36, iAmount3: 1.8); ;
+            var actual = _instance * new Number(amount: 3.0);
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
 
         [Test]
         public void TimesOperator_MultiplyNumberRhs_AllMeasuresEquallyScaled()
         {
-            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(15.0, 0.36, 1.8); ;
-            var actual = new Number(3.0) * _instance;
+            var expected = new MeasureTriplet<Time, Power, ElectricPotential>(iAmount1: 15.0, iAmount2: 0.36, iAmount3: 1.8); ;
+            var actual = new Number(amount: 3.0) * _instance;
             IMeasureTripletAssert.AreEqual(expected, actual);
         }
 

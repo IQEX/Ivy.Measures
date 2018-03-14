@@ -46,7 +46,7 @@ namespace Ivy.Measures
                         }
                         return val;
                     },
-                0.0);
+                expected: 0.0);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace Ivy.Measures
                         }
                         return val;
                     },
-                0.0);
+                expected: 0.0);
         }
 
         private static void PerformTiming(Func<object> a, double expected)
@@ -74,7 +74,7 @@ namespace Ivy.Measures
 
             if (val is IMeasure measure)
             {
-                Assert.AreEqual(expected, measure.Amount, 1.0e-3);
+                Assert.AreEqual(expected, measure.Amount, delta: 1.0e-3);
             }
 
 #if NUNIT24

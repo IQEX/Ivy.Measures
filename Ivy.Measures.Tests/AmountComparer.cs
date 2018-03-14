@@ -42,7 +42,7 @@ namespace Ivy.Measures
 
 		static AmountComparer()
 		{
-			smkEqualityTolerance = AmountConverter.ToAmountType(1.0e-5);
+			smkEqualityTolerance = AmountConverter.ToAmountType(iValue: 1.0e-5);
 			Instance = new AmountComparer();
 		}
 

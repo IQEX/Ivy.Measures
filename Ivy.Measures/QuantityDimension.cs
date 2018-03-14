@@ -46,19 +46,19 @@ namespace Ivy.Measures
 
         #region SI base quantity fields
 
-        public static readonly QuantityDimension Length = new QuantityDimension(1, 0, 0, 0, 0, 0, 0);
-        public static readonly QuantityDimension Mass = new QuantityDimension(0, 1, 0, 0, 0, 0, 0);
-        public static readonly QuantityDimension Time = new QuantityDimension(0, 0, 1, 0, 0, 0, 0);
-        public static readonly QuantityDimension ElectricCurrent = new QuantityDimension(0, 0, 0, 1, 0, 0, 0);
-        public static readonly QuantityDimension Temperature = new QuantityDimension(0, 0, 0, 0, 1, 0, 0);
-        public static readonly QuantityDimension LuminousIntensity = new QuantityDimension(0, 0, 0, 0, 0, 1, 0);
-        public static readonly QuantityDimension AmountOfSubstance = new QuantityDimension(0, 0, 0, 0, 0, 0, 1);
+        public static readonly QuantityDimension Length = new QuantityDimension(iLengthExponent: 1, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0);
+        public static readonly QuantityDimension Mass = new QuantityDimension(iLengthExponent: 0, iMassExponent: 1, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0);
+        public static readonly QuantityDimension Time = new QuantityDimension(iLengthExponent: 0, iMassExponent: 0, iTimeExponent: 1, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0);
+        public static readonly QuantityDimension ElectricCurrent = new QuantityDimension(iLengthExponent: 0, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 1, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0);
+        public static readonly QuantityDimension Temperature = new QuantityDimension(iLengthExponent: 0, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 1, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0);
+        public static readonly QuantityDimension LuminousIntensity = new QuantityDimension(iLengthExponent: 0, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 1, iAmountOfSubstanceExponent: 0);
+        public static readonly QuantityDimension AmountOfSubstance = new QuantityDimension(iLengthExponent: 0, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 1);
 
         #endregion
 
         #region Dimensionless quantity fields
 
-        public static readonly QuantityDimension Number = new QuantityDimension(1);
+        public static readonly QuantityDimension Number = new QuantityDimension(iDimensionlessDifferentiator: 1);
 
         public static readonly QuantityDimension Radian = new QuantityDimension(GetNextPrime());
         public static readonly QuantityDimension Steradian = Radian * Radian;
@@ -78,7 +78,7 @@ namespace Ivy.Measures
         /// </summary>
         /// <param name="iDimensionlessDifferentiator">Scalar used to differentiate between relevant dimensionless quantities</param>
         private QuantityDimension(int iDimensionlessDifferentiator) :
-            this(iDimensionlessDifferentiator, 0, 0, 0, 0, 0, 0, 0)
+            this(iDimensionlessDifferentiator, iLengthExponent: 0, iMassExponent: 0, iTimeExponent: 0, iElectricCurrentExponent: 0, iTemperatureExponent: 0, iLuminousIntensityExponent: 0, iAmountOfSubstanceExponent: 0)
         {
         }
 
@@ -94,8 +94,8 @@ namespace Ivy.Measures
         /// <param name="iAmountOfSubstanceExponent">Amount of substance exponent</param>
         internal QuantityDimension(int iLengthExponent, int iMassExponent, int iTimeExponent, int iElectricCurrentExponent, int iTemperatureExponent,
             int iLuminousIntensityExponent, int iAmountOfSubstanceExponent) :
-            this(1.0, iLengthExponent, iMassExponent, iTimeExponent, iElectricCurrentExponent,
-            iTemperatureExponent, iLuminousIntensityExponent, iAmountOfSubstanceExponent)
+            this(iDimensionlessDifferentiator: 1.0, iLengthExponent: iLengthExponent, iMassExponent: iMassExponent, iTimeExponent: iTimeExponent, iElectricCurrentExponent: iElectricCurrentExponent,
+            iTemperatureExponent: iTemperatureExponent, iLuminousIntensityExponent: iLuminousIntensityExponent, iAmountOfSubstanceExponent: iAmountOfSubstanceExponent)
         {
         }
 
@@ -178,7 +178,7 @@ namespace Ivy.Measures
         /// <returns>true if all exponent elements of this and the other object are equal, false otherwise</returns>
         internal bool ExponentsEqual(QuantityDimension other)
         {
-            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(objA: null, objB: other)) return false;
             if (ReferenceEquals(this, other)) return true;
             return AreExponentsEqualTo(other);
         }
@@ -190,7 +190,7 @@ namespace Ivy.Measures
         /// <returns>true if all elements of this and the other object are equal, false otherwise</returns>
         internal bool Equals(QuantityDimension other)
         {
-            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(objA: null, objB: other)) return false;
             if (ReferenceEquals(this, other)) return true;
             return Math.Abs(other.DimensionlessDifferentiator - DimensionlessDifferentiator) < EPSILON &&
                    AreExponentsEqualTo(other);

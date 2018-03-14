@@ -43,7 +43,7 @@ namespace Ivy.Measures.Collections
                     .GetTypes()
                     .Where(type => type.GetInterfaces().Contains(typeof(IQuantity)))
                     .SelectMany(type => type.GetFields(BindingFlags.Public | BindingFlags.Static))
-                    .Select(fieldInfo => fieldInfo.GetValue(null))
+                    .Select(fieldInfo => fieldInfo.GetValue(obj: null))
                     .OfType<IUnit>()
                     .ToList();
 

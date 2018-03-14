@@ -203,7 +203,7 @@ namespace Ivy.Measures
         /// <param name="other">An object to compare with this object.</param>
         public bool Equals(IMeasure<Q> other)
         {
-            if (ReferenceEquals(null, other))
+            if (ReferenceEquals(objA: null, objB: other))
             {
                 return false;
             }
@@ -300,7 +300,7 @@ namespace Ivy.Measures
         /// <filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (ReferenceEquals(objA: null, objB: obj))
             {
                 return false;
             }

@@ -31,8 +31,8 @@ namespace Ivy.Measures.Quantities
         [Test]
         public void GetAmount_StandardMeasureToKmph_Factor3point6Larger()
         {
-            var expected = AmountConverter.ToAmountType(90.0f);
-            var velocity = new Velocity(25.0f);
+            var expected = AmountConverter.ToAmountType(iValue: 90.0f);
+            var velocity = new Velocity(amount: 25.0f);
             var un = new ConstantConverterUnit<Velocity>("km\\h", Factors.Kilo / Factors.SecondsPerHour);
             var actual = velocity.GetAmount(un);
             AmountAssert.AreEqual(expected, actual);

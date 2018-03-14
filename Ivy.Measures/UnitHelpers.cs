@@ -34,7 +34,7 @@ namespace Ivy.Measures
                     .GetTypes()
                     .Where(type => type.IsInstanceOfType(unit.Quantity) && !type.IsInterface)
                     .SelectMany(type => type.GetFields(BindingFlags.Public | BindingFlags.Static))
-                    .SingleOrDefault(info => ReferenceEquals(info.GetValue(null), unit));
+                    .SingleOrDefault(info => ReferenceEquals(info.GetValue(obj: null), unit));
 
             return fieldInfo == null
                        ? unit.Symbol
