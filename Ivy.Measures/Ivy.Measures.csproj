@@ -9,6 +9,6 @@
     <DefineConstants>TRACE;DEBUG;SINGLE;NET47</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NETStandard.Library" Version="2.0.1" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
 </Project>
